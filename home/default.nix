@@ -5,15 +5,8 @@
 
 let
   inherit (inputs) vim-flake;
-
   inherit (lib.homeManager) mkHomeConfiguration loadUserConfig;
   inherit (lib.commons.system) systems;
-  # systems = [
-  #   "x86_64-linux"
-  #   "aarch64-linux"
-  #   "x86_64-darwin"
-  #   "aarch64-darwin"
-  # ];
 
   genericConfigurations = builtins.listToAttrs (
     map (system: {
