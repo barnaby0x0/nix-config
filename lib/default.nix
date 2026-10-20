@@ -8,4 +8,8 @@
   homeManager = import ./home-manager {
     inherit (inputs) nixpkgs home-manager;
   };
+
+  vim = import ./vim {
+    inherit (inputs) nixpkgs;
+  };
 }
