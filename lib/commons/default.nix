@@ -1,11 +1,7 @@
-{pkgs, ...}:
-{
-  systems = [
-    "x86_64-linux"
-    "aarch64-linux"
-    "x86_64-darwin"
-    "aarch64-darwin"
-  ];
+{ inputs, ... }:
 
-  forAllSystems = inputs.nixpkgs.lib.genAttrs systems;
+{
+  system = import ./system.nix {
+    inherit inputs;
+  };
 }
