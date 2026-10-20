@@ -1,7 +1,7 @@
-{ pkgs, lib, ... }:
+{ pkgs, mkVim, ... }:
 
 let
-  vimPackage = lib.vim.mkVim {
+  vimPackage = mkVim {
     system = pkgs.stdenv.hostPlatform.system;
   };
 in

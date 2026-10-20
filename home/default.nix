@@ -6,7 +6,7 @@
 let
   inherit (lib.homeManager) mkHomeConfiguration loadUserConfig;
   inherit (lib.commons.system) systems;
-  # vim = lib.vim.mkVim;
+  inherit (lib.vim) mkVim;
 
   genericConfigurations = builtins.listToAttrs (
     map (system: {
@@ -16,7 +16,7 @@ let
         inherit system;
 
         specialArgs = {
-          # inherit vim;
+          inherit mkVim;
         };
 
         modules = [
@@ -33,7 +33,7 @@ in
     system = "x86_64-linux";
 
     specialArgs = {
-      # inherit vim;
+      inherit mkVim;
     };
 
     modules = [
