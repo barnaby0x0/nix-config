@@ -1,4 +1,4 @@
-{ userConfig, ... }:
+{ userConfig, mkVim, ... }:
 
 {
   imports = [
