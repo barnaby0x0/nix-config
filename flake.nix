@@ -49,7 +49,14 @@
         imports = [
           (import ./modules/home-manager)
         ];
+        # Vrai car consommé par home-manager dans le client
+        # home-manager.lib.homeManagerConfiguration {
+        #   inherit pkgs;
 
+        #   modules = [
+        #     nix-config.homeModules.default
+        #     ./home.nix
+        #   ];
         _module.args.mkVim = lib.vim.mkVim;
       };
 
