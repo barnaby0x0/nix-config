@@ -6,17 +6,8 @@
 
 let
   inherit (inputs) home-manager;
-
   inherit (lib.homeManager) mkPkgs;
-
-  systems = [
-    "x86_64-linux"
-    "aarch64-linux"
-    "x86_64-darwin"
-    "aarch64-darwin"
-  ];
-
-  forAllSystems = inputs.nixpkgs.lib.genAttrs systems;
+  inherit (lib.commons.system) systems forAllSystems;
 in
 forAllSystems (
   system:

@@ -8,12 +8,12 @@
   };
 
   imports = [
-    ../../../modules/programs/common.nix
-    ../../../modules/programs/shell.nix
-    ../../../modules/options.nix
-    ../../../modules/programs/git.nix
-    ../../../modules/programs/vim.nix
-    ../../../modules/programs/terminator.nix
-    ../../../modules/programs/tmux.nix
+    ../../../modules/home-manager/options
+    ../../../modules/home-manager/programs/common.nix
+    ../../../modules/home-manager/programs/shell.nix
+    ../../../modules/home-manager/programs/git.nix
+    ../../../modules/home-manager/programs/vim.nix
+    ../../../modules/home-manager/programs/terminator.nix
+    ../../../modules/home-manager/programs/tmux.nix
   ];
 }
