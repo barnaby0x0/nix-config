@@ -7,6 +7,6 @@
 
   homeManager = import ./home-manager {
     inherit inputs;
-    inherit (inputs) nixpkgs;
+    inherit (inputs) nixpkgs home-manager;
   };
 }
