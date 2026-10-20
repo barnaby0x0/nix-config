@@ -38,7 +38,17 @@
         }
       );
 
-      # Packages : nixdot, install, etc.
+      # packages = forAllSystems (
+      #   system:
+      #   (import ./packages {
+      #     inherit self inputs lib;
+      #   }).${system}
+      #   // {
+      #     vim = lib.vim.mkVim { inherit system; };
+      #   }
+      # );
+
+      # # Packages : nixdot, install, etc.
       # packages = import ./packages {
       #   inherit self inputs lib;
       # };
