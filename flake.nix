@@ -43,7 +43,15 @@
       };
 
       # Modules Home Manager réutilisables
-      homeModules.default = import ./modules/home-manager;
+      # homeModules.default = import ./modules/home-manager;
+
+      homeModules.default = {
+        imports = [
+          (import ./modules/home-manager)
+        ];
+
+        _module.args.mkVim = lib.vim.mkVim;
+      };
 
       # Formatter Nix
       formatter = forAllSystems (system: (lib.homeManager.mkPkgs system).nixfmt);
