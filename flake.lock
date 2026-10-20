@@ -39,30 +39,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs",
-        "vim-flake": "vim-flake"
-      }
-    },
-    "vim-flake": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "dir": "vim",
-        "lastModified": 1792415595,
-        "narHash": "sha256-P4gEVdfNm1Q/SWEgG6Z+uLWA3Snyb9dgSz0w6ssPGJ8=",
-        "owner": "Victor733909",
-        "repo": "flakes",
-        "rev": "0dd0a78e0d624d517f8ca970af269f700e87da70",
-        "type": "github"
-      },
-      "original": {
-        "dir": "vim",
-        "owner": "Victor733909",
-        "repo": "flakes",
-        "type": "github"
+        "nixpkgs": "nixpkgs"
       }
     }
   },

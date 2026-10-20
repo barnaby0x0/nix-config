@@ -1,4 +1,4 @@
-{ userConfig, vim-flake, ... }:
+{ userConfig, ... }:
 
 {
   imports = [

@@ -9,10 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    vim-flake = {
-      url = "github:Victor733909/flakes?dir=vim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -20,7 +16,6 @@
       self,
       nixpkgs,
       home-manager,
-      vim-flake,
       ...
     }:
     let
