@@ -28,7 +28,7 @@
         inherit inputs;
       };
 
-    inherit (lib.commons.system) systems forAllSystems;
+      inherit (lib.commons.system) systems forAllSystems;
 
       systems = [
         "x86_64-linux"
