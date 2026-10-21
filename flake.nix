@@ -47,8 +47,8 @@
       #devShells = import ./devshells {
       #  inherit self inputs lib;
       #};
-      
-      devShells = forAllSystems(
+
+      devShells = forAllSystems (
         system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
@@ -57,7 +57,7 @@
           inherit self pkgs system;
         }
       );
-      
+
       # Configurations Home Manager
       homeConfigurations = import ./home {
         inherit inputs lib;
