@@ -1,6 +1,6 @@
 {pkgs}:
 pkgs.mkShell {
-      packages = [
+      packages = with pkgs; [
         nodejs
         git
         python3

@@ -1,7 +1,7 @@
 {
   self,
   pkgs,
-  systems,
+  system,
 }:
 pkgs.mkShell {
       packages = [

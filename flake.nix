@@ -49,7 +49,7 @@
       #};
       
       devShells = forAllSystems(
-        systems:
+        system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
         in
