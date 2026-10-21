@@ -8,7 +8,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
 
   outputs =
@@ -38,16 +37,6 @@
         }
       );
 
-      # # Packages : nixdot, install, etc.
-      # packages = import ./packages {
-      #   inherit self inputs lib;
-      # };
-
-      # Environnements de développement
-      #devShells = import ./devshells {
-      #  inherit self inputs lib;
-      #};
-
       devShells = forAllSystems (
         system:
         let
@@ -65,7 +54,6 @@
 
       # Modules Home Manager réutilisables
       # homeModules.default = import ./modules/home-manager;
-
       homeModules.default = {
         imports = [
           (import ./modules/home-manager)
