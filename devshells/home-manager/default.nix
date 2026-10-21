@@ -1,23 +1,10 @@
 {
   self,
-  inputs,
-  lib,
+  pkgs,
+  systems,
 }:
-
-let
-  inherit (lib.homeManager) mkPkgs;
-  inherit (lib.commons.system) systems forAllSystems;
-in
-forAllSystems (
-  system:
-  let
-    pkgs = mkPkgs system;
-  in
-  {
-    default = pkgs.mkShell {
+pkgs.mkShell {
       packages = [
         self.packages.${system}.nixdot
       ];
-    };
-  }
-)
+    }

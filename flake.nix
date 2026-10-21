@@ -44,10 +44,20 @@
       # };
 
       # Environnements de développement
-      devShells = import ./devshells {
-        inherit self inputs lib;
-      };
-
+      #devShells = import ./devshells {
+      #  inherit self inputs lib;
+      #};
+      
+      devShells = forAllSystems(
+        systems:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        import ./devshells {
+          inherit self pkgs system;
+        }
+      );
+      
       # Configurations Home Manager
       homeConfigurations = import ./home {
         inherit inputs lib;
