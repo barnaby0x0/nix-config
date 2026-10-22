@@ -60,6 +60,9 @@ pkgs.mkShell {
       chmod -R u+w "$ZDOTDIR"
     fi
 
+    # Use a dedicated Git configuration for this devshell
+    export GIT_CONFIG_GLOBAL="${hm-files}/.config/git/config"
+
     export AWS_CA_BUNDLE="/usr/local/share/ca-certificates/root_ca.crt"
 
     if [ -z "$ZSH_VERSION" ]; then
