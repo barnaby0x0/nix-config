@@ -2,6 +2,7 @@
   self,
   pkgs,
   system,
+  inputs,
   ...
 }:
 let
@@ -12,6 +13,14 @@ in
 {
   home-manager = import ./home-manager.nix { inherit self pkgs system; };
   devops = import ./devops.nix { inherit pkgs; };
+  work = import ./work.nix {
+    inherit
+      self
+      pkgs
+      system
+      inputs
+      ;
+  };
   go = import ./go.nix {
     inherit pkgs;
     lib = devshellLib;

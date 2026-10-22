@@ -35,7 +35,12 @@
           pkgs = nixpkgs.legacyPackages.${system};
         in
         import ./devshells {
-          inherit self pkgs system;
+          inherit
+            inputs
+            self
+            pkgs
+            system
+            ;
         }
       );
 
