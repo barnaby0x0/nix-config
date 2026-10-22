@@ -73,3 +73,4 @@
       formatter = forAllSystems (system: (lib.homeManager.mkPkgs system).nixfmt);
     };
 }
+
