@@ -70,6 +70,6 @@
       };
 
       # Formatter Nix
-      formatter = forAllSystems (system: (lib.homeManager.mkPkgs system).nixfmot);
+      formatter = forAllSystems (system: (lib.homeManager.mkPkgs system).nixfmt);
     };
 }
