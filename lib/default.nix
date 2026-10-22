@@ -12,4 +12,8 @@
   vim = import ./vim {
     inherit (inputs) nixpkgs;
   };
+
+  terraform = import ./terraform {
+    inherit (inputs) nixpkgs;
+  };
 }

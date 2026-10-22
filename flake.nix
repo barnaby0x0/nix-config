@@ -27,15 +27,7 @@
     in
     {
 
-      packages = forAllSystems (
-        system:
-        (import ./packages {
-          inherit self inputs lib;
-        }).${system}
-        // {
-          vim = lib.vim.mkVim { inherit system; };
-        }
-      );
+      packages = import ./packages { inherit self inputs lib; };
 
       devShells = forAllSystems (
         system:
