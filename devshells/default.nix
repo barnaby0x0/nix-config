@@ -7,6 +7,7 @@
 {
   home-manager = import ./home-manager.nix { inherit self pkgs system; };
   devops = import ./devops.nix { inherit pkgs; };
+  go = import ./go.nix { inherit pkgs; };
 }
 
 # { pkgs, ... }:
