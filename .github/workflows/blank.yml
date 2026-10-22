@@ -13,6 +13,7 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -25,7 +26,12 @@ jobs:
         uses: DeterminateSystems/determinate-nix-action@v3
 
       - name: Check formatting
-        run: nix fmt -- --check
+        run: |
+          nix develop --command bash -c '
+            git ls-files "*.nix" -z |
+              xargs -0 -r nixfmt --check
+          '
 
       - name: Check flake
         run: nix flake check
+
