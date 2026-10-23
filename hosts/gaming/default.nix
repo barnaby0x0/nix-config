@@ -10,7 +10,7 @@ inputs.nixpkgs.lib.nixosSystem {
 
   modules = [
     ./system.nix
-    ./nix-settings.nix
+    # ./nix-settings.nix
 
     ../../modules/nixos/cachyos2.nix
     ../../modules/nixos/desktop.nix
