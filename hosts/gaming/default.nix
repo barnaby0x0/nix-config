@@ -11,6 +11,7 @@ inputs.nixpkgs.lib.nixosSystem {
   modules = [
     ./system.nix
     # ./nix-settings.nix
+    ./overlays.nix
 
     ../../modules/nixos/cachyos2.nix
     ../../modules/nixos/desktop.nix
