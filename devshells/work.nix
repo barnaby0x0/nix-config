@@ -67,7 +67,7 @@ pkgs.mkShell {
 
     if [ -z "$ZSH_VERSION" ]; then
       fortune | cowsay | lolcat
-      exec zsh
+      #exec zsh
     fi
   '';
 }
