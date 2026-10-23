@@ -48,6 +48,7 @@ pkgs.mkShell {
     awscli2
     fortune
     bat
+    drawio
   ];
 
   shellHook = ''
