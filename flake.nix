@@ -8,6 +8,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -64,6 +69,12 @@
         #     ./home.nix
         #   ];
         _module.args.mkVim = lib.vim.mkVim;
+      };
+
+      nixosConfigurations = {
+        gaming = import ./hosts/gaming {
+          inherit inputs self;
+        };
       };
 
       # Formatter Nix
