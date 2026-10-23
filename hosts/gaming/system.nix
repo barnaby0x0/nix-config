@@ -9,6 +9,8 @@
     ./hardware-configuration.nix
   ];
 
+  nixpkgs.config.allowUnfree = true;
+
   system.stateVersion = "26.05";
 
   boot.loader.systemd-boot.enable = true;
