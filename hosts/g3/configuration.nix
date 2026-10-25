@@ -28,6 +28,22 @@
     ];
   };
 
+  # fileSystems."/home/user" = {
+  #   device = "none";
+  #   fsType = "tmpfs";
+  #   options = [
+  #     "size=2G"
+  #     "mode=700"
+  #     "uid=1000"
+  #     "gid=100"
+  #   ];
+  # };
+
+  # OR use systemd
+  systemd.tmpfiles.rules = [
+    "d /home/user 0700 user users -"
+  ];
+
   # Identité et paramètres de base
   networking.hostName = "g3";
   networking.networkmanager.enable = true;
