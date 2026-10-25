@@ -61,11 +61,13 @@
       "/etc/machine-id"
     ];
 
-    users.user = {
-      directories = [
-        "documents"
-      ];
-    };
+    users.user.directories = [
+      {
+        directory = "documents";
+        user = "user";
+        group = "users";
+      }
+    ];
   };
 
   users.users.user = {
