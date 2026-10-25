@@ -121,12 +121,17 @@
         ".local/share/Steam"
         ".steam"
         ".local/state"
+        ".config/KDE"
+        ".config/kde.org"
+        ".config/plasma-workspace"
       ];
 
-      # files = [
-      #   ".bashrc"
-      #   ".zshrc"
-      # ];
+      files = [
+        ".config/kdeglobals"
+        ".config/kglobalshortcutsrc"
+        ".config/kwinrc"
+        ".config/plasma-org.kde.plasma.desktop-appletsrc"
+      ];
     };
   };
 
