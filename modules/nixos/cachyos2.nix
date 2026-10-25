@@ -19,7 +19,6 @@
 
   config = {
     # boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest;
-    boot.kernelPackages = pkgs.linuxPackages;
 
     boot.kernelParams = lib.optionals (config.cachyos.cpu == "amd") [
       "amd_pstate=active"

@@ -18,7 +18,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  hardware.cpu.vendor = "amd";
+  # hardware.cpu.vendor = "amd";
   # cachyos.cpu = "amd";
 
   hardware.bluetooth = {

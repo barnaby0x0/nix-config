@@ -1,5 +1,12 @@
+# {
+#   lib,
+#   modulesPath,
+#   ...
+# }:
 {
+  config,
   lib,
+  pkgs,
   modulesPath,
   ...
 }:
