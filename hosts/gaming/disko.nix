@@ -2,7 +2,6 @@
   disko.devices = {
     disk.main = {
       type = "disk";
-
       device = "/dev/nvme0n1";
 
       content = {
@@ -16,9 +15,7 @@
 
             content = {
               type = "filesystem";
-
               format = "vfat";
-
               mountpoint = "/boot";
 
               mountOptions = [
@@ -28,19 +25,36 @@
             };
           };
 
-          root = {
-            name = "NIXOS";
+          swap = {
+            size = "8G";
+            content = {
+              type = "swap";
+              resumeDevice = false;
+            };
+          };
 
+          nix = {
+            name = "NIXOS";
             size = "100%";
 
             content = {
               type = "filesystem";
-
               format = "ext4";
-
-              mountpoint = "/";
+              mountpoint = "/nix";
             };
           };
+
+          # root = {
+          #   name = "NIXOS";
+          #   size = "100%";
+          #   content = {
+          #     type = "filesystem";
+
+          #     format = "ext4";
+
+          #     mountpoint = "/";
+          #   };
+          # };
         };
       };
     };

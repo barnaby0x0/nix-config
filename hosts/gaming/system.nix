@@ -17,6 +17,20 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  fileSystems."/" = {
+    device = "none";
+    fsType = "tmpfs";
+    options = [
+      "defaults"
+      "size=25%"
+      "mode=755"
+    ];
+  };
+
+  systemd.tmpfiles.rules = [
+    "d /home/user 0700 user users -"
+  ];
+
   #hardware.cpu.vendor = "amd";
   cachyos.cpu = "amd";
 
@@ -87,8 +101,25 @@
 
   programs.zsh.enable = true;
 
-  users.users.user.shell = pkgs.zsh;
+  environment.persistence."/nix/persist" = {
+    hideMounts = true;
 
+    directories = [
+      "/var/lib/nixos"
+      "/var/log"
+      "/home/user/Downloads"
+    ];
+
+    files = [
+      "/etc/machine-id"
+      "/home/user/.bashrc"
+      "/home/user/.zshrc"
+    ];
+
+  };
+
+  users.users.user.shell = pkgs.zsh;
+  users.mutableUsers = false;
   users.users.user = {
     isNormalUser = true;
 
