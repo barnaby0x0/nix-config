@@ -7,6 +7,7 @@
 
 {
   imports = [
+    ../../modules/nixos/desktop/plasma.nix
     ./disko.nix
     ./hardware-configuration.nix
   ];
@@ -112,14 +113,14 @@
   security.sudo.wheelNeedsPassword = true;
 
   # KDE Plasma 6
-  services.desktopManager.plasma6.enable = true;
+  # services.desktopManager.plasma6.enable = true;
 
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
+  # services.displayManager.sddm = {
+  #   enable = true;
+  #   wayland.enable = true;
+  # };
 
-  services.xserver.xkb.layout = "fr";
+  # services.xserver.xkb.layout = "fr";
 
   services.openssh = {
     enable = true;
