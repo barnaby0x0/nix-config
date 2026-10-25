@@ -1,17 +1,17 @@
 { ... }:
 
 {
+  services.xserver.enable = true;
   services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm.enable = true;
 
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
+  services.xserver.xkb = {
+    layout = "fr";
+    variant = "azerty";
   };
 
-  services.xserver.xkb.layout = "fr";
-
   hardware.graphics.enable = true;
-
+  services.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
