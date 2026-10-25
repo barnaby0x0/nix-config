@@ -72,19 +72,21 @@
     directories = [
       "/var/lib/nixos"
       "/var/log"
+      "/home/user/documents"
+      "/home/user/Downloads"
     ];
 
     files = [
       "/etc/machine-id"
     ];
 
-    users.user.directories = [
-      {
-        directory = "documents";
-        user = "user";
-        group = "users";
-      }
-    ];
+    # users.user.directories = [
+    #   {
+    #     directory = "documents";
+    #     user = "user";
+    #     group = "users";
+    #   }
+    # ];
   };
 
   users.mutableUsers = false;
