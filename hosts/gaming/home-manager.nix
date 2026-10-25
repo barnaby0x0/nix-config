@@ -16,13 +16,12 @@
   home-manager.users = inputs.nixpkgs.lib.mapAttrs (_: user: {
     imports = [
       self.homeModules.default
-      inputs.impermanence.nixosModules.home-manager.impermanence
     ];
 
     home.stateVersion = "26.05";
     my.user.git = user.git;
 
-    home.persistence."/nix/persist/home/user" = {
+    home.persistence."/nix/persist" = {
       directories = [
         ".config"
         "Downloads"
