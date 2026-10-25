@@ -131,6 +131,17 @@
         ".config/KDE"
         ".config/kde.org"
         ".config/plasma-workspace"
+
+        # KDE : thèmes, icônes et personnalisation
+        ".local/share/plasma"
+        ".local/share/icons"
+        ".local/share/color-schemes"
+        ".local/share/wallpapers"
+        ".local/share/aurorae"
+        ".local/share/kwin"
+
+        # Lanceurs d'applications installés pour l'utilisateur
+        ".local/share/applications"
       ];
 
       files = [
