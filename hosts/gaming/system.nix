@@ -245,6 +245,7 @@
     brave
     zsh
     vscodium
+    lolcat
   ];
 
   nix.settings.experimental-features = [
