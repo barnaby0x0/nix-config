@@ -118,6 +118,7 @@
         "Downloads"
         ".local/share/Steam"
         ".steam"
+        ".local/state"
       ];
 
       files = [
