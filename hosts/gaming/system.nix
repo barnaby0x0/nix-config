@@ -29,6 +29,8 @@
 
   systemd.tmpfiles.rules = [
     "d /home/user 0700 user users -"
+    "d /home/user/.local 0755 user users -"
+    "d /home/user/.steam 0755 user users -"
   ];
 
   #hardware.cpu.vendor = "amd";
