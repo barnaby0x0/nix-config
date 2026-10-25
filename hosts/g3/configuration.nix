@@ -111,6 +111,16 @@
 
   security.sudo.wheelNeedsPassword = true;
 
+  # KDE Plasma 6
+  services.desktopManager.plasma6.enable = true;
+
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
+
+  services.xserver.xkb.layout = "fr";
+
   services.openssh = {
     enable = true;
     openFirewall = true;
