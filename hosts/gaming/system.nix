@@ -133,17 +133,17 @@
   # };
 
   environment.persistence."/nix/persist" = {
-  hideMounts = true;
+    hideMounts = true;
 
-  directories = [
-    "/var/lib/nixos"
-    "/var/log"
-  ];
+    directories = [
+      "/var/lib/nixos"
+      "/var/log"
+    ];
 
-  files = [
-    "/etc/machine-id"
-  ];
-};
+    files = [
+      "/etc/machine-id"
+    ];
+  };
 
   # environment.persistence."/nix/persist" = {
   #   hideMounts = true;

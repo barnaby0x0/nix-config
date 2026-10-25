@@ -21,7 +21,6 @@ let
 
         modules = [
           ./generic.nix
-          ./persistence.nix
         ];
 
         userConfig = loadUserConfig;
