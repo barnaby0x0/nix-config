@@ -28,6 +28,7 @@
     ];
   };
 
+  ## Useful to mount /home/user as user
   # fileSystems."/home/user" = {
   #   device = "none";
   #   fsType = "tmpfs";
