@@ -22,13 +22,13 @@
     my.user.git = user.git;
 
     home.persistence."/nix/persist" = {
-      directories = [
-        ".config"
-        "Downloads"
-        ".local/share/Steam"
-        ".steam"
-        ".local/state"
-      ];
+      # directories = [
+      #   ".config"
+      #   "Downloads"
+      #   ".local/share/Steam"
+      #   ".steam"
+      #   ".local/state"
+      # ];
 
       files = [
         # ".zsh_history"
