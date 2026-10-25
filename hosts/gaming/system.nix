@@ -121,10 +121,10 @@
         ".local/state"
       ];
 
-      files = [
-        ".bashrc"
-        ".zshrc"
-      ];
+      # files = [
+      #   ".bashrc"
+      #   ".zshrc"
+      # ];
     };
   };
 
