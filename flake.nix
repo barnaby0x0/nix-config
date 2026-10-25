@@ -13,6 +13,12 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    impermanence = {
+      url = "github:nix-community/impermanence";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -73,6 +79,10 @@
 
       nixosConfigurations = {
         gaming = import ./hosts/gaming {
+          inherit inputs self;
+        };
+
+        g3 = import ./hosts/g3 {
           inherit inputs self;
         };
       };
