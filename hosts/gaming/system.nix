@@ -147,6 +147,7 @@
     users.user = {
       directories = [
         "Downloads"
+        ".config"
       ];
       files = [
       ];
