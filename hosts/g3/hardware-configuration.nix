@@ -16,5 +16,5 @@
   boot.extraModulePackages = [ ];
   hardware.graphics.enable = true;
   hardware.enableRedistributableFirmware = true;
-  hardware.enableAllFirmware = true;
+  # hardware.enableAllFirmware = true;
 }
