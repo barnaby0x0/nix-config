@@ -71,6 +71,8 @@
   users.users.user = {
     isNormalUser = true;
     uid = 1000;
+    home = "/home/user";
+    createHome = true;
     extraGroups = [
       "wheel"
       "networkmanager"
