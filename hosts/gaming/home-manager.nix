@@ -19,6 +19,9 @@
       inputs.impermanence.nixosModules.home-manager.impermanence
     ];
 
+    home.stateVersion = "26.05";
+    my.user.git = user.git;
+
     home.persistence."/nix/persist/home/user" = {
       directories = [
         ".config"
@@ -33,7 +36,5 @@
         ".p10k.zsh"
       ];
     };
-    home.stateVersion = "26.05";
-    my.user.git = user.git;
   }) (inputs.nixpkgs.lib.filterAttrs (_: user: user.homeManager) users);
 }
