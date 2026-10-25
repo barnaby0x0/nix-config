@@ -71,6 +71,7 @@
   users.users.user = {
     isNormalUser = true;
     uid = 1000;
+    group = "users";
     home = "/home/user";
     createHome = true;
     extraGroups = [
