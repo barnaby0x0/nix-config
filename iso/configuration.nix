@@ -50,10 +50,12 @@
 
   # Scripts embarqués dans l'ISO
   environment.etc."root/scripts/install.sh".source = ./scripts/install.sh;
+  environment.etc."root/scripts/install-impermence.sh".source = ./scripts/install-impermence.sh;
 
   # Accès pratique depuis /root/scripts
   system.activationScripts.rootScripts.text = ''
     mkdir -p /root/scripts
     ln -sfn /etc/root/scripts/install.sh /root/scripts/install.sh
+    ln -sfn /etc/root/scripts/install-impermence.sh /root/scripts/install-impermence.sh
   '';
 }
