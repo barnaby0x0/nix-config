@@ -104,33 +104,46 @@
 
   programs.zsh.enable = true;
 
+  # environment.persistence."/nix/persist" = {
+  #   hideMounts = true;
+
+  #   directories = [
+  #     "/var/lib/nixos"
+  #     "/var/log"
+  #   ];
+
+  #   files = [
+  #     "/etc/machine-id"
+  #   ];
+
+  #   users.user = {
+  #     directories = [
+  #       ".config"
+  #       "Downloads"
+  #       ".local/share/Steam"
+  #       ".steam"
+  #       ".local/state"
+  #     ];
+
+  #     files = [
+  #       ".zsh_history"
+  #       ".p10k.zsh"
+  #     ];
+  #   };
+  # };
+
   environment.persistence."/nix/persist" = {
-    hideMounts = true;
+  hideMounts = true;
 
-    directories = [
-      "/var/lib/nixos"
-      "/var/log"
-    ];
+  directories = [
+    "/var/lib/nixos"
+    "/var/log"
+  ];
 
-    files = [
-      "/etc/machine-id"
-    ];
-
-    users.user = {
-      directories = [
-        ".config"
-        "Downloads"
-        ".local/share/Steam"
-        ".steam"
-        ".local/state"
-      ];
-
-      files = [
-        ".zsh_history"
-        ".p10k.zsh"
-      ];
-    };
-  };
+  files = [
+    "/etc/machine-id"
+  ];
+};
 
   # environment.persistence."/nix/persist" = {
   #   hideMounts = true;
