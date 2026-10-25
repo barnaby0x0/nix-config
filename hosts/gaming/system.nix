@@ -144,7 +144,7 @@
       "/etc/machine-id"
     ];
 
-users.bird = {
+users.user = {
       directories = [
         "Downloads"
       ];
