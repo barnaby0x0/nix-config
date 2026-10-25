@@ -70,10 +70,40 @@
 
   users.users.user = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    uid = 1000;
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
+
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP1oFq0GYt8j7vg2nNAJNzwBtqrdOUDp8CMQwLRiz4Vz user@ull"
+    ];
+
+    # Use mkpasswd
+    hashedPassword = "$y$j9T$TvYwvyoJ.v1jj64tTF5K61$jDWwkEw/owyBks.6xLwYIlKcLD4MJ4G062UAm757N/4";
   };
 
-  # Nix Flakes
+  security.sudo.wheelNeedsPassword = true;
+
+  services.openssh = {
+    enable = true;
+    openFirewall = true;
+
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = true;
+      KbdInteractiveAuthentication = false;
+    };
+
+    hostKeys = [
+      {
+        path = "/nix/persist/etc/ssh/ssh_host_ed25519_key";
+        type = "ed25519";
+      }
+    ];
+  };
+
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
