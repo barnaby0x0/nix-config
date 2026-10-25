@@ -54,6 +54,12 @@
 
   i18n.defaultLocale = "fr_FR.UTF-8";
 
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
+    builtins.elem (lib.getName pkg) [
+      "broadcom-bt-firmware"
+    ];
+
   # Outils de diagnostic
   environment.systemPackages = with pkgs; [
     vim
