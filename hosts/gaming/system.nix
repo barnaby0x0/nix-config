@@ -16,9 +16,10 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  #hardware.cpu.vendor = "amd";
-  cachyos.cpu = "amd";
+  hardware.cpu.vendor = "amd";
+  # cachyos.cpu = "amd";
 
   hardware.bluetooth = {
     enable = true;
@@ -71,9 +72,9 @@
   };
 
   console.keyMap = "fr";
-  services.xserver = {
-    xkb.layout = "fr";
-  };
+  # services.xserver = {
+  #   xkb.layout = "fr";
+  # };
 
   services.blueman.enable = true;
 
