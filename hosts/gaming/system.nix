@@ -143,6 +143,15 @@
     files = [
       "/etc/machine-id"
     ];
+
+users.bird = {
+      directories = [
+        "Downloads"
+      ];
+      files = [
+      ];
+    };
+
   };
 
   # environment.persistence."/nix/persist" = {
