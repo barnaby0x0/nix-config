@@ -24,7 +24,6 @@
     home.persistence."/nix/persist" = {
       # directories = [
       #   ".config"
-      #   "Downloads"
       #   ".local/share/Steam"
       #   ".steam"
       #   ".local/state"

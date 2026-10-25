@@ -148,6 +148,7 @@
       directories = [
         "Downloads"
         ".config"
+        "Bureau"
       ];
       files = [
       ];
