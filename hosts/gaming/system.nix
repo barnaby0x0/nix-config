@@ -119,19 +119,40 @@
     users.user = {
       directories = [
         "Downloads"
+
+        # Steam : configuration, utilisateurs et préfixes Proton
         ".local/share/Steam"
         ".steam"
+
+        # État des applications utilisateur
         ".local/state"
+
+        # KDE : données et état des composants
         ".config/KDE"
         ".config/kde.org"
         ".config/plasma-workspace"
       ];
 
       files = [
+        # Zsh / Powerlevel10k
+        ".zsh_history"
+        ".p10k.zsh"
+
+        # KDE Plasma : préférences
         ".config/kdeglobals"
         ".config/kglobalshortcutsrc"
         ".config/kwinrc"
+        ".config/kwinoutputconfig.json"
+        ".config/kwinrulesrc"
         ".config/plasma-org.kde.plasma.desktop-appletsrc"
+        ".config/plasmashellrc"
+        ".config/plasmarc"
+        ".config/kactivitymanagerdrc"
+        ".config/dolphinrc"
+        ".config/kiorc"
+        ".config/konsolerc"
+        ".config/powermanagementprofilesrc"
+        ".config/plasma-localerc"
       ];
     };
   };
