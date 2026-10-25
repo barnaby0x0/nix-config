@@ -21,6 +21,7 @@ inputs.nixpkgs.lib.nixosSystem {
 
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
+    inputs.impermanence.nixosModules.impermanence
     ./home-manager.nix
   ];
 }
