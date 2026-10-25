@@ -108,6 +108,10 @@
       "/var/lib/nixos"
       "/var/log"
       "/home/user/Downloads"
+      # Steam : jeux, configuration, sauvegardes locales et Proton
+      "/home/user/.local/share/Steam"
+      # Répertoire Steam historique / liens symboliques
+      "/home/user/.steam"
     ];
 
     files = [
