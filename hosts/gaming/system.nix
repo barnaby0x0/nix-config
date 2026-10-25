@@ -164,7 +164,12 @@
         ".config/konsolerc"
         ".config/powermanagementprofilesrc"
         ".config/plasma-localerc"
-        ".config/kwinoutputconfig.json"
+        # Configuration des écrans et notifications KDE
+        ".config/plasmanotifyrc"
+
+        # Raccourcis et emplacements KDE
+        ".config/khotkeysrc"
+        ".local/share/user-places.xbel"
       ];
     };
   };
