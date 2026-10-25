@@ -172,7 +172,7 @@
         ".local/share/direnv"
       ];
       files = [
-        ".zsh_history"
+        ".zsh_history" # # unset HISTFILE before !!
       ];
     };
 
