@@ -164,6 +164,7 @@
         ".config/konsolerc"
         ".config/powermanagementprofilesrc"
         ".config/plasma-localerc"
+        ".config/kwinoutputconfig.json"
       ];
     };
   };
