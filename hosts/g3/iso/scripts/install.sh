@@ -3,7 +3,8 @@
 set -Eeuo pipefail
 
 # Configuration
-FLAKE="github:barnaby0x0/nix-config"
+BRANCH="main"
+FLAKE="github:barnaby0x0/nix-config?ref=${BRANCH}"
 HOST="g3"
 DISK="/dev/nvme0n1"
 PERSIST="/mnt/nix/persist"
@@ -52,8 +53,8 @@ log "Préparation des répertoires persistants"
 mkdir -p \
   "$PERSIST/var/lib/nixos" \
   "$PERSIST/var/log" \
-  "$PERSIST/etc/ssh" \
-  "$PERSIST/home/user/documents"
+  "$PERSIST/etc/ssh"
+  # "$PERSIST/home/user/documents"
 
 chmod 700 "$PERSIST/etc/ssh"
 
@@ -86,7 +87,7 @@ if [[ ! -s "$PERSIST/etc/machine-id" ]]; then
 fi
 
 # Propriétaire des documents
-chown -R 1000:100 "$PERSIST/home/user/documents"
+# chown -R 1000:100 "$PERSIST/home/user/documents"
 
 # Installation NixOS
 log "Installation de NixOS : $HOST"

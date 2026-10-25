@@ -107,19 +107,24 @@
     directories = [
       "/var/lib/nixos"
       "/var/log"
-      "/home/user/Downloads"
-      # Steam : jeux, configuration, sauvegardes locales et Proton
-      "/home/user/.local/share/Steam"
-      # Répertoire Steam historique / liens symboliques
-      "/home/user/.steam"
     ];
 
     files = [
       "/etc/machine-id"
-      "/home/user/.bashrc"
-      "/home/user/.zshrc"
     ];
 
+    users.user = {
+      directories = [
+        "Downloads"
+        ".local/share/Steam"
+        ".steam"
+      ];
+
+      files = [
+        ".bashrc"
+        ".zshrc"
+      ];
+    };
   };
 
   users.users.user.shell = pkgs.zsh;
