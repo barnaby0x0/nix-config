@@ -15,4 +15,6 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
   hardware.graphics.enable = true;
+  hardware.enableRedistributableFirmware = true;
+  hardware.enableAllFirmware = true;
 }
