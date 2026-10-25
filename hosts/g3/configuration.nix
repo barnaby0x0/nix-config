@@ -70,6 +70,7 @@
     ];
   };
 
+  users.mutableUsers = false;
   users.users.user = {
     isNormalUser = true;
     uid = 1000;
@@ -86,7 +87,7 @@
     ];
 
     # Use mkpasswd
-    hashedPassword = "$y$j9T$TvYwvyoJ.v1jj64tTF5K61$jDWwkEw/owyBks.6xLwYIlKcLD4MJ4G062UAm757N/4";
+    initialHashedPassword = "$y$j9T$TvYwvyoJ.v1jj64tTF5K61$jDWwkEw/owyBks.6xLwYIlKcLD4MJ4G062UAm757N/4";
   };
 
   security.sudo.wheelNeedsPassword = true;
