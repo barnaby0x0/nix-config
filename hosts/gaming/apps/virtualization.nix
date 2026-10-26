@@ -9,8 +9,8 @@
     libguestfs
     libvirt
     netcat-openbsd
-    qemu_full
-    qemu-user
+    # qemu_full
+    # qemu-user
     vde2
     virt-manager
     virt-viewer
