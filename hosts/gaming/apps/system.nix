@@ -10,7 +10,7 @@
     inotify-tools
     lshw
     ntfsprogs
-    perl-image-exiftool
+    # perl-image-exiftool
     stow
     ttf-agave-nerd
     ttf-dejavu
