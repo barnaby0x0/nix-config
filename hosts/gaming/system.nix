@@ -279,6 +279,10 @@
     nameserver 10.1.0.51
   '';
 
+  nixpkgs.overlays = [
+    (import ../../lib/brave)
+  ];
+
   environment.systemPackages = with pkgs; [
     git
     wget
