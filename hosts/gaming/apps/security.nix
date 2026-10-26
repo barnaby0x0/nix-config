@@ -5,7 +5,7 @@
     # apparmor
     firejail
     # firetools
-    gcr
+    gcr_4
     libfido2
     lynis
     nmap
