@@ -8,7 +8,7 @@
     geany
     libreoffice
     rpi-imager
-    skanpage
+    # skanpage
     terminator
     tilda
     transmission-gtk
