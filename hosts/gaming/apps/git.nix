@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs; [
     git-crypt
     gitg
-    myrepos
+    # myrepos
     tig
   ];
 }
