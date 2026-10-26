@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs; [
     # akm
     baobab
-    discover
+    # discover
     geany
     libreoffice
     rpi-imager
