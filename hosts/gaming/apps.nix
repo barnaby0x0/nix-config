@@ -6,7 +6,7 @@
     ./apps/security.nix
     ./apps/network.nix
     # ./apps/containers.nix
-    ./apps/virtualization.nix
+    # ./apps/virtualization.nix
     ./apps/devops.nix
     ./apps/backup.nix
     ./apps/storage.nix
