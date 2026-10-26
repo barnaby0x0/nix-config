@@ -11,6 +11,6 @@
     # skanpage
     terminator
     tilda
-    transmission-gtk
+    transmission_4-gtk
   ];
 }
