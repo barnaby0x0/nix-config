@@ -10,7 +10,7 @@
     lynis
     nmap
     pass
-    pinentry
+    pinentry-curses
     qtpass
     sops
     yubikey-manager
