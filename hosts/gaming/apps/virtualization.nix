@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs; [
     dnsmasq
     ebtables
-    edk2-ovmf
+    # edk2-ovmf
     guestfs-tools
     libguestfs
     libvirt
