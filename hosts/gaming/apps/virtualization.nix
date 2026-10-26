@@ -8,7 +8,7 @@
     guestfs-tools
     libguestfs
     libvirt
-    openbsd-netcat
+    netcat-openbsd
     qemu-full
     qemu-user-static
     vde2
