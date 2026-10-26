@@ -22,6 +22,8 @@
     my.user.git = user.git;
 
     home.persistence."/nix/persist" = {
+      directories = user.directories;
+      files = user.files;
       # directories = [
       #   ".config"
       #   ".local/share/Steam"
@@ -29,10 +31,10 @@
       #   ".local/state"
       # ];
 
-      files = [
+      #files = [
         # ".zsh_history"
-        ".p10k.zsh"
-      ];
+      #  ".p10k.zsh"
+      #];
     };
   }) (inputs.nixpkgs.lib.filterAttrs (_: user: user.homeManager) users);
 }
