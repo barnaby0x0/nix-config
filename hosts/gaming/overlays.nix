@@ -25,5 +25,7 @@
             old.postInstall;
       });
     })
+
+    (import ../../lib/brave { })
   ];
 }

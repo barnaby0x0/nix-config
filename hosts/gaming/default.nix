@@ -10,6 +10,7 @@ inputs.nixpkgs.lib.nixosSystem {
 
   modules = [
     ./system.nix
+    ./apps.nix
     # ./nix-settings.nix
     ./overlays.nix
 

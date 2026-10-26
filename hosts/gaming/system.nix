@@ -279,24 +279,24 @@
     nameserver 10.1.0.51
   '';
 
-  nixpkgs.overlays = [
-    (import ../../lib/brave { })
-  ];
+  # nixpkgs.overlays = [
+  #   (import ../../lib/brave { })
+  # ];
 
-  environment.systemPackages = with pkgs; [
-    git
-    wget
-    curl
-    pciutils
-    usbutils
-    htop
-    btop
-    fastfetch
-    brave
-    zsh
-    vscodium
-    lolcat
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   git
+  #   wget
+  #   curl
+  #   pciutils
+  #   usbutils
+  #   htop
+  #   btop
+  #   fastfetch
+  #   brave
+  #   zsh
+  #   vscodium
+  #   lolcat
+  # ];
 
   nix.settings.experimental-features = [
     "nix-command"
