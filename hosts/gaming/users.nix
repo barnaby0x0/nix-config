@@ -12,6 +12,7 @@
       directories = [
         "Téléchargements"
         "test"
+        "Bureau"
       ];
       files = [
         ".p10k.zsh"
