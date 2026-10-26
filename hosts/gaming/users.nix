@@ -9,7 +9,9 @@
     };
     
     persistence = {
-      directories = [];
+      directories = [
+        "Téléchargements"
+      ];
       files = [
         ".p10k.zsh"
       ];

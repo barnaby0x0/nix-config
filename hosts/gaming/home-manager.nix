@@ -22,8 +22,8 @@
     my.user.git = user.git;
 
     home.persistence."/nix/persist" = {
-      directories = user.directories;
-      files = user.files;
+      directories = user.persistence.directories;
+      files = user.persistence.files;
       # directories = [
       #   ".config"
       #   ".local/share/Steam"
