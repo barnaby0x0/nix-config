@@ -269,6 +269,7 @@
     initialHashedPassword = "$y$j9T$TvYwvyoJ.v1jj64tTF5K61$jDWwkEw/owyBks.6xLwYIlKcLD4MJ4G062UAm757N/4";
   };
 
+  security.polkit.enable = true;
   security.sudo.wheelNeedsPassword = true;
   security.pki.certificateFiles = [
     ./certs/proxlab-ca.crt
