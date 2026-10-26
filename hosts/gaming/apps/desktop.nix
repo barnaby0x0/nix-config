@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    akm
+    # akm
     baobab
     discover
     geany
