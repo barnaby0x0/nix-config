@@ -11,6 +11,7 @@
     persistence = {
       directories = [
         "Téléchargements"
+        "test"
       ];
       files = [
         ".p10k.zsh"
