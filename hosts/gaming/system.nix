@@ -280,7 +280,7 @@
   '';
 
   nixpkgs.overlays = [
-    (import ../../lib/brave)
+    (import ../../lib/brave { })
   ];
 
   environment.systemPackages = with pkgs; [
