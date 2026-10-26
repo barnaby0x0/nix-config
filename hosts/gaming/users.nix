@@ -11,7 +11,6 @@
     persistence = {
       directories = [
         "Téléchargements"
-        "test"
         "Bureau"
         ".local/share/Steam"
         ".steam"
