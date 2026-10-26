@@ -13,8 +13,8 @@
     # perl-image-exiftool
     stow
     # ttf-agave-nerd
-    ttf-dejavu
-    tui-journal
+    # ttf-dejavu
+    # tui-journal
     wl-clipboard
   ];
 }
