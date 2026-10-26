@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs; [
     # apparmor
     firejail
-    firetools
+    # firetools
     gcr
     libfido2
     lynis
