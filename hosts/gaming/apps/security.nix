@@ -2,7 +2,7 @@
 
 {
   environment.systemPackages = with pkgs; [
-    apparmor
+    # apparmor
     firejail
     firetools
     gcr
