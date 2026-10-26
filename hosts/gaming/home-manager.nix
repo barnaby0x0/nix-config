@@ -24,17 +24,6 @@
     home.persistence."/nix/persist" = {
       directories = user.persistence.directories;
       files = user.persistence.files;
-      # directories = [
-      #   ".config"
-      #   ".local/share/Steam"
-      #   ".steam"
-      #   ".local/state"
-      # ];
-
-      #files = [
-        # ".zsh_history"
-      #  ".p10k.zsh"
-      #];
     };
   }) (inputs.nixpkgs.lib.filterAttrs (_: user: user.homeManager) users);
 }
