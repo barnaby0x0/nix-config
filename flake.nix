@@ -78,13 +78,31 @@
 
       nixosConfigurations = {
         gaming = import ./hosts/gaming {
-          inherit inputs self;
+          inherit inputs lib self;
         };
 
         g3 = import ./hosts/g3 {
-          inherit inputs self;
+          inherit inputs lib self;
         };
-      };
+      }
+      // builtins.listToAttrs (
+        import ./hosts/installer {
+          inherit inputs lib self;
+        }
+      );
+      # nixosConfigurations = {
+      #   gaming = import ./hosts/gaming {
+      #     inherit inputs self;
+      #   };
+
+      #   g3 = import ./hosts/g3 {
+      #     inherit inputs self;
+      #   };
+
+      #   installer = import ./hosts/installer {
+      #     inherit inputs self;
+      #   };
+      # };
 
       # Formatter Nix
       formatter = forAllSystems (system: (lib.homeManager.mkPkgs system).nixfmt);

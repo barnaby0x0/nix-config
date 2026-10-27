@@ -1,6 +1,11 @@
-{ inputs, self }:
+{
+  inputs,
+  lib,
+  self,
+}:
 
-inputs.nixpkgs.lib.nixosSystem {
+lib.nixos.mkHost {
+  # hostname = "g3";
   system = "x86_64-linux";
 
   specialArgs = {

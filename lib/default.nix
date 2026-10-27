@@ -16,4 +16,8 @@
   terraform = import ./terraform {
     inherit (inputs) nixpkgs;
   };
+
+  nixos = import ./nixos.nix {
+    inherit (inputs) nixpkgs;
+  };
 }

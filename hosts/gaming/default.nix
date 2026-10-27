@@ -1,6 +1,11 @@
-{ inputs, self }:
+{
+  inputs,
+  lib,
+  self,
+}:
 
-inputs.nixpkgs.lib.nixosSystem {
+lib.nixos.mkHost {
+  # hostname = "gaming";
   system = "x86_64-linux";
 
   specialArgs = {
@@ -11,15 +16,12 @@ inputs.nixpkgs.lib.nixosSystem {
   modules = [
     ./system.nix
     ./apps.nix
-    # ./nix-settings.nix
     ./overlays.nix
-
     ../../modules/nixos/cachyos2.nix
     ../../modules/nixos/desktop.nix
     ../../modules/nixos/gaming.nix
     ../../modules/nixos/performance.nix
     ../../modules/nixos/virt.nix
-
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
     inputs.impermanence.nixosModules.impermanence

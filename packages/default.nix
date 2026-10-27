@@ -21,5 +21,11 @@ let
 
 in
 forAllSystems (
-  system: homeManagerPackages.${system} // terraformPackages.${system} // vimPackages.${system}
+  system:
+  homeManagerPackages.${system}
+  // terraformPackages.${system}
+  // vimPackages.${system}
+  // inputs.nixpkgs.lib.optionalAttrs (system == "x86_64-linux") {
+    iso-installer = self.nixosConfigurations."installer-${system}".config.system.build.isoImage;
+  }
 )
