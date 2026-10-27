@@ -21,6 +21,7 @@ map (system: {
     };
 
     modules = [
+      # "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
       "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-base.nix"
       ./configuration.nix
     ];
