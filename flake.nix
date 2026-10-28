@@ -18,6 +18,11 @@
       url = "github:nix-community/impermanence";
     };
 
+    nixos-lima = {
+      url = "github:nixos-lima/nixos-lima";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -25,6 +30,7 @@
       self,
       nixpkgs,
       home-manager,
+      nixos-lima,
       ...
     }:
     let
@@ -84,25 +90,16 @@
         g3 = import ./hosts/g3 {
           inherit inputs lib self;
         };
+
+        lima = import ./hosts/lima {
+          inherit inputs lib self;
+        };
       }
       // builtins.listToAttrs (
         import ./hosts/installer {
           inherit inputs lib self;
         }
       );
-      # nixosConfigurations = {
-      #   gaming = import ./hosts/gaming {
-      #     inherit inputs self;
-      #   };
-
-      #   g3 = import ./hosts/g3 {
-      #     inherit inputs self;
-      #   };
-
-      #   installer = import ./hosts/installer {
-      #     inherit inputs self;
-      #   };
-      # };
 
       # Formatter Nix
       formatter = forAllSystems (system: (lib.homeManager.mkPkgs system).nixfmt);
