@@ -65,6 +65,7 @@
     btop
     pciutils
     usbutils
+    cloudflared
   ];
 
   environment.persistence."/nix/persist" = {
@@ -73,21 +74,33 @@
     directories = [
       "/var/lib/nixos"
       "/var/log"
-      "/home/user/documents"
-      "/home/user/Downloads"
     ];
 
     files = [
       "/etc/machine-id"
     ];
 
-    # users.user.directories = [
-    #   {
-    #     directory = "documents";
-    #     user = "user";
-    #     group = "users";
-    #   }
-    # ];
+   users.user = {
+      directories = [
+        ".config"
+        {
+          directory = ".gnupg";
+          mode = "0700";
+        }
+        {
+          directory = ".ssh";
+          mode = "0700";
+        }
+        {
+          directory = ".local/share/keyrings";
+          mode = "0700";
+        }
+        ".local/share/direnv"
+      ];
+      files = [
+        ".zsh_history" # # unset HISTFILE before !!
+      ];
+    };
   };
 
   users.mutableUsers = false;
