@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    g3.url = "github:barnaby0x0/nixos-host-g3";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -87,9 +88,11 @@
           inherit inputs lib self;
         };
 
-        g3 = import ./hosts/g3 {
-          inherit inputs lib self;
-        };
+        # g3 = import ./hosts/g3 {
+        #   inherit inputs lib self;
+        # };
+
+        g3 = inputs.g3.nixosConfigurations.g3;
 
         lima = import ./hosts/lima {
           inherit inputs lib self;
