@@ -44,6 +44,8 @@
     {
 
       packages = import ./packages { inherit self inputs lib; };
+      
+      overlays.default = import ./overlays;
 
       devShells = forAllSystems (
         system:
