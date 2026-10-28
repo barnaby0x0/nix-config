@@ -98,7 +98,7 @@
         ".local/share/direnv"
       ];
       files = [
-        ".zsh_history" # # unset HISTFILE before !!
+        # ".zsh_history" # # unset HISTFILE before !!
       ];
     };
   };
