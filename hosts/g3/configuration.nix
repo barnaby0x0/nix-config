@@ -99,6 +99,7 @@
       ];
       files = [
         # ".zsh_history" # # unset HISTFILE before !!
+        ".bash_history"
       ];
     };
   };
