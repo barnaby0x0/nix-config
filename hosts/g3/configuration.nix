@@ -80,7 +80,7 @@
       "/etc/machine-id"
     ];
 
-   users.user = {
+    users.user = {
       directories = [
         ".config"
         {
@@ -96,9 +96,13 @@
           mode = "0700";
         }
         ".local/share/direnv"
+        {
+          directory = "workspace";
+          mode = "0700";
+        }
       ];
       files = [
-        # ".zsh_history" # # unset HISTFILE before !!
+        # ".zsh_history" # unset HISTFILE before !!
         ".bash_history"
       ];
     };
