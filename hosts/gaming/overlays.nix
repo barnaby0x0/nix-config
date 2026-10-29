@@ -1,4 +1,4 @@
-{ ... }:
+{ self, ... }:
 
 {
   nixpkgs.overlays = [
@@ -26,6 +26,6 @@
       });
     })
 
-    (import ../../lib/brave { })
+    self.overlays.brave
   ];
 }
