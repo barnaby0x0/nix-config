@@ -19,6 +19,8 @@ let
     inherit self inputs lib;
   };
 
+  brave = self.overlays.brave;
+
 in
 forAllSystems (
   system:
@@ -46,6 +48,16 @@ forAllSystems (
   homeManagerPackages.${system}
   // terraformPackages.${system}
   // vimPackages.${system}
+  // {
+    brave =
+      let
+        pkgs = import inputs.nixpkgs {
+          inherit system;
+          overlays = [ self.overlays.brave ];
+        };
+      in
+      pkgs.brave;
+  }
   # // inputs.nixpkgs.lib.optionalAttrs (system == "x86_64-linux") {
   #   iso-installer = self.nixosConfigurations."installer-${system}".config.system.build.isoImage;
   # }
