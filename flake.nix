@@ -88,10 +88,6 @@
           inherit inputs lib self;
         };
 
-        # g3 = import ./hosts/g3 {
-        #   inherit inputs lib self;
-        # };
-
         g3 = inputs.g3.nixosConfigurations.g3;
 
         lima = import ./hosts/lima {
