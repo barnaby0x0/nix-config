@@ -56,18 +56,6 @@ forAllSystems (
       in
       pkgs.brave;
   }
-  # // inputs.nixpkgs.lib.optionalAttrs (system == "x86_64-linux") {
-  #   iso-installer = self.nixosConfigurations."installer-${system}".config.system.build.isoImage;
-  # }
-  # // {
-  #   iso-installer = self.nixosConfigurations."installer-${system}".config.system.build.isoImage;
-  # }
-  # // builtins.listToAttrs (
-  #   map (format: {
-  #     name = "image-${format}";
-  #     value = self.nixosConfigurations."installer-${system}".config.system.build.images.${format};
-  #   }) formats
-  # )
   // builtins.listToAttrs (
     map (format: {
       name = format.package;
