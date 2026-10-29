@@ -32,7 +32,7 @@ forAllSystems (
         attribute = [ "isoImage" ];
       }
     ]
-    ++ inputs.nixpkgs.lib.optional (system == "x86_64-linux") {
+    ++ inputs.nixpkgs.lib.optional (system == "aarch64-linux") {
       name = "raw-efi";
       package = "img-lima-raw-efi";
       configuration = "lima";
