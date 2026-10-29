@@ -19,8 +19,6 @@ let
     inherit self inputs lib;
   };
 
-  brave = self.overlays.brave;
-
 in
 forAllSystems (
   system:
