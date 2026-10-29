@@ -1,6 +1,3 @@
-{...}:
-{
 final: prev: {
-myHello = prev.hello;
-};
-} 
+  myHello = prev.hello;
+}

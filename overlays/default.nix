@@ -1,5 +1,5 @@
-{...}:
+{ ... }:
 {
-hello = import ./hello.nix {};
-brave = import ./brave.nix {};
+  hello = import ./hello.nix;
+  brave = import ./brave.nix { };
 }
