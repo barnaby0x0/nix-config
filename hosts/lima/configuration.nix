@@ -48,7 +48,7 @@
   security.pki.certificateFiles = [
     ./root-ca.crt
   ];
-  
+
   virtualisation.docker.enable = true;
 
   nix.settings.experimental-features = [
