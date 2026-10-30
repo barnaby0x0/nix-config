@@ -108,12 +108,66 @@
         }
       );
 
-      apps = forAllSystems (system: {
-        colmena = {
-          type = "app";
-          program = "${colmena.packages.${system}.colmena}/bin/colmena";
-        };
-      });
+      # apps = forAllSystems (system: {
+      #   colmena = {
+      #     type = "app";
+      #     program = "${colmena.packages.${system}.colmena}/bin/colmena";
+      #   };
+      # });
+
+      apps = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+          syncConfig = pkgs.writeShellApplication {
+            name = "sync-config";
+
+            runtimeInputs = [
+              pkgs.git
+              pkgs.gnutar
+              pkgs.gzip
+              pkgs.openssh
+            ];
+
+            text = ''
+              target="''${1:-g3}"
+
+              if [ "$#" -gt 1 ]; then
+                echo "Usage: sync-config [target]"
+                exit 1
+              fi
+
+              repo_root="$(git rev-parse --show-toplevel)"
+
+              echo "Synchronizing $repo_root to $target:/etc/nixos"
+
+              ssh "$target" 'sudo install -d -m 0755 /etc/nixos'
+
+              tar \
+                --exclude=.git \
+                --exclude=result \
+                --exclude=.direnv \
+                -C "$repo_root" \
+                -czf - . |
+                ssh "$target" \
+                  'sudo tar --no-same-owner -xzf - -C /etc/nixos'
+
+              echo "Configuration synchronized."
+            '';
+          };
+        in
+        {
+          sync-config = {
+            type = "app";
+            program = "${syncConfig}/bin/sync-config";
+          };
+
+          colmena = {
+            type = "app";
+            program = "${colmena.packages.${system}.colmena}/bin/colmena";
+          };
+        }
+      );
 
       colmenaHive = colmena.lib.makeHive {
         meta = {
