@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    g3.url = "github:barnaby0x0/nixos-host-g3";
+    nixos-host-g3.url = "github:barnaby0x0/nixos-host-g3";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -24,6 +24,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    colmena = {
+      url = "github:nix-community/colmena";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -32,6 +37,7 @@
       nixpkgs,
       home-manager,
       nixos-lima,
+      colmena,
       ...
     }:
     let
@@ -90,7 +96,7 @@
           inherit inputs lib self;
         };
 
-        g3 = inputs.g3.nixosConfigurations.g3;
+        g3 = inputs.nixos-host-g3.nixosConfigurations.g3;
 
         lima = import ./hosts/lima {
           inherit inputs lib self;
@@ -101,6 +107,30 @@
           inherit inputs lib self;
         }
       );
+
+      apps = forAllSystems (system: {
+        colmena = {
+          type = "app";
+          program = "${colmena.packages.${system}.colmena}/bin/colmena";
+        };
+      });
+
+      colmenaHive = colmena.lib.makeHive {
+        meta = {
+          nixpkgs = import nixpkgs {
+            system = "x86_64-linux";
+          };
+        };
+
+        g3 = {
+          imports = inputs.nixos-host-g3.nixosModules.g3;
+
+          deployment = {
+            targetHost = "g3";
+            targetUser = "colmena";
+          };
+        };
+      };
 
       # Formatter Nix
       formatter = forAllSystems (system: (lib.homeManager.mkPkgs system).nixfmt);

@@ -1,16 +1,14 @@
-
 let
   # Récupère les inputs verrouillés par le flake du dépôt.
   flake = builtins.getFlake (toString ../.);
   nixpkgs = flake.inputs.nixpkgs;
 
   # Évaluateur NixOS fourni par cette version de nixpkgs.
-  evalConfig = import (
-    nixpkgs.outPath + "/nixos/lib/eval-config.nix"
-  );
+  evalConfig = import (nixpkgs.outPath + "/nixos/lib/eval-config.nix");
 
   # Construit un système de test pour une valeur donnée.
-  mkCase = enableVirt:
+  mkCase =
+    enableVirt:
     let
       evaluated = evalConfig {
         system = "x86_64-linux";
@@ -64,4 +62,3 @@ assert !(builtins.elem "kvm" disabled.groups);
     inherit (disabled) libvirtd groups;
   };
 }
-
