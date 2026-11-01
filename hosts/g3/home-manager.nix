@@ -26,13 +26,5 @@
       files = user.persistence.files;
     };
 
-    programs.vscode = {
-      enable = true;
-      package = pkgs.vscodium;
-      extensions = [
-        pkgs.nix-vscode-extensions.vscode-marketplace.jnoortheen.nix-ide
-        pkgs.nix-vscode-extensions.vscode-marketplace.jnoortheen.dirvish
-      ];
-    };
   }) (inputs.nixpkgs.lib.filterAttrs (_: user: user.homeManager) users);
 }
