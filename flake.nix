@@ -127,7 +127,7 @@
         };
 
         g3 = {
-          imports = inputs.nixos-host-g3.nixosModules.g3;
+          imports = self.nixosConfigurations.g3._module.args.modules;
 
           deployment = {
             targetHost = "g3";
