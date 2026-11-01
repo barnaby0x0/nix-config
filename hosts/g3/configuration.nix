@@ -1,4 +1,5 @@
 {
+  self,
   config,
   lib,
   pkgs,
@@ -61,22 +62,26 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
+  nixpkgs.overlays = [ self.overlays.brave ];
+
   # Outils de diagnostic
   environment.systemPackages = with pkgs; [
-    vim
-    git
-    curl
-    wget
-    htop
-    btop
-    pciutils
-    usbutils
-    cloudflared
-    openssl
-    tcpdump
-    cowsay
-    lolcat
     bat
+    brave
+    btop
+    cloudflared
+    cowsay
+    curl
+    git
+    htop
+    lolcat
+    openssl
+    pciutils
+    tcpdump
+    usbutils
+    vim
+    vscodium
+    wget
   ];
 
   environment.persistence."/nix/persist" = {
