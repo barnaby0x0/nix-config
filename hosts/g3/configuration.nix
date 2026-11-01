@@ -82,6 +82,7 @@
     vim
     vscodium
     wget
+    tig
   ];
 
   environment.persistence."/nix/persist" = {
