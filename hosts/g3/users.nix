@@ -12,11 +12,10 @@
       directories = [
         "Téléchargements"
         "Bureau"
-        ".local/share/Steam"
-        ".steam"
       ];
       files = [
         ".p10k.zsh"
+        ".zsh_history"
       ];
     };
   };

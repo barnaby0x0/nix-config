@@ -2,7 +2,7 @@
 
 {
   programs.bash = {
-    enable = true;
+    enable = false;
 
     shellAliases = {
       ll = "ls -lah";
