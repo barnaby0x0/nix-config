@@ -26,7 +26,7 @@
     fsType = "tmpfs";
     options = [
       "defaults"
-      "size=25%"
+      "size=20%"
       "mode=755"
     ];
   };
@@ -172,6 +172,8 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP1oFq0GYt8j7vg2nNAJNzwBtqrdOUDp8CMQwLRiz4Vz user@ull"
     ];
   };
+
+  services.displayManager.hiddenUsers = [ "colmena" ];
 
   nix.settings.trusted-users = [
     "root"
