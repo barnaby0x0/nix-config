@@ -121,14 +121,12 @@
 
       colmenaHive = colmena.lib.makeHive {
         meta = {
-          nixpkgs = import nixpkgs {
-            system = "x86_64-linux";
-          };
+          nixpkgs = import nixpkgs { system = "x86_64-linux"; };
+          nodeSpecialArgs.g3 = self.nixosConfigurations.g3._module.specialArgs;
         };
 
         g3 = {
           imports = self.nixosConfigurations.g3._module.args.modules;
-
           deployment = {
             targetHost = "g3";
             targetUser = "colmena";
