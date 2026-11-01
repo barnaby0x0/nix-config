@@ -67,14 +67,11 @@
 
   # Outils de diagnostic
   environment.systemPackages = with pkgs; [
-    bat
     brave
-    btop
     cloudflared
     cowsay
     curl
     git
-    htop
     lolcat
     openssl
     pciutils
@@ -182,6 +179,9 @@
   ];
 
   security.sudo.wheelNeedsPassword = true;
+    security.pki.certificateFiles = [
+    ./certs/proxlab-ca.crt
+  ];
 
   # KDE Plasma 6
   # services.desktopManager.plasma6.enable = true;
