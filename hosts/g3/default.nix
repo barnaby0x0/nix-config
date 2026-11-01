@@ -9,12 +9,14 @@ lib.nixos.mkHost {
 
   specialArgs = {
     inherit inputs self;
-    # users = import ./users.nix;
+    users = import ./users.nix;
   };
 
   modules = [
-    inputs.disko.nixosModules.disko
-    inputs.impermanence.nixosModules.impermanence
     ./configuration.nix
+    ./home-manager.nix
+    inputs.disko.nixosModules.disko
+    inputs.home-manager.nixosModules.home-manager
+    inputs.impermanence.nixosModules.impermanence
   ];
 }
