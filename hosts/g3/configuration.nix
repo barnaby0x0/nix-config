@@ -58,6 +58,9 @@
 
   i18n.defaultLocale = "fr_FR.UTF-8";
 
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
+
   # Outils de diagnostic
   environment.systemPackages = with pkgs; [
     vim
