@@ -55,6 +55,18 @@
   networking.hostName = "g3";
   networking.networkmanager.enable = true;
 
+  networking.resolvconf.enable = false;
+  # S'assurer que resolved n'interfère pas
+  services.resolved.enable = false;
+  environment.etc."resolv.conf" = {
+    mode = "0644";
+    text = ''
+      nameserver 10.1.0.51
+      nameserver 1.1.1.1
+      search lan
+    '';
+  };
+
   time.timeZone = "Europe/Zurich";
   console.keyMap = "fr";
 
@@ -179,7 +191,7 @@
   ];
 
   security.sudo.wheelNeedsPassword = true;
-    security.pki.certificateFiles = [
+  security.pki.certificateFiles = [
     ./certs/proxlab-ca.crt
   ];
 
