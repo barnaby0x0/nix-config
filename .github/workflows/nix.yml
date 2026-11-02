@@ -1,0 +1,77 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# Annule les runs obsolètes d'une même branche / PR
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  # Rapide : formatage + évaluation de tout (toutes architectures), sans build
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: DeterminateSystems/determinate-nix-action@v3
+
+      # Avertit si nixpkgs est périmé ou sur une branche non supportée
+      - uses: DeterminateSystems/flake-checker-action@main
+
+      # Même version de nixfmt que ta machine : celle du flake.lock
+      - name: Check formatting
+        run: nix fmt -- --check .
+
+      # Évalue tous les outputs, y compris aarch64 (lima), sans rien construire
+      - name: Evaluate flake
+        run: nix flake check --all-systems --no-build
+
+      # Attrape les erreurs propres au hive (imports, specialArgs manquants...)
+      # À adapter si l'attribut diffère : nix eval .#colmenaHive --apply builtins.attrNames
+      - name: Evaluate colmena hive
+        run: nix eval --raw .#colmenaHive.toplevel.g3.drvPath
+
+  # Lent : construit réellement chaque host x86_64
+  build:
+    needs: lint
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        host: [gaming, g3]
+    steps:
+      # Les runners ont ~14 Go libres, insuffisant pour un host avec bureau/jeux
+      - name: Free disk space
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: false
+          swap-storage: true
+
+      - uses: actions/checkout@v5
+
+      - uses: DeterminateSystems/determinate-nix-action@v3
+
+      # Cache binaire : à activer (voir les explications) pour éviter de tout recompiler
+      # - uses: cachix/cachix-action@v16
+      #   with:
+      #     name: ton-cache
+      #     authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+
+      - name: Build ${{ matrix.host }}
+        run: |
+          nix build \
+            .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel \
+            --no-link --print-build-logs
