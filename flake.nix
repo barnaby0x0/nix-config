@@ -98,6 +98,7 @@
         #     nix-config.homeModules.default
         #     ./home.nix
         #   ];
+        
         _module.args.mkVim = lib.vim.mkVim;
       };
 
