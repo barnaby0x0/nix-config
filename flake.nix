@@ -34,6 +34,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-anywhere = {
+      url = "github:nix-community/nixos-anywhere";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs =
@@ -117,12 +122,72 @@
         }
       );
 
-      apps = forAllSystems (system: {
-        colmena = {
-          type = "app";
-          program = "${colmena.packages.${system}.colmena}/bin/colmena";
-        };
-      });
+      apps = forAllSystems (
+        system:
+        let
+          pkgs = inputs.nixpkgs.legacyPackages.${system};
+
+          # installG3 = pkgs.writeShellApplication {
+          #   name = "install-g3";
+
+          #   runtimeInputs = [
+          #     inputs.nixos-anywhere.packages.${system}.default
+          #   ];
+
+          #   text = ''
+          #     target_host="''${TARGET_HOST:-nixos@10.10.0.57}"
+
+          #     exec nixos-anywhere \
+          #       --flake .#g3 \
+          #       --target-host "$target_host" \
+          #       --build-on local \
+          #       "$@"
+          #   '';
+          # };
+          provisionG3 = pkgs.writeShellApplication {
+            name = "provision-g3";
+
+            runtimeInputs = [
+              inputs.nixos-anywhere.packages.${system}.default
+            ];
+
+            text = ''
+              target_host="''${TARGET_HOST:-nixos@10.10.0.57}"
+
+              echo "WARNING: DESTRUCTIVE OPERATION"
+              echo "Target: $target_host"
+              echo "Configuration: g3"
+              echo
+              echo "This operation may destroy existing data."
+              echo
+
+              read -r -p "Type 'PROVISION-G3' to continue: " confirmation
+
+              if [[ "$confirmation" != "PROVISION-G3" ]]; then
+                echo "Aborted."
+                exit 1
+              fi
+
+              exec nixos-anywhere \
+                --flake .#g3 \
+                --target-host "$target_host" \
+                --build-on local \
+                "$@"
+            '';
+          };
+        in
+        {
+          colmena = {
+            type = "app";
+            program = "${inputs.colmena.packages.${system}.colmena}/bin/colmena";
+          };
+
+          install-g3 = {
+            type = "app";
+            program = "${provisionG3}/bin/provision-g3";
+          };
+        }
+      );
 
       colmenaHive = colmena.lib.makeHive {
         meta = {
