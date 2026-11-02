@@ -101,6 +101,11 @@
         _module.args.mkVim = lib.vim.mkVim;
       };
 
+      homeModules.profiles = {
+        desktop = ./modules/home-manager/profiles/desktop.nix;
+        development = ./modules/home-manager/profiles/development.nix;
+      };
+
       nixosConfigurations = {
         gaming = import ./hosts/gaming {
           inherit inputs lib self;

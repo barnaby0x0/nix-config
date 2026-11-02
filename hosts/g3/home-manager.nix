@@ -16,6 +16,7 @@
   home-manager.users = inputs.nixpkgs.lib.mapAttrs (_: user: {
     imports = [
       self.homeModules.default
+      self.homeModules.profiles.desktop
     ];
 
     home.stateVersion = "26.05";

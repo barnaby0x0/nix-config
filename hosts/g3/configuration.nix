@@ -102,18 +102,6 @@
     ];
   };
 
-  programs.chromium = {
-    enable = true;
-    package = pkgs.brave;
-    # extensions = [
-    #   { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
-    # ];
-    commandLineArgs = [
-      "--disk-cache-dir=/tmp/brave/cache"
-      "--gpu-cache-dir=/tmp/brave/gpu-cache"
-    ];
-  };
-
   environment.persistence."/nix/persist" = {
     hideMounts = true;
 
