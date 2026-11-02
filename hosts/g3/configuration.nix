@@ -79,7 +79,7 @@
 
   # Outils de diagnostic
   environment.systemPackages = with pkgs; [
-    brave
+    # brave
     # cloudflared
     cowsay
     curl
