@@ -75,7 +75,7 @@
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
-  nixpkgs.overlays = [ self.overlays.brave ];
+  # nixpkgs.overlays = [ self.overlays.brave ];
 
   # Outils de diagnostic
   environment.systemPackages = with pkgs; [
@@ -99,6 +99,18 @@
     package = pkgs.vscodium;
     extensions = with inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace; [
       jnoortheen.nix-ide
+    ];
+  };
+
+  programs.chromium = {
+    enable = true;
+    package = pkgs.brave;
+    # extensions = [
+    #   { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
+    # ];
+    commandLineArgs = [
+      "--disk-cache-dir=/tmp/brave/cache"
+      "--gpu-cache-dir=/tmp/brave/gpu-cache"
     ];
   };
 

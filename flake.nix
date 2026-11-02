@@ -127,23 +127,6 @@
         let
           pkgs = inputs.nixpkgs.legacyPackages.${system};
 
-          # installG3 = pkgs.writeShellApplication {
-          #   name = "install-g3";
-
-          #   runtimeInputs = [
-          #     inputs.nixos-anywhere.packages.${system}.default
-          #   ];
-
-          #   text = ''
-          #     target_host="''${TARGET_HOST:-nixos@10.10.0.57}"
-
-          #     exec nixos-anywhere \
-          #       --flake .#g3 \
-          #       --target-host "$target_host" \
-          #       --build-on local \
-          #       "$@"
-          #   '';
-          # };
           provisionG3 = pkgs.writeShellApplication {
             name = "provision-g3";
 
