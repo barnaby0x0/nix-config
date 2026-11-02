@@ -21,7 +21,6 @@ let
 
         modules = [
           ./generic.nix
-          ./programs/brave.nix
         ];
 
         userConfig = loadUserConfig;
