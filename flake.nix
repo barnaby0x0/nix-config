@@ -86,25 +86,48 @@
 
       # Modules Home Manager réutilisables
       # homeModules.default = import ./modules/home-manager;
-      homeModules.default = {
-        imports = [
-          (import ./modules/home-manager)
-        ];
-        # Vrai car consommé par home-manager dans le client
-        # home-manager.lib.homeManagerConfiguration {
-        #   inherit pkgs;
+      # homeModules.default = {
+      #   imports = [
+      #     (import ./modules/home-manager)
+      #   ];
+      #   # Vrai car consommé par home-manager dans le client
+      #   # home-manager.lib.homeManagerConfiguration {
+      #   #   inherit pkgs;
 
-        #   modules = [
-        #     nix-config.homeModules.default
-        #     ./home.nix
-        #   ];
+      #   #   modules = [
+      #   #     nix-config.homeModules.default
+      #   #     ./home.nix
+      #   #   ];
 
-        _module.args.mkVim = lib.vim.mkVim;
-      };
+      #   _module.args.mkVim = lib.vim.mkVim;
+      # };
 
-      homeModules.profiles = {
-        desktop = ./modules/home-manager/profiles/desktop.nix;
-        development = ./modules/home-manager/profiles/development.nix;
+      # homeModules.profiles = {
+      #   desktop = ./modules/home-manager/profiles/desktop.nix;
+      #   development = ./modules/home-manager/profiles/development.nix;
+      # };
+
+      homeModules = {
+        default = {
+          imports = [
+            (import ./modules/home-manager)
+          ];
+          # Vrai car consommé par home-manager dans le client
+          # home-manager.lib.homeManagerConfiguration {
+          #   inherit pkgs;
+
+          #   modules = [
+          #     nix-config.homeModules.default
+          #     ./home.nix
+          #   ];
+
+          _module.args.mkVim = lib.vim.mkVim;
+        };
+
+        profiles = {
+          desktop = ./modules/home-manager/profiles/desktop.nix;
+          development = ./modules/home-manager/profiles/development.nix;
+        };
       };
 
       nixosConfigurations = {
