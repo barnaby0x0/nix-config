@@ -106,7 +106,7 @@
       #   desktop = ./modules/home-manager/profiles/desktop.nix;
       #   development = ./modules/home-manager/profiles/development.nix;
       # };
-
+      lib = lib;
       homeModules = {
         default = {
           imports = [

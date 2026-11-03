@@ -1,10 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, self, ... }:
 
 {
   environment.systemPackages = with pkgs; [
-    packer
-    terraform
-    vault
+    self.packages.${pkgs.stdenv.hostPlatform.system}.terraform
+    self.packages.${pkgs.stdenv.hostPlatform.system}.packer
+    self.packages.${pkgs.stdenv.hostPlatform.system}.vault
     yamlfmt
     yamllint
   ];

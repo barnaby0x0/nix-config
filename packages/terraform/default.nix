@@ -6,13 +6,15 @@
 
 let
   inherit (lib.homeManager) mkPkgs;
-  inherit (lib.commons.system) terraform_platforms terraform_hashes forAllSystems;
+  inherit (lib.commons.system) hashicorp_platforms terraform_hashes forAllSystems;
 
   version = "1.17.0";
-  platforms = terraform_platforms;
+  platforms = hashicorp_platforms;
   hashes = terraform_hashes;
 
-  mkTerraform = import ../../lib/terraform;
+  # mkTerraform = import ../../lib/terraform;
+  mkTerraform = self.lib.terraform;
+
 in
 forAllSystems (system: {
   terraform = mkTerraform {

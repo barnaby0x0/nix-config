@@ -15,6 +15,14 @@ let
     inherit self inputs lib;
   };
 
+  packerPackages = import ./packer {
+    inherit self inputs lib;
+  };
+
+  vaultPackages = import ./vault {
+    inherit self inputs lib;
+  };
+
   vimPackages = import ./vim {
     inherit self inputs lib;
   };
@@ -45,6 +53,8 @@ forAllSystems (
 
   homeManagerPackages.${system}
   // terraformPackages.${system}
+  // packerPackages.${system}
+  // vaultPackages.${system}
   // vimPackages.${system}
   // {
     brave =
