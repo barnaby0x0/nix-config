@@ -254,6 +254,17 @@
 
   security.polkit.enable = true;
   security.sudo.wheelNeedsPassword = true;
+  security.sudo.extraRules = [
+    {
+      users = [ "colmena" ];
+      commands = [
+        {
+          command = "ALL";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
+  ];
   security.pki.certificateFiles = [
     ./certs/proxlab-ca.crt
   ];
@@ -287,6 +298,7 @@
     trusted-users = [
       "root"
       "user"
+      "colmena"
     ];
 
     # substituters = [
