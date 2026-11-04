@@ -4,17 +4,14 @@
   version,
   platform,
   hash,
-  extension ? "zip",
-  installPhase ? ''
-    install -Dm755 ${pname} $out/bin/${pname}
-  '',
+  binaryName ? pname,
 }:
 
 pkgs.stdenv.mkDerivation {
   inherit pname version;
 
   src = pkgs.fetchurl {
-    url = "https://releases.hashicorp.com/${pname}/${version}/${pname}_${version}_${platform}.${extension}";
+    url = "https://releases.hashicorp.com/${pname}/${version}/${pname}_${version}_${platform}.zip";
     inherit hash;
   };
 
@@ -22,5 +19,7 @@ pkgs.stdenv.mkDerivation {
 
   sourceRoot = ".";
 
-  inherit installPhase;
+  installPhase = ''
+    install -Dm755 ${pname} $out/bin/${binaryName}
+  '';
 }
