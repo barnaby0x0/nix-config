@@ -104,7 +104,13 @@
       #     development = ./modules/home-manager/profiles/development.nix;
       #   };
       # };
-      homeModules = import ./modules/home-manager;
+      # homeModules = import ./modules/home-manager;
+
+      homeModules = (import ./modules/home-manager) // {
+        args = {
+          _module.args.mkVim = lib.vim.mkVim;
+        };
+      };
 
       # homeModulesOpt = {
       #   options = import ./modules/home-manager/options;
