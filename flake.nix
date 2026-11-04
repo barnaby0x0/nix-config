@@ -80,7 +80,7 @@
 
       # Configurations Home Manager
       homeConfigurations = import ./home {
-        inherit inputs lib;
+        inherit self inputs lib;
       };
 
       lib = lib;
@@ -104,7 +104,9 @@
       #     development = ./modules/home-manager/profiles/development.nix;
       #   };
       # };
-
+      homeModulesOpt = {
+        options = import ./modules/home-manager/options;
+      };
       homeModules = {
         default = {
           imports = [
@@ -114,9 +116,9 @@
           _module.args.mkVim = lib.vim.mkVim;
         };
 
-        options = {
-          git = ./modules/home-manager/options/opt-git.nix;
-        };
+        # options = {
+        #   git = ./modules/home-manager/options/opt-git.nix;
+        # };
 
         programs = {
           common = ./modules/home-manager/programs/common.nix;

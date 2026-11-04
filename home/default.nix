@@ -1,4 +1,5 @@
 {
+  self,
   inputs,
   lib,
 }:
@@ -16,6 +17,7 @@ let
         inherit system;
 
         specialArgs = {
+          inherit self;
           inherit mkVim;
         };
 

@@ -1,8 +1,9 @@
-{ userConfig, mkVim, ... }:
+{ self, userConfig, mkVim, ... }:
 
 {
   imports = [
-    ../../../modules/home-manager
+    # ../../../modules/home-manager
+    self.homeModules.default
   ];
 
   my.user.git = {
