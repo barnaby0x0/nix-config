@@ -5,7 +5,6 @@
 }:
 
 lib.nixos.mkHost {
-  # hostname = "gaming";
   system = "x86_64-linux";
 
   specialArgs = {

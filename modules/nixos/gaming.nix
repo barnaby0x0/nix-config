@@ -32,7 +32,7 @@
     vkbasalt
     wine
     winetricks
-    lutris
+    # lutris brake cause of gtk+-2.24.33
     heroic
   ];
 

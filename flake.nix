@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # nixos-host-g3.url = "github:barnaby0x0/nixos-host-g3";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -84,32 +83,12 @@
         inherit inputs lib;
       };
 
-      # Modules Home Manager réutilisables
-      # homeModules.default = import ./modules/home-manager;
-      # homeModules.default = {
-      #   imports = [
-      #     (import ./modules/home-manager)
-      #   ];
-      #   # Vrai car consommé par home-manager dans le client
-      #   # home-manager.lib.homeManagerConfiguration {
-      #   #   inherit pkgs;
-
-      #   #   modules = [
-      #   #     nix-config.homeModules.default
-      #   #     ./home.nix
-      #   #   ];
-
-      #   _module.args.mkVim = lib.vim.mkVim;
-      # };
-
-      # homeModules.profiles = {
-      #   desktop = ./modules/home-manager/profiles/desktop.nix;
-      #   development = ./modules/home-manager/profiles/development.nix;
-      # };
       lib = lib;
+
       nixosModules = {
         apps = import ./modules/nixos/apps;
       };
+
       homeModules = {
         default = {
           imports = [
@@ -141,8 +120,6 @@
         g3 = import ./hosts/g3 {
           inherit inputs lib self;
         };
-
-        # g3 = inputs.nixos-host-g3.nixosConfigurations.g3;
 
         lima = import ./hosts/lima {
           inherit inputs lib self;
@@ -208,12 +185,21 @@
         meta = {
           nixpkgs = import nixpkgs { system = "x86_64-linux"; };
           nodeSpecialArgs.g3 = self.nixosConfigurations.g3._module.specialArgs;
+          nodeSpecialArgs.k8 = self.nixosConfigurations.gaming._module.specialArgs;
         };
 
         g3 = {
           imports = self.nixosConfigurations.g3._module.args.modules;
           deployment = {
             targetHost = "g3";
+            targetUser = "colmena";
+          };
+        };
+
+        k8 = {
+          imports = self.nixosConfigurations.gaming._module.args.modules;
+          deployment = {
+            targetHost = "k8";
             targetUser = "colmena";
           };
         };

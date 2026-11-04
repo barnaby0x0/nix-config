@@ -240,6 +240,18 @@
     initialHashedPassword = "$y$j9T$TvYwvyoJ.v1jj64tTF5K61$jDWwkEw/owyBks.6xLwYIlKcLD4MJ4G062UAm757N/4";
   };
 
+  users.users.colmena = {
+    isNormalUser = true;
+    home = "/var/lib/colmena";
+    createHome = true;
+
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP1oFq0GYt8j7vg2nNAJNzwBtqrdOUDp8CMQwLRiz4Vz user@ull"
+    ];
+  };
+
+  services.displayManager.hiddenUsers = [ "colmena" ];
+
   security.polkit.enable = true;
   security.sudo.wheelNeedsPassword = true;
   security.pki.certificateFiles = [
@@ -287,4 +299,6 @@
     #   "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
     # ];
   };
+
+  # dans un module de l'hôte gaming, temporairement
 }
