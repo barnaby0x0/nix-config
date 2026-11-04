@@ -85,32 +85,25 @@
 
       lib = lib;
 
-      nixosModules = {
-        apps = import ./modules/nixos/apps;
-      };
+      nixosModules = import ./modules/nixos;
 
-      homeModules = {
-        default = {
-          imports = [
-            (import ./modules/home-manager)
-          ];
-          # Vrai car consommé par home-manager dans le client
-          # home-manager.lib.homeManagerConfiguration {
-          #   inherit pkgs;
+      # nixosModules = {
+      #   apps = import ./modules/nixos;
+      # };
+      homeModules = import ./modules/home-manager;
+      # homeModules = {
+      #   default = {
+      #     imports = [
+      #       (import ./modules/home-manager)
+      #     ];
+      #     _module.args.mkVim = lib.vim.mkVim;
+      #   };
 
-          #   modules = [
-          #     nix-config.homeModules.default
-          #     ./home.nix
-          #   ];
-
-          _module.args.mkVim = lib.vim.mkVim;
-        };
-
-        profiles = {
-          desktop = ./modules/home-manager/profiles/desktop.nix;
-          development = ./modules/home-manager/profiles/development.nix;
-        };
-      };
+      #   profiles = {
+      #     desktop = ./modules/home-manager/profiles/desktop.nix;
+      #     development = ./modules/home-manager/profiles/development.nix;
+      #   };
+      # };
 
       nixosConfigurations = {
         gaming = import ./hosts/gaming {
