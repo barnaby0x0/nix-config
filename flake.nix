@@ -104,37 +104,39 @@
       #     development = ./modules/home-manager/profiles/development.nix;
       #   };
       # };
-      homeModulesOpt = {
-        options = import ./modules/home-manager/options;
-      };
-      homeModules = {
-        default = {
-          imports = [
-            ./modules/home-manager
-          ];
+      homeModules = import ./modules/home-manager;
 
-          _module.args.mkVim = lib.vim.mkVim;
-        };
+      # homeModulesOpt = {
+      #   options = import ./modules/home-manager/options;
+      # };
+      # homeModules = {
+      #   default = {
+      #     imports = [
+      #       ./modules/home-manager
+      #     ];
 
-        # options = {
-        #   git = ./modules/home-manager/options/opt-git.nix;
-        # };
+      #     _module.args.mkVim = lib.vim.mkVim;
+      #   };
 
-        programs = {
-          common = ./modules/home-manager/programs/common.nix;
-          git = ./modules/home-manager/programs/git.nix;
-          shell = ./modules/home-manager/programs/shell.nix;
-          vim = ./modules/home-manager/programs/vim.nix;
-          terminator = ./modules/home-manager/programs/terminator.nix;
-          tmux = ./modules/home-manager/programs/tmux.nix;
-          brave = ./modules/home-manager/programs/brave.nix;
-        };
+      #   # options = {
+      #   #   git = ./modules/home-manager/options/opt-git.nix;
+      #   # };
 
-        profiles = {
-          desktop = ./modules/home-manager/profiles/desktop.nix;
-          development = ./modules/home-manager/profiles/development.nix;
-        };
-      };
+      #   programs = {
+      #     common = ./modules/home-manager/programs/common.nix;
+      #     git = ./modules/home-manager/programs/git.nix;
+      #     shell = ./modules/home-manager/programs/shell.nix;
+      #     vim = ./modules/home-manager/programs/vim.nix;
+      #     terminator = ./modules/home-manager/programs/terminator.nix;
+      #     tmux = ./modules/home-manager/programs/tmux.nix;
+      #     brave = ./modules/home-manager/programs/brave.nix;
+      #   };
+
+      #   profiles = {
+      #     desktop = ./modules/home-manager/profiles/desktop.nix;
+      #     development = ./modules/home-manager/profiles/development.nix;
+      #   };
+      # };
 
       nixosConfigurations = {
         gaming = import ./hosts/gaming {
