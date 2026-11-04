@@ -1,11 +1,11 @@
-{ ... }:
-
 {
   imports = [
     ./common.nix
     ./git.nix
     ./shell.nix
-    ./tmux.nix
     ./vim.nix
+    ./terminator.nix
+    ./tmux.nix
+    ./brave.nix
   ];
 }
