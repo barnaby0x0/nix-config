@@ -107,6 +107,9 @@
       #   development = ./modules/home-manager/profiles/development.nix;
       # };
       lib = lib;
+      nixosModules = {
+        apps = import ./modules/nixos/apps;
+      };
       homeModules = {
         default = {
           imports = [

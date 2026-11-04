@@ -13,3 +13,13 @@
     ./apps/system.nix
   ];
 }
+
+#{
+#imports = with self.nixosModules.apps; #[
+#cli
+#desktop
+#devops
+#network
+#security
+#];
+#}
