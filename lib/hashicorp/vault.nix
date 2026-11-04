@@ -1,24 +1,18 @@
+{ mkHashicorpPackage }:
+
 {
   pkgs,
-  version ? "1.17.0",
+  version,
   platform,
   hash,
 }:
 
-pkgs.stdenv.mkDerivation {
+mkHashicorpPackage {
+  inherit
+    pkgs
+    version
+    platform
+    hash
+    ;
   pname = "vault";
-  inherit version;
-
-  src = pkgs.fetchurl {
-    url = "https://releases.hashicorp.com/vault/${version}/vault_${version}_${platform}.zip";
-    inherit hash;
-  };
-
-  nativeBuildInputs = [ pkgs.unzip ];
-
-  sourceRoot = ".";
-
-  installPhase = ''
-    install -Dm755 vault $out/bin/vault
-  '';
 }

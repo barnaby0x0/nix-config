@@ -12,12 +12,9 @@ let
   platforms = hashicorp_platforms;
   hashes = packer_hashes;
 
-  # mkTerraform = import ../../lib/terraform;
-  mkPacker = self.lib.packer;
-
 in
 forAllSystems (system: {
-  packer = mkPacker {
+  packer = self.lib.hashicorp.packer {
     pkgs = mkPkgs system;
     inherit version;
     platform = platforms.${system};

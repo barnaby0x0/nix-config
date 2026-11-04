@@ -12,12 +12,9 @@ let
   platforms = hashicorp_platforms;
   hashes = terraform_hashes;
 
-  # mkTerraform = import ../../lib/terraform;
-  mkTerraform = self.lib.terraform;
-
 in
 forAllSystems (system: {
-  terraform = mkTerraform {
+  terraform = self.lib.hashicorp.terraform {
     pkgs = mkPkgs system;
     inherit version;
     platform = platforms.${system};

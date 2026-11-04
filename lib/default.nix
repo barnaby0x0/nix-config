@@ -13,9 +13,11 @@
     inherit (inputs) nixpkgs;
   };
 
-  terraform = import ./hashicorp/terraform.nix;
-  packer = import ./hashicorp/packer.nix;
-  vault = import ./hashicorp/vault.nix;
+  # terraform = import ./hashicorp/terraform.nix;
+  # packer = import ./hashicorp/packer.nix;
+  # vault = import ./hashicorp/vault.nix;
+
+  hashicorp = import ./hashicorp;
 
   nixos = import ./nixos.nix {
     inherit (inputs) nixpkgs;

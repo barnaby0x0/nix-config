@@ -12,12 +12,9 @@ let
   platforms = hashicorp_platforms;
   hashes = vault_hashes;
 
-  # mkTerraform = import ../../lib/terraform;
-  mkVault = self.lib.vault;
-
 in
 forAllSystems (system: {
-  vault = mkVault {
+  vault = self.lib.hashicorp.vault {
     pkgs = mkPkgs system;
     inherit version;
     platform = platforms.${system};
