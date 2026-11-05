@@ -1,4 +1,9 @@
-{ pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   programs.bash = {
@@ -15,6 +20,8 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+
+    history.path = "${config.home.homeDirectory}/.zsh/.zsh_history";
 
     oh-my-zsh = {
       enable = true;

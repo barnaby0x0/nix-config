@@ -12,10 +12,14 @@
       directories = [
         "Téléchargements"
         "Bureau"
+        {
+          directory = ".zsh";
+          mode = "0700";
+        }
       ];
       files = [
         ".p10k.zsh"
-        ".zsh_history"
+        # ".zsh_history"
       ];
     };
   };

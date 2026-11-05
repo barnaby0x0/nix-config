@@ -20,6 +20,7 @@
       self.homeModules.programs.git
       self.homeModules.programs.vim
       self.homeModules.programs.terminator
+      self.homeModules.programs.shell
     ];
 
     home.stateVersion = "26.05";

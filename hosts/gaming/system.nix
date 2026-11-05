@@ -96,6 +96,14 @@
 
   services.openssh = {
     enable = true;
+
+    hostKeys = [
+      {
+        path = "/nix/persist/etc/ssh/ssh_host_ed25519_key";
+        type = "ed25519";
+      }
+    ];
+
     settings = {
       PermitRootLogin = "no";
       PasswordAuthentication = false;
@@ -103,6 +111,7 @@
   };
 
   programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
 
   environment.persistence."/nix/persist" = {
     hideMounts = true;

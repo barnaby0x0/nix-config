@@ -19,6 +19,7 @@
       self.homeModules.options.git
       self.homeModules.programs.git
       self.homeModules.programs.vim
+      self.homeModules.programs.shell
       self.homeModules.profiles.desktop
     ];
 
