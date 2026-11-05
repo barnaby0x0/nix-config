@@ -15,7 +15,9 @@
     # ../../../modules/home-manager/programs/vim.nix
     # ../../../modules/home-manager/programs/terminator.nix
     # ../../../modules/home-manager/programs/tmux.nix
-    self.homeModulesOpt.options.git
+    self.homeModules.args
+    self.homeModules.options.git
+    self.homeModules.programs.git
 
     self.homeModules.programs.common
     self.homeModules.programs.shell

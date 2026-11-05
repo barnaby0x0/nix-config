@@ -8,7 +8,12 @@
 {
   imports = [
     # ../../../modules/home-manager
-    self.homeModules.default
+    # self.homeModules.default
+    self.homeModules.args
+    self.homeModules.options.git
+    self.homeModules.programs.git
+    self.homeModules.programs.vim
+    # self.homeModules.profiles.desktop
   ];
 
   my.user.git = {
