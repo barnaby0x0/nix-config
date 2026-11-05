@@ -24,7 +24,7 @@ in
 lib.mkDevShell {
   name = "podman";
 
-  packages = runtimePackages;
+  packages = runtimePackages ++ [ pkgs.zsh ];
 
   shellHook = ''
     export PODMAN_PROJECT_DIR="$PWD/.podman"
