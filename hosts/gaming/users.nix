@@ -17,6 +17,7 @@
       ];
       files = [
         ".p10k.zsh"
+        ".zsh_history"
       ];
     };
   };

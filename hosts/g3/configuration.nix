@@ -9,7 +9,6 @@
 
 {
   imports = [
-    # ../../modules/nixos/desktop/plasma.nix
     self.nixosModules.plasma
     ./disko.nix
     ./hardware-configuration.nix

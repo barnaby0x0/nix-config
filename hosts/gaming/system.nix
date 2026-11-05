@@ -28,11 +28,11 @@
     ];
   };
 
-  systemd.tmpfiles.rules = [
-    "d /home/user 0700 user users -"
-    "d /home/user/.local 0755 user users -"
-    "d /home/user/.steam 0755 user users -"
-  ];
+  # systemd.tmpfiles.rules = [
+  #   "d /home/user 0700 user users -"
+  #   "d /home/user/.local 0755 user users -"
+  #   "d /home/user/.steam 0755 user users -"
+  # ];
 
   #hardware.cpu.vendor = "amd";
   # cachyos.cpu = "amd";
@@ -143,81 +143,12 @@
         ".local/share/direnv"
       ];
       files = [
-        ".zsh_history" # # unset HISTFILE before !!
+        ".bash_history"
+        ".gitconfig"
       ];
     };
 
   };
-
-  # environment.persistence."/nix/persist" = {
-  #   hideMounts = true;
-
-  #   directories = [
-  #     "/var/lib/nixos"
-  #     "/var/log"
-  #   ];
-
-  #   files = [
-  #     "/etc/machine-id"
-  #   ];
-
-  #   users.user = {
-  #     directories = [
-  #       "Downloads"
-
-  #       # Steam : configuration, utilisateurs et préfixes Proton
-  #       ".local/share/Steam"
-  #       ".steam"
-
-  #       # État des applications utilisateur
-  #       ".local/state"
-
-  #       # KDE : données et état des composants
-  #       ".config/KDE"
-  #       ".config/kde.org"
-  #       ".config/plasma-workspace"
-
-  #       # KDE : thèmes, icônes et personnalisation
-  #       ".local/share/plasma"
-  #       ".local/share/icons"
-  #       ".local/share/color-schemes"
-  #       ".local/share/wallpapers"
-  #       ".local/share/aurorae"
-  #       ".local/share/kwin"
-
-  #       # Lanceurs d'applications installés pour l'utilisateur
-  #       ".local/share/applications"
-  #     ];
-
-  #     files = [
-  #       # Zsh / Powerlevel10k
-  #       ".zsh_history"
-  #       ".p10k.zsh"
-
-  #       # KDE Plasma : préférences
-  #       ".config/kdeglobals"
-  #       ".config/kglobalshortcutsrc"
-  #       ".config/kwinrc"
-  #       ".config/kwinoutputconfig.json"
-  #       ".config/kwinrulesrc"
-  #       ".config/plasma-org.kde.plasma.desktop-appletsrc"
-  #       ".config/plasmashellrc"
-  #       ".config/plasmarc"
-  #       ".config/kactivitymanagerdrc"
-  #       ".config/dolphinrc"
-  #       ".config/kiorc"
-  #       ".config/konsolerc"
-  #       ".config/powermanagementprofilesrc"
-  #       ".config/plasma-localerc"
-  #       # Configuration des écrans et notifications KDE
-  #       ".config/plasmanotifyrc"
-
-  #       # Raccourcis et emplacements KDE
-  #       ".config/khotkeysrc"
-  #       ".local/share/user-places.xbel"
-  #     ];
-  #   };
-  # };
 
   users.users.user.shell = pkgs.zsh;
   users.mutableUsers = false;
