@@ -1,4 +1,3 @@
-
 {
   description = "Standalone rootless Podman development environment";
 
@@ -6,7 +5,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
-  outputs = { self, nixpkgs }:
+  outputs =
+    { self, nixpkgs }:
 
     let
       systems = [
@@ -18,7 +18,8 @@
 
     in
     {
-      packages = forAllSystems (system:
+      packages = forAllSystems (
+        system:
 
         let
           pkgs = import nixpkgs {
@@ -46,7 +47,8 @@
         }
       );
 
-      devShells = forAllSystems (system:
+      devShells = forAllSystems (
+        system:
 
         let
           pkgs = import nixpkgs {
@@ -76,22 +78,20 @@
 
         in
         {
-
-
           default = pkgs.mkShell {
             packages = runtimePackages;
-          
+
             shellHook = ''
               export PODMAN_PROJECT_DIR="$PWD/.podman"
               export XDG_DATA_HOME="$PODMAN_PROJECT_DIR/data"
               export XDG_CONFIG_HOME="$PODMAN_PROJECT_DIR/config"   # ← isole aussi la config
-          
+
               mkdir -p "$XDG_DATA_HOME" "$XDG_CONFIG_HOME/containers"
-          
+
               # Symlinks vers les fichiers du store Nix (reproductibles)
               ln -sf ${./containers/policy.json}      "$XDG_CONFIG_HOME/containers/policy.json"
               ln -sf ${./containers/registries.conf}  "$XDG_CONFIG_HOME/containers/registries.conf"
-          
+
               echo ""
               echo "=================================="
               echo "       Podman Nix Environment"
@@ -108,40 +108,11 @@
               echo ""
             '';
           };
-
-
-#          default = pkgs.mkShell {
-#            packages = runtimePackages;
-#
-#            shellHook = ''
-#              export PODMAN_PROJECT_DIR="$PWD/.podman"
-#
-#              # Isolated persistent storage
-#              export XDG_DATA_HOME="$PODMAN_PROJECT_DIR/data"
-#
-#              mkdir -p "$XDG_DATA_HOME"
-#
-#              mkdir -p ~/.config/containers
-#
-#              echo ""
-#              echo "=================================="
-#              echo "       Podman Nix Environment"
-#              echo "=================================="
-#              echo ""
-#              echo "Podman: $(podman --version)"
-#              echo "Storage: $XDG_DATA_HOME"
-#              echo ""
-#              echo "Commands:"
-#              echo "  podman info"
-#              echo "  podman run --rm -it docker.io/library/alpine sh"
-#              echo "  podman compose up -d"
-#              echo ""
-#            '';
-#          };
         }
       );
 
-      formatter = forAllSystems (system:
+      formatter = forAllSystems (
+        system:
         (import nixpkgs {
           inherit system;
         }).nixfmt-rfc-style

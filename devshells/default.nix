@@ -25,6 +25,11 @@ in
     inherit pkgs;
     lib = devshellLib;
   };
+
+  podman = import ./podman.nix {
+    inherit pkgs;
+    lib = devshellLib;
+  };
 }
 
 # { pkgs, ... }:
