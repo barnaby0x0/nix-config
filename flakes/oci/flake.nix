@@ -76,24 +76,30 @@
 
         in
         {
+
+
           default = pkgs.mkShell {
             packages = runtimePackages;
-
+          
             shellHook = ''
               export PODMAN_PROJECT_DIR="$PWD/.podman"
-
-              # Isolated persistent storage
               export XDG_DATA_HOME="$PODMAN_PROJECT_DIR/data"
-
-              mkdir -p "$XDG_DATA_HOME"
-
+              export XDG_CONFIG_HOME="$PODMAN_PROJECT_DIR/config"   # ← isole aussi la config
+          
+              mkdir -p "$XDG_DATA_HOME" "$XDG_CONFIG_HOME/containers"
+          
+              # Symlinks vers les fichiers du store Nix (reproductibles)
+              ln -sf ${./containers/policy.json}      "$XDG_CONFIG_HOME/containers/policy.json"
+              ln -sf ${./containers/registries.conf}  "$XDG_CONFIG_HOME/containers/registries.conf"
+          
               echo ""
               echo "=================================="
               echo "       Podman Nix Environment"
               echo "=================================="
               echo ""
-              echo "Podman: $(podman --version)"
-              echo "Storage: $XDG_DATA_HOME"
+              echo "Podman:   $(podman --version)"
+              echo "Storage:  $XDG_DATA_HOME"
+              echo "Config:   $XDG_CONFIG_HOME"
               echo ""
               echo "Commands:"
               echo "  podman info"
@@ -102,6 +108,36 @@
               echo ""
             '';
           };
+
+
+#          default = pkgs.mkShell {
+#            packages = runtimePackages;
+#
+#            shellHook = ''
+#              export PODMAN_PROJECT_DIR="$PWD/.podman"
+#
+#              # Isolated persistent storage
+#              export XDG_DATA_HOME="$PODMAN_PROJECT_DIR/data"
+#
+#              mkdir -p "$XDG_DATA_HOME"
+#
+#              mkdir -p ~/.config/containers
+#
+#              echo ""
+#              echo "=================================="
+#              echo "       Podman Nix Environment"
+#              echo "=================================="
+#              echo ""
+#              echo "Podman: $(podman --version)"
+#              echo "Storage: $XDG_DATA_HOME"
+#              echo ""
+#              echo "Commands:"
+#              echo "  podman info"
+#              echo "  podman run --rm -it docker.io/library/alpine sh"
+#              echo "  podman compose up -d"
+#              echo ""
+#            '';
+#          };
         }
       );
 
