@@ -35,6 +35,7 @@ in
     system = "x86_64-linux";
 
     specialArgs = {
+      inherit self;
       inherit mkVim;
     };
 
