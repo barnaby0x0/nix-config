@@ -16,7 +16,7 @@ lib.nixos.mkHost {
     ./system.nix
     ./apps.nix
     ./overlays.nix
-    ../../modules/nixos/cachyos2.nix
+    ../../modules/nixos/cachyos.nix
     ../../modules/nixos/desktop.nix
     ../../modules/nixos/gaming.nix
     ../../modules/nixos/performance.nix

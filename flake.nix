@@ -80,37 +80,69 @@
 
       # Configurations Home Manager
       homeConfigurations = import ./home {
-        inherit inputs lib;
+        inherit self inputs lib;
       };
 
       lib = lib;
 
-      nixosModules = {
-        apps = import ./modules/nixos/apps;
-      };
+      nixosModules = import ./modules/nixos;
 
-      homeModules = {
-        default = {
-          imports = [
-            (import ./modules/home-manager)
-          ];
-          # Vrai car consommé par home-manager dans le client
-          # home-manager.lib.homeManagerConfiguration {
-          #   inherit pkgs;
+      # nixosModules = {
+      #   apps = import ./modules/nixos;
+      # };
+      # homeModules = import ./modules/home-manager;
+      # homeModules = {
+      #   default = {
+      #     imports = [
+      #       (import ./modules/home-manager)
+      #     ];
+      #     _module.args.mkVim = lib.vim.mkVim;
+      #   };
 
-          #   modules = [
-          #     nix-config.homeModules.default
-          #     ./home.nix
-          #   ];
+      #   profiles = {
+      #     desktop = ./modules/home-manager/profiles/desktop.nix;
+      #     development = ./modules/home-manager/profiles/development.nix;
+      #   };
+      # };
+      # homeModules = import ./modules/home-manager;
 
+      homeModules = (import ./modules/home-manager) // {
+        args = {
           _module.args.mkVim = lib.vim.mkVim;
         };
-
-        profiles = {
-          desktop = ./modules/home-manager/profiles/desktop.nix;
-          development = ./modules/home-manager/profiles/development.nix;
-        };
       };
+
+      # homeModulesOpt = {
+      #   options = import ./modules/home-manager/options;
+      # };
+      # homeModules = {
+      #   default = {
+      #     imports = [
+      #       ./modules/home-manager
+      #     ];
+
+      #     _module.args.mkVim = lib.vim.mkVim;
+      #   };
+
+      #   # options = {
+      #   #   git = ./modules/home-manager/options/opt-git.nix;
+      #   # };
+
+      #   programs = {
+      #     common = ./modules/home-manager/programs/common.nix;
+      #     git = ./modules/home-manager/programs/git.nix;
+      #     shell = ./modules/home-manager/programs/shell.nix;
+      #     vim = ./modules/home-manager/programs/vim.nix;
+      #     terminator = ./modules/home-manager/programs/terminator.nix;
+      #     tmux = ./modules/home-manager/programs/tmux.nix;
+      #     brave = ./modules/home-manager/programs/brave.nix;
+      #   };
+
+      #   profiles = {
+      #     desktop = ./modules/home-manager/profiles/desktop.nix;
+      #     development = ./modules/home-manager/profiles/development.nix;
+      #   };
+      # };
 
       nixosConfigurations = {
         gaming = import ./hosts/gaming {

@@ -23,7 +23,12 @@ let
       inherit pkgs;
 
       modules = [
-        self.homeModules.default
+        # self.homeModules.default
+
+        self.homeModules.args
+        self.homeModules.options.git
+        self.homeModules.programs.git
+        self.homeModules.programs.vim
         {
           home.username = userConfig.username;
           home.homeDirectory = userConfig.homeDirectory;

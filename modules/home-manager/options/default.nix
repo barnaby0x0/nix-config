@@ -1,6 +1,3 @@
-{ ... }:
 {
-  imports = [
-    ./opt-git.nix
-  ];
+  git = import ./opt-git.nix;
 }
