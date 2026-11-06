@@ -90,6 +90,8 @@
 
       lib = lib;
 
+      buildModules = import ./modules/builders;
+
       nixosModules = import ./modules/nixos;
 
       homeModules = (import ./modules/home-manager) // {
