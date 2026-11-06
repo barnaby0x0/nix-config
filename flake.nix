@@ -153,11 +153,13 @@
           colmena = {
             type = "app";
             program = "${inputs.colmena.packages.${system}.colmena}/bin/colmena";
+            meta.description = "Colmena deployment tool";
           };
 
           install-g3 = {
             type = "app";
             program = "${provisionG3}/bin/provision-g3";
+            meta.description = "Install G3 NixOS host";
           };
         }
       );

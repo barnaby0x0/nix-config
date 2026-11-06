@@ -13,17 +13,21 @@ lib.nixos.mkHost {
   };
 
   modules = [
-    ./system.nix
     ./apps.nix
+    ./disko.nix
+    ./hardware-configuration.nix
+    ./home-manager.nix
     ./overlays.nix
-    self.nixosModules.cachyos
-    self.nixosModules.desktop
-    self.nixosModules.gaming
-    self.nixosModules.performance
-    self.nixosModules.virt
+    ./system.nix
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
     inputs.impermanence.nixosModules.impermanence
-    ./home-manager.nix
+    self.nixosModules.cachyos
+    self.nixosModules.desktop
+    self.nixosModules.gaming
+    self.nixosModules.garbage
+    self.nixosModules.performance
+    self.nixosModules.plasma
+    self.nixosModules.virt
   ];
 }

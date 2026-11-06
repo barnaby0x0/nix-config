@@ -22,5 +22,6 @@ lib.nixos.mkHost {
     inputs.home-manager.nixosModules.home-manager
     inputs.impermanence.nixosModules.impermanence
     self.nixosModules.plasma
+    self.nixosModules.garbage
   ];
 }
