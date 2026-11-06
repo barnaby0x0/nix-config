@@ -1,6 +1,6 @@
 keys:
   - &admin age19ty6tzu53hmen75s2zjtydhc8s37gcxzkuhjl3h5uhx8ewrwhfwqhfq4m2
-  - &g3 age1gqsp0yzye4w8urspmevw3jgspju6ykrzj5mkk9z57eglm2pvrsrsaqt4sr
+  - &g3 age1nt3g22glzzk3le5cre0pnn9px6hs32cjat9prj522lmua3fyl9cssh9fy2
 
 creation_rules:
   - path_regex: secrets/g3\.yaml$
