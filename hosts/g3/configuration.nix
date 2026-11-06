@@ -31,26 +31,6 @@
     ];
   };
 
-  ## Useful to mount /home/user as user
-  # fileSystems."/home/user" = {
-  #   device = "none";
-  #   fsType = "tmpfs";
-  #   options = [
-  #     "size=2G"
-  #     "mode=700"
-  #     "uid=1000"
-  #     "gid=100"
-  #   ];
-  # };
-
-  # OR use systemd
-  #  systemd.tmpfiles.rules = [
-  #    "d /nix/persist/home/user 0700 user users -"
-  #    "z /nix/persist/home/user 0700 user users -"
-  #    "d /home/user 0700 user users -"
-  #    "z /home/user 0700 user users -"
-  #  ];
-
   # Identité et paramètres de base
   networking.hostName = "g3";
   networking.networkmanager.enable = true;
@@ -197,16 +177,6 @@
     ./certs/proxlab-ca.crt
   ];
 
-  # KDE Plasma 6
-  # services.desktopManager.plasma6.enable = true;
-
-  # services.displayManager.sddm = {
-  #   enable = true;
-  #   wayland.enable = true;
-  # };
-
-  # services.xserver.xkb.layout = "fr";
-
   services.openssh = {
     enable = true;
     #logLevel = "DEBUG3";
@@ -265,7 +235,7 @@
 
   nix.gc = {
     automatic = true;
-    dates = "daily"; # Or a specific time like "03:15"
+    dates = "daily";
     options = "--delete-older-than 5d";
   };
 
