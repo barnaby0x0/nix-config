@@ -16,11 +16,11 @@ lib.nixos.mkHost {
     ./system.nix
     ./apps.nix
     ./overlays.nix
-    ../../modules/nixos/cachyos.nix
-    ../../modules/nixos/desktop.nix
-    ../../modules/nixos/gaming.nix
-    ../../modules/nixos/performance.nix
-    ../../modules/nixos/virt.nix
+    self.nixosModules.cachyos
+    self.nixosModules.desktop
+    self.nixosModules.gaming
+    self.nixosModules.performance
+    self.nixosModules.virt
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
     inputs.impermanence.nixosModules.impermanence
