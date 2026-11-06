@@ -12,7 +12,7 @@
     pass
     pinentry-curses
     qtpass
-    sops
+    # sops
     yubikey-manager
   ];
 }

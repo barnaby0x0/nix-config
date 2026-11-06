@@ -89,6 +89,7 @@
 
     directories = [
       "/var/lib/nixos"
+      "/var/lib/sops-nix"
       "/var/log"
       # "/etc/cloudflared"
     ];

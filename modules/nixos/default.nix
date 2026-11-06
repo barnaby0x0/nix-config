@@ -7,4 +7,5 @@
   performance = import ./performance.nix;
   plasma = import ./desktop/plasma.nix;
   virt = import ./virt.nix;
+  sops = import ./sops.nix;
 }

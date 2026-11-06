@@ -23,5 +23,7 @@ lib.nixos.mkHost {
     inputs.impermanence.nixosModules.impermanence
     self.nixosModules.plasma
     self.nixosModules.garbage
+    self.nixosModules.sops
+    inputs.sops-nix.nixosModules.sops
   ];
 }
