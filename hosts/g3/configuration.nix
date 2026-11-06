@@ -8,12 +8,13 @@
 }:
 
 {
-  imports = [
-    ./apps.nix
-    self.nixosModules.plasma
-    ./disko.nix
-    ./hardware-configuration.nix
-  ];
+  # imports = [
+  #   ./apps.nix
+  #   self.nixosModules.plasma
+  #   ./disko.nix
+  #   ./hardware-configuration.nix
+  #   ./home-manager.nix
+  # ];
 
   system.stateVersion = "26.05";
 

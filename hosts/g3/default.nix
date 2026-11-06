@@ -13,10 +13,14 @@ lib.nixos.mkHost {
   };
 
   modules = [
+    ./apps.nix
     ./configuration.nix
+    ./disko.nix
+    ./hardware-configuration.nix
     ./home-manager.nix
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
     inputs.impermanence.nixosModules.impermanence
+    self.nixosModules.plasma
   ];
 }
