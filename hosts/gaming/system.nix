@@ -4,11 +4,11 @@
 }:
 
 {
-  imports = [
-    ../../modules/nixos/desktop/plasma.nix
-    ./disko.nix
-    ./hardware-configuration.nix
-  ];
+  # imports = [
+  #   ../../modules/nixos/desktop/plasma.nix
+  #   ./disko.nix
+  #   ./hardware-configuration.nix
+  # ];
 
   nixpkgs.config.allowUnfree = true;
 
@@ -27,15 +27,6 @@
       "mode=755"
     ];
   };
-
-  # systemd.tmpfiles.rules = [
-  #   "d /home/user 0700 user users -"
-  #   "d /home/user/.local 0755 user users -"
-  #   "d /home/user/.steam 0755 user users -"
-  # ];
-
-  #hardware.cpu.vendor = "amd";
-  # cachyos.cpu = "amd";
 
   hardware.bluetooth = {
     enable = true;
