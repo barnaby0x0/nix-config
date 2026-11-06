@@ -13,7 +13,6 @@ lib.nixos.mkHost {
   };
 
   modules = [
-    ./apps.nix
     ./configuration.nix
     ./home-manager.nix
     inputs.disko.nixosModules.disko
