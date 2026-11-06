@@ -263,6 +263,15 @@
   #   };
   # };
 
+  nix.gc = {
+    automatic = true;
+    dates = "daily"; # Or a specific time like "03:15"
+    options = "--delete-older-than 5d";
+  };
+
+  nix.settings.auto-optimise-store = true;
+  boot.loader.systemd-boot.configurationLimit = 5;
+
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
