@@ -27,6 +27,10 @@ let
     inherit self inputs lib;
   };
 
+  bootstrap = import ./bootstrap {
+    inherit self inputs lib;
+  };
+
 in
 forAllSystems (
   system:
@@ -56,6 +60,7 @@ forAllSystems (
   // packerPackages.${system}
   // vaultPackages.${system}
   // vimPackages.${system}
+  // bootstrap.${system}
   // {
     brave =
       let

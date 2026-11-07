@@ -1,6 +1,7 @@
 keys:
   - &admin age19ty6tzu53hmen75s2zjtydhc8s37gcxzkuhjl3h5uhx8ewrwhfwqhfq4m2
   - &g3 age1nt3g22glzzk3le5cre0pnn9px6hs32cjat9prj522lmua3fyl9cssh9fy2
+  - &ull age1q9nvxajr6mfzmgmf7p90lzamcxc6ge86f070lffnthhguhjtfv6s6vhhr4
 
 creation_rules:
   - path_regex: secrets/g3\.yaml$
@@ -8,3 +9,10 @@ creation_rules:
       - age:
           - *admin
           - *g3
+          - *ull
+  - path_regex: secrets/bootstrap\.yaml$
+    key_groups:
+      - age:
+          - *admin
+          - *g3        
+          - *ull  
