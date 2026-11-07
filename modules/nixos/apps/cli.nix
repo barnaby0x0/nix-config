@@ -17,5 +17,6 @@
     uv
     zip
     p7zip
+    tig
   ];
 }

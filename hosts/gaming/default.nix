@@ -29,5 +29,6 @@ lib.nixos.mkHost {
     self.nixosModules.performance
     self.nixosModules.plasma
     self.nixosModules.virt
+    self.buildModules.qemu-aarch64
   ];
 }

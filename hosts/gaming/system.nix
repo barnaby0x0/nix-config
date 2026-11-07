@@ -124,6 +124,7 @@
         "Pictures"
         "Documents"
         "Videos"
+        "Workspace"
         {
           directory = ".gnupg";
           mode = "0700";
@@ -218,6 +219,7 @@
     zsh
     vscodium
     lolcat
+    file
   ];
 
   nix.settings.experimental-features = [

@@ -100,7 +100,6 @@
 
     users.user = {
       directories = [
-        ".config"
         {
           directory = ".gnupg";
           mode = "0700";
