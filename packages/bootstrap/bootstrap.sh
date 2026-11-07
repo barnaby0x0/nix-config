@@ -70,8 +70,8 @@ echo "SSH key successfully added to GitHub (ID: $KEY_ID)."
 # 4. Clone private repositories using the generated key
 export GIT_SSH_COMMAND="ssh -i $SSH_KEY -o IdentitiesOnly=yes"
 
-git clone git@github.com:barnaby0x0/dot.git /tmp/.dotfiles
-git clone git@github.com:barnaby0x0/pass.git /tmp/.password-store
+git clone git@github.com:barnaby0x0/dot.git ~/.dotfiles
+git clone git@github.com:barnaby0x0/pass.git ~/.password-store
 
 echo "Importing GPG public key..."
 
