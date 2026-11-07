@@ -74,6 +74,7 @@
     vim
     wget
     tig
+    gnupg
   ];
 
   programs.vscode = {

@@ -13,6 +13,7 @@ forAllSystems (
   let
     pkgs = mkPkgs system;
     gpgPublicKey = ./keys/public-key.asc;
+    secretsFile = ../../secrets/bootstrap.yaml;
   in
   {
     inherit pkgs;
@@ -24,10 +25,15 @@ forAllSystems (
         git
         openssh
         sops
+    yq-go
+    jq
+    curl
+    gnupg
       ];
 
       text = ''
         export GPG_PUBLIC_KEY=${gpgPublicKey}
+        export SECRETS_FILE="${secretsFile}"
 
         ${builtins.readFile ./bootstrap.sh}
       '';
