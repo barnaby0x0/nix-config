@@ -42,6 +42,7 @@
   };
 
   networking.resolvconf.enable = false;
+  networking.hostName = "k8";
 
   # S'assurer que resolved n'interfère pas
   services.resolved.enable = false;

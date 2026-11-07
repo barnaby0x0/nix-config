@@ -56,7 +56,7 @@ SSH_DIR="$(mktemp -d /tmp/bootstrap-ssh.XXXXXX)"
 trap 'rm -rf "$SSH_DIR"' EXIT
 
 SSH_KEY="$SSH_DIR/id_ed25519"
-KEY_TITLE="bootstrap"
+KEY_TITLE=$(hostname)
 
 ssh-keygen \
   -t ed25519 \
@@ -97,8 +97,18 @@ echo "SSH key successfully added to GitHub (ID: $KEY_ID)."
 # 4. Clone private repositories using the generated key
 export GIT_SSH_COMMAND="ssh -i $SSH_KEY -o IdentitiesOnly=yes"
 
-git clone git@github.com:barnaby0x0/dot.git ~/.dotfiles
-git clone git@github.com:barnaby0x0/pass.git ~/.password-store
+if [[ ! -d "$HOME/.dotfiles/.git" ]]; then
+  git clone git@github.com:barnaby0x0/dot.git "$HOME/.dotfiles"
+else
+  echo ".dotfiles already exists, skipping."
+fi
+
+if [[ ! -d "$HOME/.password-store/.git" ]]; then
+  git clone git@github.com:barnaby0x0/pass.git ~/.password-store
+else
+  echo ".password-store already exists, skipping."
+fi
+
 
 echo "Importing GPG public key..."
 
@@ -115,3 +125,14 @@ echo "  2. Enable KeySmart for your YubiKey using with gpg --card-status"
 echo ""
 
 echo "Bootstrap completed."
+
+# 5. Mark bootstrap as completed
+TMP_MARKER="$(mktemp "$STATE_DIR/.bootstrap-v1.done.XXXXXX")"
+
+printf 'completed_at=%s\n' "$(date --iso-8601=seconds)" > "$TMP_MARKER"
+chmod 600 "$TMP_MARKER"
+
+# Atomic rename: the marker is either absent or complete.
+mv "$TMP_MARKER" "$MARKER"
+
+echo "Bootstrap marker created: $MARKER"
