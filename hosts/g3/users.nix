@@ -12,6 +12,8 @@
       directories = [
         "Téléchargements"
         "Bureau"
+        ".local"
+        ".config"
         {
           directory = ".zsh";
           mode = "0700";
