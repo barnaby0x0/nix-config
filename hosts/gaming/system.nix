@@ -237,7 +237,9 @@
 
   programs.gnupg.agent = {
     enable = true;
-    pinentryPackage = pkgs.pinentry-qt; # ou pinentry-gtk2
+    enableSSHSupport = true;
+    # pinentryPackage = pkgs.pinentry-qt; # ou pinentry-gtk2
+    pinentryPackage = pkgs.pinentry-curses;
   };
 
   nix.settings.experimental-features = [
