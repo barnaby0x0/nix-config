@@ -1,12 +1,39 @@
-
 #!/usr/bin/env bash
+
+set -euo pipefail
 
 echo "Initializing user environment..."
 
-: "${SECRETS_FILE:?SECRETS_FILE is not defined}"
+# Le bootstrap doit être exécuté avec l'utilisateur cible.
+if [[ "$EUID" -eq 0 ]]; then
+  echo "Do not run bootstrap as root." >&2
+  exit 1
+fi
 
-# 1. Load secrets
-# SECRETS_FILE="${1:-secrets/bootstrap.yaml}"
+# Emplacement persistant, propre à l'utilisateur.
+STATE_DIR="${XDG_STATE_HOME:-"$HOME/.local/state"}/nix-config"
+MARKER="$STATE_DIR/bootstrap-v1.done"
+LOCK="$STATE_DIR/bootstrap.lock"
+
+install -d -m 700 "$STATE_DIR"
+
+# Empêche plusieurs exécutions simultanées.
+exec 9>"$LOCK"
+
+if ! flock -n 9; then
+  echo "Bootstrap is already running." >&2
+  exit 1
+fi
+
+# Vérifie si le bootstrap a déjà réussi.
+if [[ -f "$MARKER" ]]; then
+  echo "Bootstrap has already been completed."
+  echo "Marker: $MARKER"
+  exit 0
+fi
+
+: "${SECRETS_FILE:?SECRETS_FILE is not defined}"
+: "${GPG_PUBLIC_KEY:?GPG_PUBLIC_KEY is not defined}"
 
 if [[ ! -f "$SECRETS_FILE" ]]; then
   echo "Secrets file not found: $SECRETS_FILE" >&2

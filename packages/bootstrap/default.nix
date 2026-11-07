@@ -16,8 +16,6 @@ forAllSystems (
     secretsFile = ../../secrets/bootstrap.yaml;
   in
   {
-    inherit pkgs;
-
     bootstrap = pkgs.writeShellApplication {
       name = "bootstrap";
 

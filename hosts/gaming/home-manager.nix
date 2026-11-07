@@ -2,6 +2,7 @@
   inputs,
   self,
   users,
+  pkgs,
   ...
 }:
 
@@ -25,6 +26,11 @@
 
     home.stateVersion = "26.05";
     my.user.git = user.git;
+
+    home.packages = with pkgs; [
+      fzf
+      go
+    ];
 
     home.persistence."/nix/persist" = {
       directories = user.persistence.directories;

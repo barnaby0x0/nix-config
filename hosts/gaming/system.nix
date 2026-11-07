@@ -1,5 +1,6 @@
 {
   pkgs,
+  self,
   ...
 }:
 
@@ -137,6 +138,10 @@
         "Documents"
         "Videos"
         "Workspace"
+        ".dotfiles"
+        ".password-store"
+        ".local/state/nix-config"
+
         {
           directory = ".gnupg";
           mode = "0700";
@@ -219,6 +224,7 @@
   '';
 
   environment.systemPackages = with pkgs; [
+    self.packages.${system}.bootstrap
     git
     wget
     curl
