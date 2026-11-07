@@ -2,6 +2,7 @@ keys:
   - &admin age19ty6tzu53hmen75s2zjtydhc8s37gcxzkuhjl3h5uhx8ewrwhfwqhfq4m2
   - &g3 age1evpdp0kllvgyqts8z6zplshlweydypvvwj97he0tje9mekncd9gqtkk5yt
   - &ull age1q9nvxajr6mfzmgmf7p90lzamcxc6ge86f070lffnthhguhjtfv6s6vhhr4
+  - &k8 age1uwxhdxxgegtg0x5kesmu57dvxwqzqm4mzzja534tr9rhrxs0nq4st82j2a
 
 creation_rules:
   - path_regex: secrets/g3\.yaml$
@@ -16,3 +17,4 @@ creation_rules:
           - *admin
           - *g3        
           - *ull  
+          - *k8
