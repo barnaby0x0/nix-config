@@ -44,6 +44,18 @@
 
   # S'assurer que resolved n'interfère pas
   services.resolved.enable = false;
+  services.pcscd.enable = true;
+
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+      if (
+        action.id == "org.debian.pcsc-lite.access_pcsc" &&
+        subject.isInGroup("wheel")
+      ) {
+        return polkit.Result.YES;
+      }
+    });
+  '';
 
   # Fichier statique
   environment.etc."resolv.conf" = {
@@ -220,7 +232,13 @@
     vscodium
     lolcat
     file
+    gnupg
   ];
+
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryPackage = pkgs.pinentry-qt; # ou pinentry-gtk2
+  };
 
   nix.settings.experimental-features = [
     "nix-command"
