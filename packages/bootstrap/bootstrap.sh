@@ -3,8 +3,7 @@
 
 echo "Initializing user environment..."
 
-# echapement d'interpolation ''$
-SECRETS_FILE="''${SECRETS_FILE:?SECRETS_FILE is not defined}"
+: "${SECRETS_FILE:?SECRETS_FILE is not defined}"
 
 # 1. Load secrets
 # SECRETS_FILE="${1:-secrets/bootstrap.yaml}"
