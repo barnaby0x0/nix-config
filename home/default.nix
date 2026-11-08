@@ -53,8 +53,12 @@ in
     };
 
     modules = [
-      ../modules/home-manager
-      ../hosts/k8/home-manager-user.nix
+      # ../modules/home-manager
+      # ../hosts/k8/home-manager-user.nix
+      self.homeModules.profiles.base
+      self.homeModules.profiles.desktop
+      self.homeModules.args
+      ../users.nix
     ];
   };
 
