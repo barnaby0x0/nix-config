@@ -17,11 +17,14 @@ let
     }:
 
     let
+      pkgsLib = inputs.nixpkgs.lib;
+
       userConfig = (import ../hosts/${host}/users.nix).${username} // {
         inherit username;
         homeDirectory = "/home/${username}";
       };
     in
+
     mkHomeConfiguration {
       inherit system userConfig;
 
@@ -33,7 +36,12 @@ let
         self.homeModules.users
         "${inputs.impermanence}/home-manager.nix"
         { home._nixosModuleImported = true; }
-      ];
+      ]
+      ++ map (
+        imp:
+        pkgsLib.attrByPath (pkgsLib.splitString "." imp) (throw "Import Home Manager introuvable : ${imp}")
+          self
+      ) (userConfig.imports or [ ]);
     };
 
   genericConfigurations = builtins.listToAttrs (
