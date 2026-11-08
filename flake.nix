@@ -170,6 +170,39 @@
               meta.description = description;
             };
 
+          mkInstallHome =
+            {
+              name,
+              targetHost,
+              homeConfiguration,
+            }:
+
+            let
+              app = pkgs.writeShellApplication {
+                inherit name;
+
+                runtimeInputs = [
+                  pkgs.openssh
+                  inputs.home-manager.packages.${system}.default
+                ];
+
+                text = ''
+                  target_host="''${TARGET_HOST:-${targetHost}}"
+
+                  echo "Deploying Home Manager configuration to $target_host"
+
+                  exec ssh "$target_host" \
+                    'nix run home-manager -- switch --flake "github:barnaby0x0/nix-config/develop#${homeConfiguration}" --refresh' \
+                    "$@"
+                '';
+              };
+            in
+            {
+              type = "app";
+              program = "${app}/bin/${name}";
+              meta.description = "Deploy Home Manager configuration ${homeConfiguration}";
+            };
+
         in
         {
           colmena = {
@@ -190,32 +223,44 @@
             targetHost = "nixos@10.10.0.12";
           };
 
-          install-home-k8 =
-            let
-              app = pkgs.writeShellApplication {
-                name = "install-home-k8";
+          install-home-k8 = mkInstallHome {
+            name = "install-home-k8";
+            targetHost = "user@10.10.0.12";
+            homeConfiguration = "user@k8";
+          };
 
-                runtimeInputs = [
-                  pkgs.openssh
-                  inputs.home-manager.packages.${system}.default
-                ];
+          install-home-g3 = mkInstallHome {
+            name = "install-home-g3";
+            targetHost = "user@10.10.0.57";
+            homeConfiguration = "user@g3";
+          };
 
-                text = ''
-                  target_host="''${TARGET_HOST:-user@10.10.0.12}"
+          # install-home-k8 =
+          #   let
+          #     app = pkgs.writeShellApplication {
+          #       name = "install-home-k8";
 
-                  echo "Deploying Home Manager configuration to $target_host"
+          #       runtimeInputs = [
+          #         pkgs.openssh
+          #         inputs.home-manager.packages.${system}.default
+          #       ];
 
-                  exec ssh "$target_host" \
-                    'nix run home-manager -- switch --flake "github:barnaby0x0/nix-config/develop#user@k8" --refresh' \
-                    "$@"
-                '';
-              };
-            in
-            {
-              type = "app";
-              program = "${app}/bin/install-home-k8";
-              meta.description = "Deploy Home Manager configuration to k8";
-            };
+          #       text = ''
+          #         target_host="''${TARGET_HOST:-user@10.10.0.12}"
+
+          #         echo "Deploying Home Manager configuration to $target_host"
+
+          #         exec ssh "$target_host" \
+          #           'nix run home-manager -- switch --flake "github:barnaby0x0/nix-config/develop#user@k8" --refresh' \
+          #           "$@"
+          #       '';
+          #     };
+          #   in
+          #   {
+          #     type = "app";
+          #     program = "${app}/bin/install-home-k8";
+          #     meta.description = "Deploy Home Manager configuration to k8";
+          #   };
         }
       );
 

@@ -9,6 +9,33 @@ let
   inherit (lib.commons.system) systems;
   inherit (lib.vim) mkVim;
 
+  mkUserHomeConfiguration =
+    {
+      host,
+      system ? "x86_64-linux",
+      username ? "user",
+    }:
+
+    let
+      userConfig = (import ../hosts/${host}/users.nix).${username} // {
+        inherit username;
+        homeDirectory = "/home/${username}";
+      };
+    in
+    mkHomeConfiguration {
+      inherit system userConfig;
+
+      specialArgs = {
+        inherit self inputs;
+      };
+
+      modules = [
+        self.homeModules.users
+        "${inputs.impermanence}/home-manager.nix"
+        { home._nixosModuleImported = true; }
+      ];
+    };
+
   genericConfigurations = builtins.listToAttrs (
     map (system: {
       name = "generic-${system}";
@@ -43,33 +70,13 @@ in
       ./user.nix
     ];
   };
+  "user@k8" = mkUserHomeConfiguration {
+    host = "k8";
+  };
 
-  "user@k8" =
-    let
-      # userConfig = (import ../hosts/k8/users.nix).user;
-      userConfig = (import ../hosts/k8/users.nix).user // {
-        username = "user";
-        homeDirectory = "/home/user";
-      };
-      pkgsLib = inputs.nixpkgs.lib;
-    in
-    mkHomeConfiguration {
-      system = "x86_64-linux";
+  "user@g3" = mkUserHomeConfiguration {
+    host = "g3";
+  };
 
-      specialArgs = { inherit self inputs; };
-
-      inherit userConfig;
-
-      modules = [
-        self.homeModules.users
-        "${inputs.impermanence}/home-manager.nix"
-        { home._nixosModuleImported = true; }
-      ]
-      ++ map (
-        imp:
-        pkgsLib.attrByPath (pkgsLib.splitString "." imp) (throw "Import Home Manager introuvable : ${imp}")
-          self
-      ) (userConfig.imports or [ ]);
-    };
 }
 // genericConfigurations
