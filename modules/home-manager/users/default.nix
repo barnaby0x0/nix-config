@@ -14,6 +14,7 @@
 
   # home.username = userConfig.username;
   # home.homeDirectory = userConfig.homeDirectory;
+
   home.username = lib.mkDefault (userConfig.username or "user");
   home.homeDirectory = lib.mkDefault (userConfig.homeDirectory or "/home/user");
   home.stateVersion = userConfig.home.stateVersion;

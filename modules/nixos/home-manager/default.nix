@@ -57,22 +57,6 @@
     inherit self inputs;
   };
 
-  # home-manager.users = lib.mapAttrs
-  #   (_: user: {
-  #     imports = [
-  #       self.homeModules.profiles.base
-  #       self.homeModules.profiles.desktop
-  #       self.homeModules.args
-  #     ];
-
-  #     home.stateVersion = user.home.stateVersion;
-  #     my.user.git = user.git;
-  #   })
-  #   (lib.filterAttrs
-  #     (_: user: user.homeManager or false)
-  #     users
-  #   );
-
   home-manager.users = lib.mapAttrs (_: user: {
     _module.args.userConfig = user;
 

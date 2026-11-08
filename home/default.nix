@@ -44,18 +44,46 @@ in
     ];
   };
 
-  "user@k8" = mkHomeConfiguration {
-    system = "x86_64-linux";
+  # "user@k8" = mkHomeConfiguration {
+  #   system = "x86_64-linux";
 
-    specialArgs = {
-      inherit self inputs;
+  #   specialArgs = {
+  #     inherit self inputs;
+  #   };
+
+  #   userConfig = (import ../hosts/k8/users.nix).user;
+
+  #   modules = [
+  #     self.homeModules.users
+  #   ];
+  # };
+
+  "user@k8" =
+    let
+      # userConfig = (import ../hosts/k8/users.nix).user;
+      userConfig = (import ../hosts/k8/users.nix).user // {
+        username = "user";
+        homeDirectory = "/home/user";
+      };
+      pkgsLib = inputs.nixpkgs.lib;
+    in
+    mkHomeConfiguration {
+      system = "x86_64-linux";
+
+      specialArgs = { inherit self inputs; };
+
+      inherit userConfig;
+
+      modules = [
+        self.homeModules.users
+        "${inputs.impermanence}/home-manager.nix"
+        { home._nixosModuleImported = true; }
+      ]
+      ++ map (
+        imp:
+        pkgsLib.attrByPath (pkgsLib.splitString "." imp) (throw "Import Home Manager introuvable : ${imp}")
+          self
+      ) (userConfig.imports or [ ]);
     };
-
-    userConfig = (import ../hosts/k8/users.nix).user;
-
-    modules = [
-      self.homeModules.users
-    ];
-  };
 }
 // genericConfigurations
