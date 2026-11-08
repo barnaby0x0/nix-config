@@ -17,12 +17,12 @@ lib.nixos.mkHost {
     ./configuration.nix
     ./disko.nix
     ./hardware-configuration.nix
-    ./home-manager.nix
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
     inputs.impermanence.nixosModules.impermanence
     self.nixosModules.plasma
     self.nixosModules.garbage
+    self.nixosModules.home-manager
     self.nixosModules.sops
     inputs.sops-nix.nixosModules.sops
   ];
