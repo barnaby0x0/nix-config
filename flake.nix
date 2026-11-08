@@ -101,7 +101,7 @@
       };
 
       nixosConfigurations = {
-        gaming = import ./hosts/gaming {
+        k8 = import ./hosts/k8 {
           inherit inputs lib self;
         };
 
@@ -175,7 +175,7 @@
         meta = {
           nixpkgs = import nixpkgs { system = "x86_64-linux"; };
           nodeSpecialArgs.g3 = self.nixosConfigurations.g3._module.specialArgs;
-          nodeSpecialArgs.k8 = self.nixosConfigurations.gaming._module.specialArgs;
+          nodeSpecialArgs.k8 = self.nixosConfigurations.k8._module.specialArgs;
         };
 
         g3 = {
@@ -187,7 +187,7 @@
         };
 
         k8 = {
-          imports = self.nixosConfigurations.gaming._module.args.modules;
+          imports = self.nixosConfigurations.k8._module.args.modules;
           deployment = {
             targetHost = "k8";
             targetUser = "colmena";

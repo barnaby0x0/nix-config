@@ -272,5 +272,5 @@
     # ];
   };
 
-  # dans un module de l'hôte gaming, temporairement
+  # dans un module de l'hôte k8, temporairement
 }
