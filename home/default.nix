@@ -5,9 +5,40 @@
 }:
 
 let
-  inherit (lib.homeManager) mkHomeConfiguration loadUserConfig;
+  inherit (lib.homeManager) mkHomeConfiguration loadUserConfig resolveHomeImports;
   inherit (lib.commons.system) systems;
   inherit (lib.vim) mkVim;
+
+  mkUserHomeConfiguration =
+    {
+      host,
+      system ? "x86_64-linux",
+      username ? "user",
+    }:
+
+    let
+      pkgsLib = inputs.nixpkgs.lib;
+
+      userConfig = (import ../hosts/${host}/users.nix).${username} // {
+        inherit username;
+        homeDirectory = "/home/${username}";
+      };
+    in
+
+    mkHomeConfiguration {
+      inherit system userConfig;
+
+      specialArgs = {
+        inherit self inputs;
+      };
+
+      modules = [
+        self.homeModules.users
+        "${inputs.impermanence}/home-manager.nix"
+        { home._nixosModuleImported = true; }
+      ]
+      ++ resolveHomeImports self (userConfig.imports or [ ]);
+    };
 
   genericConfigurations = builtins.listToAttrs (
     map (system: {
@@ -43,5 +74,13 @@ in
       ./user.nix
     ];
   };
+  "user@k8" = mkUserHomeConfiguration {
+    host = "k8";
+  };
+
+  "user@g3" = mkUserHomeConfiguration {
+    host = "g3";
+  };
+
 }
 // genericConfigurations

@@ -16,19 +16,19 @@ lib.nixos.mkHost {
     ./apps.nix
     ./disko.nix
     ./hardware-configuration.nix
-    ./home-manager.nix
     ./overlays.nix
     ./system.nix
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
     inputs.impermanence.nixosModules.impermanence
+    self.buildModules.qemu-aarch64
     self.nixosModules.cachyos
     self.nixosModules.desktop
     self.nixosModules.gaming
     self.nixosModules.garbage
+    self.nixosModules.home-manager
     self.nixosModules.performance
     self.nixosModules.plasma
     self.nixosModules.virt
-    self.buildModules.qemu-aarch64
   ];
 }

@@ -2,6 +2,13 @@
   user = {
     enableVirt = true;
     homeManager = true;
+    home.stateVersion = "26.05";
+
+    imports = [
+      "homeModules.args"
+      "homeModules.profiles.base"
+      "homeModules.profiles.desktop"
+    ];
 
     git = {
       name = "Victor";
@@ -24,5 +31,8 @@
         # ".zsh_history"
       ];
     };
+    xdgConfigFiles = { };
+    homeFiles = { };
+    packages = [ ];
   };
 }

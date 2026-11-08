@@ -124,37 +124,85 @@
         let
           pkgs = inputs.nixpkgs.legacyPackages.${system};
 
-          provisionG3 = pkgs.writeShellApplication {
-            name = "provision-g3";
+          mkProvision =
+            {
+              name,
+              host,
+              targetHost,
+              description ? "Provision ${host} NixOS host",
+            }:
+            let
+              provision = pkgs.writeShellApplication {
+                name = name;
 
-            runtimeInputs = [
-              inputs.nixos-anywhere.packages.${system}.default
-            ];
+                runtimeInputs = [
+                  inputs.nixos-anywhere.packages.${system}.default
+                ];
 
-            text = ''
-              target_host="''${TARGET_HOST:-nixos@10.10.0.57}"
+                text = ''
+                  target_host="''${TARGET_HOST:-${targetHost}}"
 
-              echo "WARNING: DESTRUCTIVE OPERATION"
-              echo "Target: $target_host"
-              echo "Configuration: g3"
-              echo
-              echo "This operation may destroy existing data."
-              echo
+                  echo "WARNING: DESTRUCTIVE OPERATION"
+                  echo "Target: $target_host"
+                  echo "Configuration: ${host}"
+                  echo
+                  echo "This operation may destroy existing data."
+                  echo
 
-              read -r -p "Type 'PROVISION-G3' to continue: " confirmation
+                  read -r -p "Type '${host}' to continue: " confirmation
 
-              if [[ "$confirmation" != "PROVISION-G3" ]]; then
-                echo "Aborted."
-                exit 1
-              fi
+                  if [[ "$confirmation" != "${host}" ]]; then
+                    echo "Aborted."
+                    exit 1
+                  fi
 
-              exec nixos-anywhere \
-                --flake .#g3 \
-                --target-host "$target_host" \
-                --build-on local \
-                "$@"
-            '';
-          };
+                  exec nixos-anywhere \
+                    --flake ".#${host}" \
+                    --target-host "$target_host" \
+                    --build-on local \
+                    "$@"
+                '';
+              };
+            in
+            {
+              type = "app";
+              program = "${provision}/bin/${name}";
+              meta.description = description;
+            };
+
+          mkInstallHome =
+            {
+              name,
+              targetHost,
+              homeConfiguration,
+            }:
+
+            let
+              app = pkgs.writeShellApplication {
+                inherit name;
+
+                runtimeInputs = [
+                  pkgs.openssh
+                  inputs.home-manager.packages.${system}.default
+                ];
+
+                text = ''
+                  target_host="''${TARGET_HOST:-${targetHost}}"
+
+                  echo "Deploying Home Manager configuration to $target_host"
+
+                  exec ssh "$target_host" \
+                    'nix run home-manager -- switch --flake "github:barnaby0x0/nix-config/develop#${homeConfiguration}" --refresh' \
+                    "$@"
+                '';
+              };
+            in
+            {
+              type = "app";
+              program = "${app}/bin/${name}";
+              meta.description = "Deploy Home Manager configuration ${homeConfiguration}";
+            };
+
         in
         {
           colmena = {
@@ -163,10 +211,28 @@
             meta.description = "Colmena deployment tool";
           };
 
-          install-g3 = {
-            type = "app";
-            program = "${provisionG3}/bin/provision-g3";
-            meta.description = "Install G3 NixOS host";
+          install-g3 = mkProvision {
+            name = "install-g3";
+            host = "g3";
+            targetHost = "nixos@10.10.0.57";
+          };
+
+          install-k8 = mkProvision {
+            name = "install-k8";
+            host = "k8";
+            targetHost = "nixos@10.10.0.12";
+          };
+
+          install-home-k8 = mkInstallHome {
+            name = "install-home-k8";
+            targetHost = "user@10.10.0.12";
+            homeConfiguration = "user@k8";
+          };
+
+          install-home-g3 = mkInstallHome {
+            name = "install-home-g3";
+            targetHost = "user@10.10.0.57";
+            homeConfiguration = "user@g3";
           };
         }
       );

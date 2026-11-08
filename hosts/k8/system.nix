@@ -124,6 +124,7 @@
     directories = [
       "/var/lib/nixos"
       "/var/log"
+      "/var/lib/sops-nix"
     ];
 
     files = [
@@ -131,42 +132,9 @@
     ];
 
     users.user = {
-      directories = [
-        ".config"
-        "Downloads"
-        "Music"
-        "Pictures"
-        "Documents"
-        "Videos"
-        "Workspace"
-        ".dotfiles"
-        ".password-store"
-        ".local/state/nix-config"
-
-        {
-          directory = ".gnupg";
-          mode = "0700";
-        }
-        {
-          directory = ".ssh";
-          mode = "0700";
-        }
-        {
-          directory = ".nixops";
-          mode = "0700";
-        }
-        {
-          directory = ".local/share/keyrings";
-          mode = "0700";
-        }
-        ".local/share/direnv"
-      ];
-      files = [
-        ".bash_history"
-        ".gitconfig"
-      ];
+      directories = [ ];
+      files = [ ];
     };
-
   };
 
   users.users.user.shell = pkgs.zsh;
@@ -225,36 +193,46 @@
   '';
 
   environment.systemPackages = with pkgs; [
-    self.packages.${system}.bootstrap
-    git
-    wget
-    curl
-    pciutils
-    usbutils
-    htop
+    fzf
+    go
     btop
+    curl
     fastfetch
-    brave
-    zsh
-    vscodium
-    lolcat
     file
+    git
     gnupg
+    htop
+    lolcat
+    pciutils
+    self.packages.${system}.bootstrap
+    usbutils
+    vscodium
+    wget
+    zsh
+    sops
+    age
   ];
 
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
-    # pinentryPackage = pkgs.pinentry-qt; # ou pinentry-gtk2
     pinentryPackage = pkgs.pinentry-curses;
+    settings = {
+      default-cache-ttl = 34560000;
+      max-cache-ttl = 34560000;
+    };
   };
 
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
+  # nix.settings.experimental-features = [
+  #   "nix-command"
+  #   "flakes"
+  # ];
 
   nix.settings = {
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     trusted-users = [
       "root"
       "user"
