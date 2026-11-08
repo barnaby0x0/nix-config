@@ -48,24 +48,14 @@ in
     system = "x86_64-linux";
 
     specialArgs = {
-      inherit inputs self;
-      users = import ../hosts/k8/users.nix;
+      inherit self inputs;
     };
 
+    userConfig = (import ../hosts/k8/users.nix).user;
+
     modules = [
-      # ../modules/home-manager
-      # ../hosts/k8/home-manager-user.nix
-      self.homeModules.profiles.base
-      self.homeModules.profiles.desktop
-      self.homeModules.args
-      # ../hosts/k8/users.nix
-      ({ users, ... }: {
-        home.username = "user";
-        home.homeDirectory = "/home/user";
-        home.stateVersion = users.user.home.stateVersion;
-      })
+      self.homeModules.users
     ];
   };
-
 }
 // genericConfigurations
