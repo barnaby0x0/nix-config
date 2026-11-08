@@ -15,9 +15,14 @@ let
   mkHomeConfiguration = import ./configuration.nix {
     inherit home-manager mkPkgs;
   };
+
+  resolveHomeImports = import ./imports.nix {
+    inherit nixpkgs;
+  };
+
 in
 {
-  inherit mkPkgs mkHomeConfiguration;
+  inherit mkPkgs mkHomeConfiguration resolveHomeImports;
 
   inherit (userConfig)
     defaultUserConfig

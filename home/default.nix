@@ -5,7 +5,7 @@
 }:
 
 let
-  inherit (lib.homeManager) mkHomeConfiguration loadUserConfig;
+  inherit (lib.homeManager) mkHomeConfiguration loadUserConfig resolveHomeImports;
   inherit (lib.commons.system) systems;
   inherit (lib.vim) mkVim;
 
@@ -37,11 +37,7 @@ let
         "${inputs.impermanence}/home-manager.nix"
         { home._nixosModuleImported = true; }
       ]
-      ++ map (
-        imp:
-        pkgsLib.attrByPath (pkgsLib.splitString "." imp) (throw "Import Home Manager introuvable : ${imp}")
-          self
-      ) (userConfig.imports or [ ]);
+      ++ resolveHomeImports self (userConfig.imports or [ ]);
     };
 
   genericConfigurations = builtins.listToAttrs (
