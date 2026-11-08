@@ -68,17 +68,4 @@
       lib.attrByPath (lib.splitString "." imp) (throw "Import Home Manager introuvable : ${imp}") self
     ) (user.imports or [ ]);
   }) (lib.filterAttrs (_: user: user.homeManager or false) users);
-
-  # home-manager.users = lib.mapAttrs
-  #   (_: user: {
-  #     _module.args.userConfig = user;
-
-  #     imports = [
-  #       self.homeModules.users
-  #     ];
-  #   })
-  #   (lib.filterAttrs
-  #     (_: user: user.homeManager or false)
-  #     users
-  #   );
 }

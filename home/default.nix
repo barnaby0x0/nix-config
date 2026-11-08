@@ -44,20 +44,6 @@ in
     ];
   };
 
-  # "user@k8" = mkHomeConfiguration {
-  #   system = "x86_64-linux";
-
-  #   specialArgs = {
-  #     inherit self inputs;
-  #   };
-
-  #   userConfig = (import ../hosts/k8/users.nix).user;
-
-  #   modules = [
-  #     self.homeModules.users
-  #   ];
-  # };
-
   "user@k8" =
     let
       # userConfig = (import ../hosts/k8/users.nix).user;
