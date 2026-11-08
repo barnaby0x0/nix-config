@@ -57,32 +57,44 @@
     inherit self inputs;
   };
 
-# home-manager.users = lib.mapAttrs
-#   (_: user: {
-#     imports = [
-#       self.homeModules.profiles.base
-#       self.homeModules.profiles.desktop
-#       self.homeModules.args
-#     ];
+  # home-manager.users = lib.mapAttrs
+  #   (_: user: {
+  #     imports = [
+  #       self.homeModules.profiles.base
+  #       self.homeModules.profiles.desktop
+  #       self.homeModules.args
+  #     ];
 
-#     home.stateVersion = user.home.stateVersion;
-#     my.user.git = user.git;
-#   })
-#   (lib.filterAttrs
-#     (_: user: user.homeManager or false)
-#     users
-#   );
+  #     home.stateVersion = user.home.stateVersion;
+  #     my.user.git = user.git;
+  #   })
+  #   (lib.filterAttrs
+  #     (_: user: user.homeManager or false)
+  #     users
+  #   );
 
-  home-manager.users = lib.mapAttrs
-    (_: user: {
-      _module.args.userConfig = user;
+  home-manager.users = lib.mapAttrs (_: user: {
+    _module.args.userConfig = user;
 
-      imports = [
-        self.homeModules.users
-      ];
-    })
-    (lib.filterAttrs
-      (_: user: user.homeManager or false)
-      users
-    );
+    imports = [
+      self.homeModules.users
+    ]
+    ++ map (
+      imp:
+      lib.attrByPath (lib.splitString "." imp) (throw "Import Home Manager introuvable : ${imp}") self
+    ) (user.imports or [ ]);
+  }) (lib.filterAttrs (_: user: user.homeManager or false) users);
+
+  # home-manager.users = lib.mapAttrs
+  #   (_: user: {
+  #     _module.args.userConfig = user;
+
+  #     imports = [
+  #       self.homeModules.users
+  #     ];
+  #   })
+  #   (lib.filterAttrs
+  #     (_: user: user.homeManager or false)
+  #     users
+  #   );
 }
