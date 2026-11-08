@@ -16,7 +16,6 @@ lib.nixos.mkHost {
     ./apps.nix
     ./disko.nix
     ./hardware-configuration.nix
-    ./home-manager.nix
     ./overlays.nix
     ./system.nix
     inputs.disko.nixosModules.disko
@@ -27,6 +26,7 @@ lib.nixos.mkHost {
     self.nixosModules.desktop
     self.nixosModules.gaming
     self.nixosModules.garbage
+    self.nixosModules.home-manager
     self.nixosModules.performance
     self.nixosModules.plasma
     self.nixosModules.virt

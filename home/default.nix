@@ -58,7 +58,12 @@ in
       self.homeModules.profiles.base
       self.homeModules.profiles.desktop
       self.homeModules.args
-      ../hosts/k8/users.nix
+      # ../hosts/k8/users.nix
+      ({ users, ... }: {
+        home.username = "user";
+        home.homeDirectory = "/home/user";
+        home.stateVersion = users.user.home.stateVersion;
+      })
     ];
   };
 
