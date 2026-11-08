@@ -132,31 +132,8 @@
     ];
 
     users.user = {
-      directories = [
-        ".config"
-        ".dotfiles"
-        ".local/state/nix-config"
-        ".password-store"
-        ".secret"
-        ".hist"
-        {
-          directory = ".gnupg";
-          mode = "0700";
-        }
-        {
-          directory = ".ssh";
-          mode = "0700";
-        }
-        {
-          directory = ".local/share/keyrings";
-          mode = "0700";
-        }
-        ".local/share/direnv"
-      ];
-      files = [
-        ".bash_history"
-        ".gitconfig"
-      ];
+      directories = [ ];
+      files = [ ];
     };
   };
 
