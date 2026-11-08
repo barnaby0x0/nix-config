@@ -58,7 +58,7 @@ in
       self.homeModules.profiles.base
       self.homeModules.profiles.desktop
       self.homeModules.args
-      ../users.nix
+      ../hosts/k8/users.nix
     ];
   };
 
