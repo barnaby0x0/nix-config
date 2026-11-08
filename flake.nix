@@ -234,87 +234,8 @@
             targetHost = "user@10.10.0.57";
             homeConfiguration = "user@g3";
           };
-
-          # install-home-k8 =
-          #   let
-          #     app = pkgs.writeShellApplication {
-          #       name = "install-home-k8";
-
-          #       runtimeInputs = [
-          #         pkgs.openssh
-          #         inputs.home-manager.packages.${system}.default
-          #       ];
-
-          #       text = ''
-          #         target_host="''${TARGET_HOST:-user@10.10.0.12}"
-
-          #         echo "Deploying Home Manager configuration to $target_host"
-
-          #         exec ssh "$target_host" \
-          #           'nix run home-manager -- switch --flake "github:barnaby0x0/nix-config/develop#user@k8" --refresh' \
-          #           "$@"
-          #       '';
-          #     };
-          #   in
-          #   {
-          #     type = "app";
-          #     program = "${app}/bin/install-home-k8";
-          #     meta.description = "Deploy Home Manager configuration to k8";
-          #   };
         }
       );
-
-      # apps = forAllSystems (
-      #   system:
-      #   let
-      #     pkgs = inputs.nixpkgs.legacyPackages.${system};
-
-      #     provisionG3 = pkgs.writeShellApplication {
-      #       name = "provision-g3";
-
-      #       runtimeInputs = [
-      #         inputs.nixos-anywhere.packages.${system}.default
-      #       ];
-
-      #       text = ''
-      #         target_host="''${TARGET_HOST:-nixos@10.10.0.57}"
-
-      #         echo "WARNING: DESTRUCTIVE OPERATION"
-      #         echo "Target: $target_host"
-      #         echo "Configuration: g3"
-      #         echo
-      #         echo "This operation may destroy existing data."
-      #         echo
-
-      #         read -r -p "Type 'PROVISION-G3' to continue: " confirmation
-
-      #         if [[ "$confirmation" != "PROVISION-G3" ]]; then
-      #           echo "Aborted."
-      #           exit 1
-      #         fi
-
-      #         exec nixos-anywhere \
-      #           --flake .#g3 \
-      #           --target-host "$target_host" \
-      #           --build-on local \
-      #           "$@"
-      #       '';
-      #     };
-      #   in
-      #   {
-      #     colmena = {
-      #       type = "app";
-      #       program = "${inputs.colmena.packages.${system}.colmena}/bin/colmena";
-      #       meta.description = "Colmena deployment tool";
-      #     };
-
-      #     install-g3 = {
-      #       type = "app";
-      #       program = "${provisionG3}/bin/provision-g3";
-      #       meta.description = "Install G3 NixOS host";
-      #     };
-      #   }
-      # );
 
       colmenaHive = colmena.lib.makeHive {
         meta = {
