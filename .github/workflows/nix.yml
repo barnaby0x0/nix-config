@@ -47,7 +47,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        host: [gaming, g3]
+        host: [k8, g3]
     steps:
       # Les runners ont ~14 Go libres, insuffisant pour un host avec bureau/jeux
       - name: Free disk space
