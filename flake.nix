@@ -206,7 +206,7 @@
                   echo "Deploying Home Manager configuration to $target_host"
 
                   exec ssh "$target_host" \
-                    'nix run home-manager -- switch --flake "github:barnaby0x0/nix-config/develop#user@k8"' \
+                    'nix run home-manager -- switch --flake "github:barnaby0x0/nix-config/develop#user@k8" --refresh' \
                     "$@"
                 '';
               };

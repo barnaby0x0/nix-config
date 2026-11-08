@@ -49,12 +49,12 @@ in
 
     specialArgs = {
       inherit inputs self;
-      users = import ./hosts/k8/users.nix;
+      users = import ../hosts/k8/users.nix;
     };
 
     modules = [
-      ./modules/home
-      ./hosts/k8/home-manager-user.nix
+      ../modules/home-manager
+      ../hosts/k8/home-manager-user.nix
     ];
   };
 
