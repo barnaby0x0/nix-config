@@ -10,10 +10,15 @@
 
     persistence = {
       directories = [
-        "Téléchargements"
-        "Bureau"
+        "Documents"
         ".local/share/Steam"
         ".steam"
+        "Bureau"
+        "Downloads"
+        "Pictures"
+        "Téléchargements"
+        "Videos"
+        "Workspace"
         {
           directory = ".zsh";
           mode = "0700";
@@ -21,7 +26,6 @@
       ];
       files = [
         ".p10k.zsh"
-        # ".zsh_history"
       ];
     };
   };

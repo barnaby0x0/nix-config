@@ -22,6 +22,7 @@ lib.nixos.mkHost {
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
     inputs.impermanence.nixosModules.impermanence
+    self.buildModules.qemu-aarch64
     self.nixosModules.cachyos
     self.nixosModules.desktop
     self.nixosModules.gaming
@@ -29,6 +30,5 @@ lib.nixos.mkHost {
     self.nixosModules.performance
     self.nixosModules.plasma
     self.nixosModules.virt
-    self.buildModules.qemu-aarch64
   ];
 }

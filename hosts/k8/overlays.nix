@@ -26,6 +26,6 @@
       });
     })
 
-    self.overlays.brave
+    # self.overlays.brave
   ];
 }

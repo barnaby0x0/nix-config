@@ -17,11 +17,8 @@
   home-manager.users = inputs.nixpkgs.lib.mapAttrs (_: user: {
     imports = [
       self.homeModules.args
-      self.homeModules.options.git
-      self.homeModules.programs.git
-      self.homeModules.programs.vim
-      self.homeModules.programs.terminator
-      self.homeModules.programs.shell
+      self.homeModules.profiles.base
+      self.homeModules.profiles.desktop
     ];
 
     home.stateVersion = "26.05";
