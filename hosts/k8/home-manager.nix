@@ -24,10 +24,20 @@
     home.stateVersion = "26.05";
     my.user.git = user.git;
 
-    home.packages = with pkgs; [
-      fzf
-      go
-    ];
+    # home.packages = with pkgs; [];
+
+    home.file.".terraformrc".text = ''
+      plugin_cache_dir = "${config.home.homeDirectory}/.terraform.d/plugin-cache"
+      plugin_cache_may_break_dependency_lock_file = true
+
+      provider_installation {
+        dev_overrides {
+          "victor/yamlutils" = "${config.home.homeDirectory}/go/bin"
+        }
+
+        direct {}
+      }
+    '';
 
     home.persistence."/nix/persist" = {
       directories = user.persistence.directories;

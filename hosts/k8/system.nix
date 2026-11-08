@@ -217,6 +217,10 @@
     enable = true;
     enableSSHSupport = true;
     pinentryPackage = pkgs.pinentry-curses;
+    settings = {
+      default-cache-ttl = 34560000;
+      max-cache-ttl = 34560000;
+    };
   };
 
   # nix.settings.experimental-features = [
