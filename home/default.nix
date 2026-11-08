@@ -43,5 +43,20 @@ in
       ./user.nix
     ];
   };
+
+  "user@k8" = mkHomeConfiguration {
+    system = "x86_64-linux";
+
+    specialArgs = {
+      inherit inputs self;
+      users = import ./hosts/k8/users.nix;
+    };
+
+    modules = [
+      ./modules/home
+      ./hosts/k8/home-manager-user.nix
+    ];
+  };
+
 }
 // genericConfigurations
