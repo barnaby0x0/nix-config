@@ -22,6 +22,5 @@
     packages = [ "btop" ];
 
     home.file.".config/bashtop.cfg".source = ./files/bashtop;
-  }
-  // (import ./users/user);
+  };
 }
