@@ -232,13 +232,11 @@
   environment.systemPackages = with pkgs; [
     fzf
     go
-    btop
     curl
     fastfetch
     file
     git
     gnupg
-    htop
     lolcat
     pciutils
     self.packages.${system}.bootstrap
