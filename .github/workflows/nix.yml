@@ -75,3 +75,6 @@ jobs:
           nix build \
             .#nixosConfigurations.${{ matrix.host }}.config.system.build.toplevel \
             --no-link --print-build-logs
+      - name: Build Home configuration $ {{ matrix.host }}
+        run: |
+          nix build .#homeConfigurations."user@${{ matrix.host }}".activationPackage --show-trace
