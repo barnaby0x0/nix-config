@@ -237,7 +237,6 @@
     file
     git
     gnupg
-    lolcat
     pciutils
     self.packages.${system}.bootstrap
     usbutils
