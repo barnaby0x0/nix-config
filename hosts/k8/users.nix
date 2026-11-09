@@ -17,6 +17,7 @@
 
     persistence = {
       directories = [
+        "TEST"
         # ".config"
         # ".dotfiles"
         # ".hist"
