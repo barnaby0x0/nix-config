@@ -4,8 +4,8 @@
   environment.systemPackages = with pkgs; [
     bat
     bmon
-    btop
-    htop
+    # btop
+    # htop
     mc
     tree
     tmux
