@@ -19,9 +19,8 @@
       directories = [ ];
       files = [ ];
     };
-    packages = [ "btop" ];
+    # packages = [ "btop" ];
 
-    home.file.".config/bashtop.cfg".source = ./files/bashtop;
-  }
-  // (import ./users/user);
+    # home.file.".config/bashtop.cfg".source = ./files/bashtop;
+  };
 }
