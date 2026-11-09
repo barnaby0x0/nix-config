@@ -21,6 +21,6 @@
     };
     packages = [ "btop" ];
 
-    home.file.".config/bashtop.cfg".source = ./files/bashtop;
+    # home.file.".config/bashtop.cfg".source = ./files/bashtop;
   };
 }
