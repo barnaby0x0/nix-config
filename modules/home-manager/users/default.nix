@@ -15,6 +15,13 @@
   # home.username = userConfig.username;
   # home.homeDirectory = userConfig.homeDirectory;
 
+  # programs.alacritty = {
+  #   enable = true;
+  #   theme = "solarized_dark";
+  # };
+
+  # programs.awscli.enable = true;
+
   home.username = lib.mkDefault (userConfig.username or "user");
   home.homeDirectory = lib.mkDefault (userConfig.homeDirectory or "/home/user");
   home.stateVersion = userConfig.home.stateVersion;
