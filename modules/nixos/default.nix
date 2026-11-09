@@ -9,4 +9,5 @@
   virt = import ./virt.nix;
   sops = import ./sops.nix;
   home-manager = import ./home-manager;
+  services = import ./services;
 }
