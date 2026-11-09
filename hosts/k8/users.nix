@@ -32,6 +32,7 @@
         "Téléchargements"
         "Videos"
         "Workspace"
+        "TEST"
         {
           directory = ".gnupg";
           mode = "0700";
