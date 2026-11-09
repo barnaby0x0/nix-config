@@ -18,6 +18,7 @@ lib.nixos.mkHost {
     ./hardware-configuration.nix
     ./overlays.nix
     ./system.nix
+    ./modules.nix
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
     inputs.impermanence.nixosModules.impermanence
@@ -29,6 +30,7 @@ lib.nixos.mkHost {
     self.nixosModules.home-manager
     self.nixosModules.performance
     self.nixosModules.plasma
+    self.nixosModules.services
     self.nixosModules.virt
   ];
 }
