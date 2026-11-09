@@ -10,7 +10,6 @@
   ];
 
   home.file.".terraformrc".source = ../files/commons/terraform/terraformrc;
-
   home.file.".config/bashtop.cfg".source = ../files/commons/btop/bashtop.cfg;
 
   home.packages = with pkgs; [
