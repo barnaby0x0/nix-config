@@ -15,6 +15,10 @@
       email = "victor@mail.net";
     };
 
+    programs = {
+      firefox.enable = true;
+    };
+
     persistence = {
       directories = [
         "Téléchargements"
