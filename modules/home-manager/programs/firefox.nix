@@ -1,6 +1,13 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 let
+  cfg = config.my.programs.firefox;
+
   extensions = {
     # Dark Reader
     "addon@darkreader.org" = "darkreader";
@@ -39,25 +46,29 @@ let
   }) extensions;
 in
 {
-  programs.firefox = {
-    enable = true;
-    package = pkgs.firefox;
+  options.my.programs.firefox.enable = lib.mkEnableOption "Firefox";
+  
+  config = lib.mkIf cfg.enable {
+    programs.firefox = {
+      enable = true;
+      package = pkgs.firefox;
 
-    profiles.default = {
-      id = 0;
-      name = "default";
-      isDefault = true;
+      profiles.default = {
+        id = 0;
+        name = "default";
+        isDefault = true;
 
-      settings = {
-        # Disk cache
-        "browser.cache.disk.enable" = true;
-        "browser.cache.disk.parent_directory" = "/tmp/firefox/cache";
+        settings = {
+          # Disk cache
+          "browser.cache.disk.enable" = true;
+          "browser.cache.disk.parent_directory" = "/tmp/firefox/cache";
 
-        # Memory cache
-        "browser.cache.memory.enable" = true;
+          # Memory cache
+          "browser.cache.memory.enable" = true;
+        };
       };
-    };
 
-    policies.ExtensionSettings = extensionSettings;
+      policies.ExtensionSettings = extensionSettings;
+    };
   };
 }
