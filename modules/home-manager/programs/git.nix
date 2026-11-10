@@ -1,7 +1,19 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 {
-  programs.git = {
+  options.my.user.git = {
+    name = lib.mkOption {
+      type = lib.types.str;
+      description = "Git user name.";
+    };
+
+    email = lib.mkOption {
+      type = lib.types.str;
+      description = "Git user email.";
+    };
+  };
+
+  config.programs.git = {
     enable = true;
 
     settings = {
