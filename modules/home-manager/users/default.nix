@@ -27,7 +27,7 @@
   home.stateVersion = userConfig.home.stateVersion;
 
   my.user.git = userConfig.git;
-  my.programs = userConfig.programs;
+  my.programs = userConfig.programs or { };
 
   home.packages = map (package: pkgs.${package}) (userConfig.packages or [ ]);
 
