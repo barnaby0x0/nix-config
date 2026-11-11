@@ -7,8 +7,6 @@
 
 {
   imports = [
-    # ../../../modules/home-manager
-    # self.homeModules.default
     self.homeModules.args
     self.homeModules.programs.git
     self.homeModules.programs.vim
