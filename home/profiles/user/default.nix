@@ -9,7 +9,6 @@
 
   imports = [
     self.homeModules.args
-    self.homeModules.options.git
     self.homeModules.programs.git
 
     self.homeModules.programs.common
