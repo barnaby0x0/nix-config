@@ -56,5 +56,8 @@ in
     # zramSwap.enable = true;                   # swap compressé en RAM plutôt que sur disque
     # services.journald.extraConfig = "SystemMaxUse=500M";
 
+    # checking
+    # sudo smartctl -a /dev/nvme0n1 | grep -E 'Data Units Written|Percentage Used'
+
   };
 }
