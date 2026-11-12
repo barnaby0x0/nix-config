@@ -9,7 +9,7 @@
     libreoffice
     rpi-imager
     # skanpage
-    terminator
+    # terminator
     tilda
     transmission_4-gtk
   ];

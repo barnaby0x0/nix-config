@@ -1,6 +1,13 @@
 { config, lib, ... }:
 
+let
+  cfg = config.my.programs.git;
+in
+
 {
+
+  options.my.programs.git.enable = lib.mkEnableOption "Git";
+
   options.my.user.git = {
     name = lib.mkOption {
       type = lib.types.str;
@@ -13,16 +20,18 @@
     };
   };
 
-  config.programs.git = {
-    enable = true;
+  config = lib.mkIf cfg.enable {
+    programs.git = {
+      enable = true;
 
-    settings = {
-      user = {
-        name = config.my.user.git.name;
-        email = config.my.user.git.email;
+      settings = {
+        user = {
+          name = config.my.user.git.name;
+          email = config.my.user.git.email;
+        };
+
+        status.showUntrackedFiles = "yes";
       };
-
-      status.showUntrackedFiles = "yes";
     };
   };
 }
