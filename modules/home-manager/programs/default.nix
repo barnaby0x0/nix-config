@@ -6,5 +6,5 @@
   terminator = import ./terminator.nix;
   tmux = import ./tmux.nix;
   brave = import ./brave.nix;
-  bashtop = import ./bashtop.nix;
+  # bashtop = import ./bashtop.nix;
 }

@@ -26,7 +26,7 @@
   home.homeDirectory = lib.mkDefault (userConfig.homeDirectory or "/home/user");
   home.stateVersion = userConfig.home.stateVersion;
 
-  my.user.git = userConfig.git;
+  my.user.git = userConfig.git or { };
   my.programs = userConfig.programs or { };
 
   home.packages = map (package: pkgs.${package}) (userConfig.packages or [ ]);

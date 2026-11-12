@@ -5,9 +5,10 @@
     home.stateVersion = "26.05";
 
     imports = [
-      "homeModules.args"
-      "homeModules.profiles.base"
-      "homeModules.profiles.desktop"
+      "homeModules.programs"
+      # "homeModules.args"
+      # "homeModules.profiles.base"
+      # "homeModules.profiles.desktop"
     ];
 
     git = {
@@ -16,7 +17,8 @@
     };
 
     programs = {
-      firefox.enable = true;
+      # firefox.enable = true;
+      # terminator.enable = true;
     };
 
     persistence = {

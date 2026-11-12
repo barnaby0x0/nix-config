@@ -1,49 +1,50 @@
 {
-config,
-lib,
-pkgs,
-...
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 
 let
-cfg = config.my.programs.brave;
+  cfg = config.my.programs.terminator;
 in
 
 {
-options.my.programs.brave.enable = lib.mkEnableOption "Brave";
-config = lib.mkIf cfg.enable {
-  home.packages = with pkgs; [
-    terminator
-  ];
+  options.my.programs.terminator.enable = lib.mkEnableOption "Terminator";
 
-  home.file.".config/terminator/config".text = ''
-    [global_config]
+  config = lib.mkIf cfg.enable {
+    home.packages = with pkgs; [
+      terminator
+    ];
 
-    [keybindings]
-      broadcast_off = <Alt>o
-      broadcast_group = <Alt>g
-      broadcast_all = <Alt>a
+    home.file.".config/terminator/config".text = ''
+      [global_config]
 
-    [profiles]
-      [[default]]
-        background_color = "#300a24"
-        background_darkness = 0.96
-        background_type = transparent
-        foreground_color = "#ffffff"
-        show_titlebar = False
-        scrollbar_position = hidden
+      [keybindings]
+        broadcast_off = <Alt>o
+        broadcast_group = <Alt>g
+        broadcast_all = <Alt>a
 
-    [layouts]
-      [[default]]
-        [[[window0]]]
-          type = Window
-          parent = ""
-          size = 900, 400
-        [[[child1]]]
-          type = Terminal
-          parent = window0
+      [profiles]
+        [[default]]
+          background_color = "#300a24"
+          background_darkness = 0.96
+          background_type = transparent
+          foreground_color = "#ffffff"
+          show_titlebar = False
+          scrollbar_position = hidden
 
-    [plugins]
-  '';
- };
+      [layouts]
+        [[default]]
+          [[[window0]]]
+            type = Window
+            parent = ""
+            size = 900, 400
+          [[[child1]]]
+            type = Terminal
+            parent = window0
+
+      [plugins]
+    '';
+  };
 }
