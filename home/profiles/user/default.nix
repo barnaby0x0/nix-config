@@ -8,14 +8,25 @@
   };
 
   imports = [
-    self.homeModules.args
-    self.homeModules.programs.git
+    self.homeModules.profiles.base
+    # self.homeModules.args
+    # self.homeModules.programs.git
 
-    self.homeModules.programs.common
-    self.homeModules.programs.shell
-    self.homeModules.programs.git
-    self.homeModules.programs.vim
-    self.homeModules.programs.terminator
-    self.homeModules.programs.tmux
+    # self.homeModules.programs.common
+    # self.homeModules.programs.shell
+    # self.homeModules.programs.git
+    # self.homeModules.programs.vim
+    # self.homeModules.programs.terminator
+    # self.homeModules.programs.tmux
   ];
+
+  my.programs.git.enable = true;
+  my.programs = {
+    # git.enable = true;
+    shell.enable = true;
+    git.enable = true;
+    vim.enable = true;
+    terminator.enable = true;
+    tmux.enable = true;
+  };
 }
