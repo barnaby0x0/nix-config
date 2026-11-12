@@ -1,4 +1,5 @@
 {
+  all = import ./all.nix;
   common = import ./common.nix;
   git = import ./git.nix;
   shell = import ./shell.nix;

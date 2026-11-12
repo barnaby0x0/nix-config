@@ -5,8 +5,9 @@
     home.stateVersion = "26.05";
 
     imports = [
-      "homeModules.profiles.base"
-      # "homeModules.profiles.g3"
+      # "homeModules.profiles.base"
+      "homeModules.profiles.g3"
+      # "homeModules.programs.all"
     ];
 
     git = {

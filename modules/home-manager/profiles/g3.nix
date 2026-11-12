@@ -2,10 +2,7 @@
 
 {
 
-  imports = [
-    self.homeModules.args
-  ]
-  ++ lib.attrValues self.homeModules.programs;
+  imports = [ self.homeModules.profiles.base ];
 
   my.programs.brave.enable = true;
   my.programs.git.enable = true;
