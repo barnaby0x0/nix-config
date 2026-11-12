@@ -20,9 +20,7 @@
     # self.homeModules.programs.tmux
   ];
 
-  my.programs.git.enable = true;
   my.programs = {
-    # git.enable = true;
     shell.enable = true;
     git.enable = true;
     vim.enable = true;
