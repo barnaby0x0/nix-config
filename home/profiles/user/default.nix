@@ -2,11 +2,6 @@
 
 {
 
-  my.user.git = {
-    name = "Victor";
-    email = "victor@mail.com";
-  };
-
   imports = [
     self.homeModules.profiles.base
     # self.homeModules.args
@@ -20,8 +15,13 @@
     # self.homeModules.programs.tmux
   ];
 
+  my.user.git = {
+    name = "Victor";
+    email = "victor@mail.com";
+  };
+
   my.programs = {
-    shell.enable = true;
+    zsh.enable = true;
     git.enable = true;
     vim.enable = true;
     terminator.enable = true;
