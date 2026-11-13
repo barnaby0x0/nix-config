@@ -3,7 +3,7 @@
   common = import ./common.nix;
   git = import ./git.nix;
   shell = import ./shell.nix;
-  vim = import ./vim.nix;
+  vim = import ./vim;
   terminator = import ./terminator.nix;
   tmux = import ./tmux.nix;
   brave = import ./brave.nix;
