@@ -80,7 +80,7 @@
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
-    extensions = with inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace; [
+    extensions = with inputs.nix-vscode-extensions.extensions.${pkgs.stdenv.hostPlatform.system}.vscode-marketplace; [
       jnoortheen.nix-ide
     ];
   };

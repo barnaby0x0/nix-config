@@ -6,7 +6,7 @@ in
 {
   inherit commons;
 
- homeManager = import ./home-manager {
+  homeManager = import ./home-manager {
     inherit (inputs) nixpkgs home-manager;
     inherit (commons) unfree;
   };
@@ -19,7 +19,9 @@ in
 
   hashicorp = import ./hashicorp;
 
+  # lib/default.nix
   nixos = import ./nixos.nix {
     inherit (inputs) nixpkgs;
+    inherit (commons) unfree;
   };
 }
