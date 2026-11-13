@@ -15,9 +15,12 @@
 #   };
 # })
 
-
 # packages/vim/default.nix  (comme terraform/packer/vault)
-{ self, inputs, lib }:
+{
+  self,
+  inputs,
+  lib,
+}:
 let
   inherit (lib.homeManager) mkPkgs;
   inherit (lib.commons.system) forAllSystems;

@@ -1,6 +1,9 @@
 lib:
 let
-  allowed = [ "vim-yaml" "veracrypt" ];
+  allowed = [
+    "vim-yaml"
+    "veracrypt"
+  ];
 in
 {
   inherit allowed;

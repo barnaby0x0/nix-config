@@ -14,10 +14,10 @@
   #   ../programs/all.nix
   # ];
 
-  _module.args.mkVim =
-    (import ../../../lib/vim {
-      inherit nixpkgs;
-    }).mkVim;
+  # _module.args.mkVim =
+  #   (import ../../../lib/vim {
+  #     inherit nixpkgs;
+  #   }).mkVim;
 
   imports = [
     ../programs/all.nix

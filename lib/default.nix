@@ -1,12 +1,14 @@
 { inputs, ... }:
 
+let
+  commons = import ./commons { inherit inputs; };
+in
 {
-  commons = import ./commons {
-    inherit inputs;
-  };
+  inherit commons;
 
-  homeManager = import ./home-manager {
+ homeManager = import ./home-manager {
     inherit (inputs) nixpkgs home-manager;
+    inherit (commons) unfree;
   };
 
   vim = import ./vim;

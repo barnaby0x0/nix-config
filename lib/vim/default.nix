@@ -1,11 +1,12 @@
 # lib/vim/default.nix
 {
-  mkVim = pkgs:
+  mkVim =
+    pkgs:
     pkgs.vim-full.customize {
       name = "vim";
       vimrcConfig.customRC = builtins.readFile ./vimrc;
       vimrcConfig.packages.myPlugins = with pkgs.vimPlugins; {
-        start = [ 
+        start = [
           # Theme
           onedark-vim
 
@@ -33,12 +34,10 @@
 
           # Encryption
           vim-gnupg
-         ];
+        ];
       };
     };
 }
-
-
 
 # { nixpkgs }:
 # let
