@@ -108,6 +108,8 @@
   };
 
   programs.zsh.enable = true;
+  
+  users.defaultUserShell = pkgs.zsh;
 
   environment = {
 
@@ -202,7 +204,6 @@
 
   users = {
     users.user.shell = pkgs.zsh;
-    users.defaultUserShell = pkgs.zsh;
     mutableUsers = false;
     users.user = {
       isNormalUser = true;
