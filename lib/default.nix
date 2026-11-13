@@ -1,17 +1,17 @@
 { inputs, ... }:
 
+let
+  commons = import ./commons { inherit inputs; };
+in
 {
-  commons = import ./commons {
-    inherit inputs;
-  };
+  inherit commons;
 
   homeManager = import ./home-manager {
     inherit (inputs) nixpkgs home-manager;
+    inherit (commons) unfree;
   };
 
-  vim = import ./vim {
-    inherit (inputs) nixpkgs;
-  };
+  vim = import ./vim;
 
   # terraform = import ./hashicorp/terraform.nix;
   # packer = import ./hashicorp/packer.nix;
@@ -19,7 +19,9 @@
 
   hashicorp = import ./hashicorp;
 
+  # lib/default.nix
   nixos = import ./nixos.nix {
     inherit (inputs) nixpkgs;
+    inherit (commons) unfree;
   };
 }

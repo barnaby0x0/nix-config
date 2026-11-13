@@ -5,7 +5,6 @@
     home.stateVersion = "26.05";
 
     imports = [
-      "homeModules.args"
       "homeModules.profiles.base"
       "homeModules.profiles.desktop"
     ];
