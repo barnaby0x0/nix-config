@@ -6,7 +6,7 @@
 
 let
   inherit (inputs) home-manager;
-  inherit (lib.homeManager) mkPkgs;
+  inherit (lib.commons) mkPkgs;
   inherit (lib.commons.system) systems forAllSystems;
 in
 forAllSystems (

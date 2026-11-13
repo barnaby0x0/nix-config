@@ -109,13 +109,7 @@
 
       nixosModules = import ./modules/nixos;
 
-      # homeModules = (import ./modules/home-manager) // {
-      #   args = {
-      #     _module.args.mkVim = lib.vim.mkVim;
-      #   };
-      # };
-
-      homeModules = (import ./modules/home-manager);
+      homeModules = import ./modules/home-manager;
 
       nixosConfigurations = {
         k8 = import ./hosts/k8 {
@@ -279,6 +273,6 @@
       };
 
       # Formatter Nix
-      formatter = forAllSystems (system: (lib.homeManager.mkPkgs system).nixfmt);
+      formatter = forAllSystems (system: (lib.commons.mkPkgs system).nixfmt);
     };
 }
