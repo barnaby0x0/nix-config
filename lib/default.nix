@@ -1,7 +1,10 @@
 { inputs, ... }:
 
 let
-  commons = import ./commons { inherit inputs; inherit (inputs) nixpkgs; };
+  commons = import ./commons {
+    inherit inputs;
+    inherit (inputs) nixpkgs;
+  };
 in
 {
   inherit commons;
