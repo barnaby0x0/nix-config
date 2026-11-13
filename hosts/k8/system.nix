@@ -60,14 +60,6 @@
   '';
 
   # Fichier statique
-  environment.etc."resolv.conf" = {
-    mode = "0644";
-    text = ''
-      nameserver 10.1.0.51
-      nameserver 1.1.1.1
-      search lan
-    '';
-  };
 
   time.timeZone = "Europe/Zurich";
 
@@ -116,83 +108,120 @@
   };
 
   programs.zsh.enable = true;
-  users.defaultUserShell = pkgs.zsh;
 
-  environment.persistence."/nix/persist" = {
-    hideMounts = true;
+  environment = {
 
-    directories = [
-      "/var/lib/nixos"
-      "/var/log"
-      "/var/lib/sops-nix"
+    # etc."resov.conf".text = ''
+    #   nameserver 1.1.1.1
+    #   nameserver 10.1.0.51
+    # '';
+
+    etc."resolv.conf" = {
+      mode = "0644";
+      text = ''
+        nameserver 10.1.0.51
+        nameserver 1.1.1.1
+        search lan
+      '';
+    };
+
+    systemPackages = with pkgs; [
+      fzf
+      go
+      curl
+      fastfetch
+      file
+      git
+      gnupg
+      pciutils
+      self.packages.${system}.bootstrap
+      usbutils
+      vscodium
+      wget
+      zsh
+      sops
+      age
     ];
 
-    files = [
-      "/etc/machine-id"
-    ];
+    persistence."/nix/persist" = {
+      hideMounts = true;
 
-    users.user = {
       directories = [
-        ".config"
-        ".dotfiles"
-        ".hist"
-        ".local"
-        ".local/state/nix-config"
-        ".password-store"
-        ".secret"
-        ".steam"
-        "Bureau"
-        "Documents"
-        "Downloads"
-        "Pictures"
-        "Téléchargements"
-        "Videos"
-        "Workspace"
-        {
-          directory = ".gnupg";
-          mode = "0700";
-        }
-        {
-          directory = ".ssh";
-          mode = "0700";
-        }
-        {
-          directory = ".local/share/keyrings";
-          mode = "0700";
-        }
+        "/var/lib/nixos"
+        "/var/log"
+        "/var/lib/sops-nix"
+      ];
 
-        {
-          directory = ".zsh";
-          mode = "0700";
-        }
-      ];
       files = [
-        ".p10k.zsh"
-        ".bash_history"
-        ".gitconfig"
+        "/etc/machine-id"
       ];
+
+      users.user = {
+        directories = [
+          ".config"
+          ".dotfiles"
+          ".hist"
+          ".local"
+          ".local/state/nix-config"
+          ".password-store"
+          ".secret"
+          ".steam"
+          "Bureau"
+          "Documents"
+          "Downloads"
+          "Pictures"
+          "Téléchargements"
+          "Videos"
+          "Workspace"
+          {
+            directory = ".gnupg";
+            mode = "0700";
+          }
+          {
+            directory = ".ssh";
+            mode = "0700";
+          }
+          {
+            directory = ".local/share/keyrings";
+            mode = "0700";
+          }
+
+          {
+            directory = ".zsh";
+            mode = "0700";
+          }
+        ];
+        files = [
+          ".p10k.zsh"
+          ".bash_history"
+          ".gitconfig"
+        ];
+      };
     };
   };
 
-  users.users.user.shell = pkgs.zsh;
-  users.mutableUsers = false;
-  users.users.user = {
-    isNormalUser = true;
+  users = {
+    users.user.shell = pkgs.zsh;
+    users.defaultUserShell = pkgs.zsh;
+    mutableUsers = false;
+    users.user = {
+      isNormalUser = true;
 
-    extraGroups = [
-      "wheel"
-      "networkmanager"
-      "video"
-      "input"
-      "audio"
-    ];
+      extraGroups = [
+        "wheel"
+        "networkmanager"
+        "video"
+        "input"
+        "audio"
+      ];
 
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP1oFq0GYt8j7vg2nNAJNzwBtqrdOUDp8CMQwLRiz4Vz user@ull"
-    ];
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP1oFq0GYt8j7vg2nNAJNzwBtqrdOUDp8CMQwLRiz4Vz user@ull"
+      ];
 
-    # Use mkpasswd
-    initialHashedPassword = "$y$j9T$TvYwvyoJ.v1jj64tTF5K61$jDWwkEw/owyBks.6xLwYIlKcLD4MJ4G062UAm757N/4";
+      # Use mkpasswd
+      initialHashedPassword = "$y$j9T$TvYwvyoJ.v1jj64tTF5K61$jDWwkEw/owyBks.6xLwYIlKcLD4MJ4G062UAm757N/4";
+    };
   };
 
   users.users.colmena = {
@@ -222,29 +251,6 @@
   ];
   security.pki.certificateFiles = [
     ./certs/proxlab-ca.crt
-  ];
-
-  environment.etc."resov.conf".text = ''
-    nameserver 1.1.1.1
-    nameserver 10.1.0.51
-  '';
-
-  environment.systemPackages = with pkgs; [
-    fzf
-    go
-    curl
-    fastfetch
-    file
-    git
-    gnupg
-    pciutils
-    self.packages.${system}.bootstrap
-    usbutils
-    vscodium
-    wget
-    zsh
-    sops
-    age
   ];
 
   programs.gnupg.agent = {

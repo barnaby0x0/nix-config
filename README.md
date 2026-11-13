@@ -110,3 +110,39 @@ Le compte, les droits et la **persistance** restent gérés côté système.
   génération.
 - **Un seul gestionnaire par utilisateur** : ne pas activer en même temps le home via NixOS
   (`homeManager = true`) et en standalone, sinon les deux écrivent les mêmes fichiers.
+
+
+## Détection du code mort
+
+Le dépôt utilise [`deadnix`](https://github.com/astro/deadnix) pour repérer les bindings, arguments et `let` inutilisés, et [`statix`](https://github.com/oppiliappan/statix) pour les anti-patterns Nix.
+
+### Vérifier
+
+```bash
+nix run nixpkgs#deadnix -- .          # liste le code inutilisé
+nix run nixpkgs#statix -- check .     # liste les anti-patterns
+```
+
+### Corriger
+
+```bash
+nix run nixpkgs#deadnix -- -e .       # supprime automatiquement
+nix run nixpkgs#statix -- fix .       # applique les corrections sûres
+git diff                              # toujours relire avant de commiter
+```
+
+### Cas particuliers
+
+- Les arguments de module laissés par convention (`{ pkgs, lib, ... }`) sont ignorés avec `--no-lambda-pattern-names`.
+- Les fichiers `.nix` jamais importés ne sont pas détectés par ces outils : renommer le fichier suspect, puis lancer `nix flake check` ou `nixos-rebuild build`. Si rien ne casse, il peut être supprimé.
+- Après suppression d'un input dans `flake.nix`, lancer `nix flake lock` pour nettoyer `flake.lock`.
+
+### Automatisation
+
+Le contrôle tourne dans `nix flake check` :
+
+```nix
+checks.${system}.deadnix = pkgs.runCommand "deadnix" { } ''
+  ${pkgs.deadnix}/bin/deadnix --fail ${./.} && touch $out
+'';
+```
