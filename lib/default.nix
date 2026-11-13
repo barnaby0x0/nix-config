@@ -9,9 +9,7 @@
     inherit (inputs) nixpkgs home-manager;
   };
 
-  vim = import ./vim {
-    inherit (inputs) nixpkgs;
-  };
+  vim = import ./vim;
 
   # terraform = import ./hashicorp/terraform.nix;
   # packer = import ./hashicorp/packer.nix;

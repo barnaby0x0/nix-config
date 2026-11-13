@@ -64,17 +64,17 @@
 
       inherit (lib.commons.system) systems forAllSystems;
 
-      mkPkgs =
-        system:
-        import inputs.nixpkgs {
-          inherit system;
+      # mkPkgs =
+      #   system:
+      #   import inputs.nixpkgs {
+      #     inherit system;
 
-          config.allowUnfreePredicate =
-            pkg:
-            builtins.elem (inputs.nixpkgs.lib.getName pkg) [
-              "vim-yaml"
-            ];
-        };
+      #     config.allowUnfreePredicate =
+      #       pkg:
+      #       builtins.elem (inputs.nixpkgs.lib.getName pkg) [
+      #         "vim-yaml"
+      #       ];
+      #   };
 
     in
     {
