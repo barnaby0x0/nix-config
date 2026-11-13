@@ -8,7 +8,9 @@
   # ++ lib.attrValues self.homeModules.programs;
   # OR
   imports = [
-    self.homeModules.args
-    self.homeModules.programs.all
+    # self.homeModules.args
+    # self.homeModules.programs.all
+    lib.vim.mkVim
+    ../programs/all.nix
   ];
 }
