@@ -30,7 +30,7 @@ jobs:
       # Même version de nixfmt que ta machine : celle du flake.lock
       - name: Check formatting
         # run: nix fmt -- --check .
-        run: nix nixfmt-tree
+        run: nix run nixpkgs#nixfmt-tree -- --ci
 
       # Évalue tous les outputs, y compris aarch64 (lima), sans rien construire
       - name: Evaluate flake
