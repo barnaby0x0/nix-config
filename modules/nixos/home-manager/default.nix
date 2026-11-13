@@ -7,19 +7,21 @@
 }:
 
 {
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
 
-  home-manager.extraSpecialArgs = {
-    inherit self inputs;
+    extraSpecialArgs = {
+      inherit self inputs;
+    };
+
+    users = lib.mapAttrs (_: user: {
+      _module.args.userConfig = user;
+
+      imports = [
+        self.homeModules.users
+      ]
+      ++ self.lib.homeManager.resolveHomeImports self (user.imports or [ ]);
+    }) (lib.filterAttrs (_: user: user.homeManager or false) users);
   };
-
-  home-manager.users = lib.mapAttrs (_: user: {
-    _module.args.userConfig = user;
-
-    imports = [
-      self.homeModules.users
-    ]
-    ++ self.lib.homeManager.resolveHomeImports self (user.imports or [ ]);
-  }) (lib.filterAttrs (_: user: user.homeManager or false) users);
 }

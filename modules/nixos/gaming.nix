@@ -4,22 +4,25 @@
 }:
 
 {
-  programs.steam = {
-    enable = true;
 
-    extraCompatPackages = with pkgs; [
-      proton-ge-bin
-    ];
+  programs = {
+    steam = {
+      enable = true;
 
-    gamescopeSession.enable = true;
-    remotePlay.openFirewall = true;
-  };
+      extraCompatPackages = with pkgs; [
+        proton-ge-bin
+      ];
 
-  programs.gamemode.enable = true;
+      gamescopeSession.enable = true;
+      remotePlay.openFirewall = true;
+    };
 
-  programs.gamescope = {
-    enable = true;
-    capSysNice = true;
+    gamemode.enable = true;
+
+    gamescope = {
+      enable = true;
+      capSysNice = true;
+    };
   };
 
   environment.systemPackages = with pkgs; [
