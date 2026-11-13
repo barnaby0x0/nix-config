@@ -4,20 +4,23 @@
 }:
 
 {
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-  services.xserver.enable = true;
+  services = {
+
+    displayManager.sddm.enable = true;
+    desktopManager.plasma6.enable = true;
+    xserver.enable = true;
+
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
+  };
 
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
-  };
-
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
   };
 
   security.rtkit.enable = true;
