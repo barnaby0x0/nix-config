@@ -1,12 +1,6 @@
-{ nixpkgs }:
-
+{ nixpkgs, unfree }:
 system:
 import nixpkgs {
   inherit system;
-
-  config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (nixpkgs.lib.getName pkg) [
-      "vim-yaml"
-    ];
+  config.allowUnfreePredicate = unfree.predicate;
 }
