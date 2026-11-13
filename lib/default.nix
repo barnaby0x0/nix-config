@@ -3,7 +3,6 @@
 let
   commons = import ./commons {
     inherit inputs;
-    inherit (inputs) nixpkgs;
   };
 in
 {
@@ -11,7 +10,7 @@ in
 
   homeManager = import ./home-manager {
     inherit (inputs) nixpkgs home-manager;
-    inherit (commons) unfree;
+    inherit (commons) mkPkgs;
   };
 
   vim = import ./vim;
