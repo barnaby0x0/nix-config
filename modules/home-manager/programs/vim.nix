@@ -8,10 +8,11 @@
 }:
 let
   cfg = config.my.programs.vim;
+  inherit ((import ../../../lib/vim)) mkVim;
 in
 {
   options.my.programs.vim.enable = lib.mkEnableOption "Vim";
   config = lib.mkIf cfg.enable {
-    home.packages = [ (self.lib.vim.mkVim pkgs) ];
+    home.packages = [ (mkVim pkgs) ];
   };
 }
