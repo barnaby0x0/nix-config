@@ -5,7 +5,7 @@
 }:
 
 let
-  inherit (lib.homeManager) mkPkgs;
+  inherit (lib.commons) mkPkgs;
   inherit (lib.commons.system) forAllSystems;
 in
 forAllSystems (

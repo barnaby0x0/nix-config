@@ -5,7 +5,7 @@
 }:
 
 let
-  inherit (lib.homeManager) mkPkgs;
+  inherit (lib.commons) mkPkgs;
   inherit (lib.commons.system) hashicorp_platforms packer_hashes forAllSystems;
 
   version = "1.16.2";

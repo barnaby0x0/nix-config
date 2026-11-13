@@ -1,7 +1,7 @@
 { inputs, ... }:
 
 let
-  commons = import ./commons { inherit inputs; };
+  commons = import ./commons { inherit inputs; inherit (inputs) nixpkgs; };
 in
 {
   inherit commons;
@@ -12,10 +12,6 @@ in
   };
 
   vim = import ./vim;
-
-  # terraform = import ./hashicorp/terraform.nix;
-  # packer = import ./hashicorp/packer.nix;
-  # vault = import ./hashicorp/vault.nix;
 
   hashicorp = import ./hashicorp;
 
