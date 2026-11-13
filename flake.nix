@@ -64,6 +64,18 @@
 
       inherit (lib.commons.system) systems forAllSystems;
 
+      mkPkgs =
+        system:
+        import inputs.nixpkgs {
+          inherit system;
+
+          config.allowUnfreePredicate =
+            pkg:
+            builtins.elem (inputs.nixpkgs.lib.getName pkg) [
+              "vim-yaml"
+            ];
+        };
+
     in
     {
 
@@ -97,11 +109,13 @@
 
       nixosModules = import ./modules/nixos;
 
-      homeModules = (import ./modules/home-manager) // {
-        args = {
-          _module.args.mkVim = lib.vim.mkVim;
-        };
-      };
+      # homeModules = (import ./modules/home-manager) // {
+      #   args = {
+      #     _module.args.mkVim = lib.vim.mkVim;
+      #   };
+      # };
+
+      homeModules = (import ./modules/home-manager);
 
       nixosConfigurations = {
         k8 = import ./hosts/k8 {
