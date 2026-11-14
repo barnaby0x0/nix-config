@@ -9,6 +9,7 @@ targets=(
   '.#nixosConfigurations.g3.config.system.build.toplevel.drvPath'
   '.#nixosConfigurations.k8.config.system.build.toplevel.drvPath'
   '.#homeConfigurations."user@k8".activationPackage.drvPath'
+  '.#packages.x86_64-linux.brave.drvPath'
 )
 
 fail=0
