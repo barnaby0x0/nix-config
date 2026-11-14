@@ -1,3 +1,4 @@
+# hosts/g3/users.nix
 {
   user = {
     enableVirt = true;
@@ -5,9 +6,7 @@
     home.stateVersion = "26.05";
 
     imports = [
-      # "homeModules.profiles.base"
       "homeModules.profiles.g3"
-      # "homeModules.programs.all"
     ];
 
     git = {
