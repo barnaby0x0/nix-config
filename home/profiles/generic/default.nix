@@ -1,7 +1,6 @@
 {
   self,
   userConfig,
-  mkVim,
   ...
 }:
 

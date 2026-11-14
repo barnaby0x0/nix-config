@@ -13,7 +13,7 @@ in
     inherit (commons) mkPkgs;
   };
 
-  vim = import ./vim;
+  # vim = import ./vim;
 
   hashicorp = import ./hashicorp;
 

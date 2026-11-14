@@ -1,4 +1,4 @@
-{ userConfig, mkVim, ... }:
+{ userConfig, ... }:
 
 {
   home.username = userConfig.username;

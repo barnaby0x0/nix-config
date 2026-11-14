@@ -27,7 +27,6 @@ builtins.mapAttrs (system: pkgs: {
     platform = platforms.${system};
     hash = hashes.${system};
   };
-
 }) pkgsFor
 
 # forAllSystems (system: {
