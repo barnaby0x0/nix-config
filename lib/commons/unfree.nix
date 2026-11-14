@@ -1,11 +1,4 @@
-lib:
-let
-  allowed = [
-    "vim-yaml"
-    "veracrypt"
-  ];
-in
-{
-  inherit allowed;
+# lib/commons/unfree.nix
+lib: allowed: {
   predicate = pkg: builtins.elem (lib.getName pkg) allowed;
 }

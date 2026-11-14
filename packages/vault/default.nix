@@ -7,7 +7,6 @@
 }:
 
 let
-  # inherit (lib.commons) mkPkgs;
   inherit (lib.commons.system) hashicorp_platforms vault_hashes forAllSystems;
 
   version = "2.2.1";

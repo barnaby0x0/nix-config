@@ -58,30 +58,20 @@
       ...
     }:
     let
+      unfreePackages = [
+        "vim-yaml"
+        "veracrypt"
+      ];
+
       lib = import ./lib {
-        inherit inputs;
+        inherit inputs unfreePackages;
       };
 
       inherit (lib.commons.system) systems forAllSystems;
-
-      # mkPkgs =
-      #   system:
-      #   import inputs.nixpkgs {
-      #     inherit system;
-
-      #     config.allowUnfreePredicate =
-      #       pkg:
-      #       builtins.elem (inputs.nixpkgs.lib.getName pkg) [
-      #         "vim-yaml"
-      #       ];
-      #   };
-
     in
     {
 
       packages = import ./packages { inherit self inputs lib; };
-
-      overlays = import ./overlays { };
 
       devShells = forAllSystems (
         system:

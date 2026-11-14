@@ -1,3 +1,4 @@
+# modules/home-manager/programs/brave.nix
 {
   config,
   lib,
@@ -15,17 +16,26 @@ in
     programs.chromium = {
       enable = true;
       package = pkgs.brave;
+      commandLineArgs = import ../../../packages/brave/args.nix;
       extensions = [
-        {
-          id = "eimadpbcbfnmbkopoojfekhnkhdbieeh";
-        } # dark-reader
-      ];
-      commandLineArgs = [
-        "--disk-cache-dir=/tmp/brave/cache"
-        "--gpu-cache-dir=/tmp/brave/gpu-cache"
-        "--enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoEncoder"
-        "--disable-features=OutdatedBuildDetector,UseChromeOSDirectVideoDecoder,AllowQt"
+        { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # dark-reader
       ];
     };
+
+    # programs.chromium = {
+    #   enable = true;
+    #   package = pkgs.brave;
+    #   extensions = [
+    #     {
+    #       id = "eimadpbcbfnmbkopoojfekhnkhdbieeh";
+    #     } # dark-reader
+    #   ];
+    #   commandLineArgs = [
+    #     "--disk-cache-dir=/tmp/brave/cache"
+    #     "--gpu-cache-dir=/tmp/brave/gpu-cache"
+    #     "--enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoEncoder"
+    #     "--disable-features=OutdatedBuildDetector,UseChromeOSDirectVideoDecoder,AllowQt"
+    #   ];
+    # };
   };
 }

@@ -34,6 +34,7 @@ let
         ./vault
         ./vim
         ./bootstrap
+        ./brave
       ];
 in
 forAllSystems (
@@ -63,9 +64,6 @@ forAllSystems (
 
   in
   nlib.mergeAttrsList (map (set: set.${system}) packageSets)
-  // {
-    brave = (pkgs.extend self.overlays.brave).brave;
-  }
   // builtins.listToAttrs (
     map (format: {
       name = format.package;
