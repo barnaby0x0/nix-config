@@ -1,19 +1,18 @@
+# packages/home-manager/default.nix
 {
   self,
   inputs,
-  lib,
+  pkgsFor,
+  ...
 }:
 
 let
   inherit (inputs) home-manager;
-  inherit (lib.commons) mkPkgs;
-  inherit (lib.commons.system) systems forAllSystems;
 in
-forAllSystems (
-  system:
-  let
-    pkgs = mkPkgs system;
 
+builtins.mapAttrs (
+  system: pkgs:
+  let
     homeManagerPackage = home-manager.packages.${system}.default;
 
     install =
@@ -102,4 +101,4 @@ forAllSystems (
     install-victor-macbook = install "victor-macbook";
     install = install null;
   }
-)
+) pkgsFor

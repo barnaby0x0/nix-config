@@ -1,11 +1,12 @@
+# packages/packer/default.nix
 {
   self,
-  inputs,
   lib,
+  pkgsFor,
+  ...
 }:
 
 let
-  inherit (lib.commons) mkPkgs;
   inherit (lib.commons.system) hashicorp_platforms packer_hashes forAllSystems;
 
   version = "1.16.2";
@@ -13,11 +14,20 @@ let
   hashes = packer_hashes;
 
 in
-forAllSystems (system: {
+builtins.mapAttrs (system: pkgs: {
   packer = self.lib.hashicorp.packer {
-    pkgs = mkPkgs system;
+    inherit pkgs;
     inherit version;
     platform = platforms.${system};
     hash = hashes.${system};
   };
-})
+}) pkgsFor
+
+# forAllSystems (system: {
+#   packer = self.lib.hashicorp.packer {
+#     pkgs = mkPkgs system;
+#     inherit version;
+#     platform = platforms.${system};
+#     hash = hashes.${system};
+#   };
+# })

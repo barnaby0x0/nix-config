@@ -7,7 +7,6 @@
 let
   inherit (lib.homeManager) mkHomeConfiguration loadUserConfig resolveHomeImports;
   inherit (lib.commons.system) systems;
-  inherit (lib.vim) mkVim;
 
   mkUserHomeConfiguration =
     {
@@ -49,7 +48,6 @@ let
 
         specialArgs = {
           inherit self;
-          inherit mkVim;
         };
 
         modules = [
@@ -67,7 +65,6 @@ in
 
     specialArgs = {
       inherit self;
-      inherit mkVim;
     };
 
     modules = [
