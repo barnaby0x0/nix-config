@@ -23,12 +23,3 @@ builtins.mapAttrs (system: pkgs: {
   };
 
 }) pkgsFor
-
-# forAllSystems (system: {
-#   terraform = self.lib.hashicorp.terraform {
-#     pkgs = mkPkgs system;
-#     inherit version;
-#     platform = platforms.${system};
-#     hash = hashes.${system};
-#   };
-# })

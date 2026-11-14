@@ -31,17 +31,3 @@ in
     lib = devshellLib;
   };
 }
-
-# { pkgs, ... }:
-
-# (import ./devops { inherit pkgs; })
-# //
-# (import ./nix { inherit pkgs; })
-# must import such thing:
-# { pkgs, ... }:
-
-# {
-#   devops = pkgs.mkShell {
-#     packages = [ pkgs.git ];
-#   };
-# }
