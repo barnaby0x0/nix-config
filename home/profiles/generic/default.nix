@@ -6,10 +6,8 @@
 
 {
   imports = [
-    # self.homeModules.args
     self.homeModules.programs.git
     self.homeModules.programs.vim
-    # self.homeModules.profiles.desktop
   ];
 
   my.user.git = {

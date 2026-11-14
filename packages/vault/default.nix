@@ -1,9 +1,4 @@
 # packages/vault/default.nix
-# {
-#   self,
-#   inputs,
-#   lib,
-# }:
 {
   pkgsFor,
   lib,
@@ -28,12 +23,3 @@ builtins.mapAttrs (system: pkgs: {
     hash = hashes.${system};
   };
 }) pkgsFor
-
-# forAllSystems (system: {
-#   vault = self.lib.hashicorp.vault {
-#     pkgs = mkPkgs system;
-#     inherit version;
-#     platform = platforms.${system};
-#     hash = hashes.${system};
-#   };
-# })
