@@ -8,4 +8,5 @@
   tmux = import ./tmux.nix;
   brave = import ./brave.nix;
   firefox = import ./firefox.nix;
+  niri = import ./niri;
 }
