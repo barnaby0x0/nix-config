@@ -22,12 +22,3 @@ builtins.mapAttrs (system: pkgs: {
     hash = hashes.${system};
   };
 }) pkgsFor
-
-# forAllSystems (system: {
-#   packer = self.lib.hashicorp.packer {
-#     pkgs = mkPkgs system;
-#     inherit version;
-#     platform = platforms.${system};
-#     hash = hashes.${system};
-#   };
-# })
