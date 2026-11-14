@@ -1,0 +1,100 @@
+{ config, lib, ... }:
+
+let
+  cfg = config.my.programs.niri;
+  noctalia = cmd: "noctalia msg ${cmd}";
+in
+{
+  options.my.programs.niri = {
+    enable = lib.mkEnableOption "niri (compositeur) intégré à Noctalia";
+
+    terminal = lib.mkOption {
+      type = lib.types.str;
+      default = "terminator";
+      description = "Terminal lancé par Mod+Return.";
+    };
+
+    layout = lib.mkOption {
+      type = lib.types.nullOr lib.types.str;
+      default = null;
+      example = "fr";
+      description = "Disposition xkb du clavier. Si null, niri utilise la configuration système.";
+    };
+  };
+
+  config = lib.mkIf cfg.enable {
+    wayland.windowManager.niri = {
+      enable = true;
+
+      # Config par défaut de niri, maintenue en amont. Tout ce qui suit la
+      # complète ou la surcharge (niri : les `binds` ultérieurs écrasent les
+      # touches en conflit).
+      enableDefaultConfig = true;
+
+      settings = {
+        # Permet aux notifications de Noctalia d'activer des fenêtres
+        debug.honor-xdg-activation-with-invalid-serial = { };
+
+        binds = {
+          "Mod+Return".spawn = [ cfg.terminal ];
+
+          "Mod+Space".spawn-sh = noctalia "panel-toggle launcher";
+          "Mod+S".spawn-sh = noctalia "panel-toggle control-center";
+          "Mod+Shift+S".spawn-sh = noctalia "settings-toggle";
+          "Mod+Shift+P".spawn-sh = noctalia "panel-toggle session";
+          "Mod+Shift+V".spawn-sh = noctalia "panel-toggle clipboard";
+          "Print".spawn-sh = noctalia "screenshot-region";
+          "Super+Alt+L".spawn-sh = noctalia "screen-lock";
+
+          "XF86AudioRaiseVolume" = {
+            _props.allow-when-locked = true;
+            spawn-sh = noctalia "volume-up";
+          };
+          "XF86AudioLowerVolume" = {
+            _props.allow-when-locked = true;
+            spawn-sh = noctalia "volume-down";
+          };
+          "XF86AudioMute" = {
+            _props.allow-when-locked = true;
+            spawn-sh = noctalia "volume-mute";
+          };
+          "XF86MonBrightnessUp" = {
+            _props.allow-when-locked = true;
+            spawn-sh = noctalia "brightness-up";
+          };
+          "XF86MonBrightnessDown" = {
+            _props.allow-when-locked = true;
+            spawn-sh = noctalia "brightness-down";
+          };
+        };
+
+        # Nœuds répétés ou paramétrés
+        _children = [
+          # Noctalia fournit barre, lanceur, notifications, verrouillage, fond d'écran...
+          { spawn-at-startup = "noctalia"; }
+
+          # Fenêtre de réglages de Noctalia en flottant
+          {
+            window-rule._children = [
+              { match._props.app-id = "dev.noctalia.Noctalia.Settings"; }
+              { open-floating = true; }
+              { default-column-width.fixed = 1080; }
+              { default-window-height.fixed = 920; }
+            ];
+          }
+
+          # Fond d'écran flouté dans la vue d'ensemble
+          {
+            layer-rule._children = [
+              { match._props.namespace = "^noctalia-backdrop"; }
+              { place-within-backdrop = true; }
+            ];
+          }
+        ]
+        ++ lib.optional (cfg.layout != null) {
+          input.keyboard.xkb.layout = cfg.layout;
+        };
+      };
+    };
+  };
+}

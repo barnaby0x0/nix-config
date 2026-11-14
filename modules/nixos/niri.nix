@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   programs.niri = {
@@ -8,13 +8,12 @@
   };
 
   environment.systemPackages = with pkgs; [
-    # Terminal de secours et accès au système si la config utilisateur casse
+    # Terminal de secours (utilisé par la config par défaut de niri) et accès
+    # au système si la config utilisateur casse
     alacritty
     xwayland-satellite
     nautilus
     vim
-    # Tous utilisés par les scripts niri, mais gardés au niveau système pour
-    # pouvoir faire de la maintenance même si les scripts cassent
     brightnessctl
     wireplumber
     wl-clipboard
@@ -26,7 +25,9 @@
   # Agent d'authentification (mate-polkit côté utilisateur)
   security.polkit.enable = true;
 
-  # Service PAM de swaylock : mot de passe, et empreinte si services.fprintd
-  # est activé sur la machine
-  security.pam.services.swaylock = { };
+  # Batterie dans la barre et le centre de contrôle de Noctalia
+  services.upower.enable = lib.mkDefault true;
+
+  # L'écran de verrouillage de Noctalia s'authentifie via le service PAM `login`
+  # (déjà présent sur NixOS), donc aucun service PAM dédié n'est nécessaire.
 }
