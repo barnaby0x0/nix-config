@@ -336,7 +336,6 @@ in
           # "Mod+Shift+underscore".move-column-to-workspace = 8;
           # "Mod+Shift+ccedilla".move-column-to-workspace = 9;
 
-
           "Mod+Shift+1".move-column-to-workspace = 1;
           "Mod+Shift+2".move-column-to-workspace = 2;
           "Mod+Shift+3".move-column-to-workspace = 3;
