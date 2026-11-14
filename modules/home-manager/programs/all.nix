@@ -10,5 +10,6 @@
     ./tmux.nix
     ./brave.nix
     ./firefox.nix
+    ./niri
   ];
 }
