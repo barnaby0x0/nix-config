@@ -301,8 +301,11 @@ in
           "Mod+Ctrl+U".move-column-to-workspace-down = { };
           "Mod+Ctrl+I".move-column-to-workspace-up = { };
 
-          "Mod+1".focus-workspace = 1;
-          "Mod+2".focus-workspace = 2;
+          # "Mod+1".focus-workspace = 1;
+          # "Mod+2".focus-workspace = 2;
+
+          "Mod+ampersand".focus-workspace = 1;
+          "Mod+eacute".focus-workspace = 2;
           "Mod+3".focus-workspace = 3;
           "Mod+4".focus-workspace = 4;
           "Mod+5".focus-workspace = 5;
@@ -310,6 +313,29 @@ in
           "Mod+7".focus-workspace = 7;
           "Mod+8".focus-workspace = 8;
           "Mod+9".focus-workspace = 9;
+
+          # Changer de workspace
+          # "Mod+ampersand".focus-workspace = 1;
+          # "Mod+eacute".focus-workspace = 2;
+          # "Mod+quotedbl".focus-workspace = 3;
+          # "Mod+apostrophe".focus-workspace = 4;
+          # "Mod+parenleft".focus-workspace = 5;
+          # "Mod+minus".focus-workspace = 6;
+          # "Mod+egrave".focus-workspace = 7;
+          # "Mod+underscore".focus-workspace = 8;
+          # "Mod+ccedilla".focus-workspace = 9;
+
+          # Déplacer la colonne active vers un workspace
+          # "Mod+Shift+ampersand".move-column-to-workspace = 1;
+          # "Mod+Shift+eacute".move-column-to-workspace = 2;
+          # "Mod+Shift+quotedbl".move-column-to-workspace = 3;
+          # "Mod+Shift+apostrophe".move-column-to-workspace = 4;
+          # "Mod+Shift+parenleft".move-column-to-workspace = 5;
+          # "Mod+Shift+minus".move-column-to-workspace = 6;
+          # "Mod+Shift+egrave".move-column-to-workspace = 7;
+          # "Mod+Shift+underscore".move-column-to-workspace = 8;
+          # "Mod+Shift+ccedilla".move-column-to-workspace = 9;
+
 
           "Mod+Shift+1".move-column-to-workspace = 1;
           "Mod+Shift+2".move-column-to-workspace = 2;
@@ -320,6 +346,16 @@ in
           "Mod+Shift+7".move-column-to-workspace = 7;
           "Mod+Shift+8".move-column-to-workspace = 8;
           "Mod+Shift+9".move-column-to-workspace = 9;
+
+          # "Mod+Shift+ampersand".move-column-to-workspace = 1;
+          # "Mod+Shift+eacute".move-column-to-workspace = 2;
+          # "Mod+Shift+quotedbl".move-column-to-workspace = 3;
+          # "Mod+Shift+apostrophe".move-column-to-workspace = 4;
+          # "Mod+Shift+parenleft".move-column-to-workspace = 5;
+          # "Mod+Shift+minus".move-column-to-workspace = 6;
+          # "Mod+Shift+egrave".move-column-to-workspace = 7;
+          # "Mod+Shift+underscore".move-column-to-workspace = 8;
+          # "Mod+Shift+ccedilla".move-column-to-workspace = 9;
 
           "Mod+BracketLeft".consume-or-expel-window-left = { };
           "Mod+BracketRight".consume-or-expel-window-right = { };

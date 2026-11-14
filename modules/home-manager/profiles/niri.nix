@@ -4,6 +4,15 @@
   imports = [ self.homeModules.profiles.base ];
 
   my.programs = {
+
+    # base applications
+    brave.enable = true;
+    git.enable = true;
+    terminator.enable = true;
+    tmux.enable = true;
+    vim.enable = true;
+    zsh.enable = true;
+
     niri = {
       enable = true;
       output = "eDP-1";
