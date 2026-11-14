@@ -9,6 +9,7 @@
       output = "eDP-1";
       scale = 1.0;
       terminal = "terminator";
+      layout = "fr";
     };
 
     # Pile Wayland utilisée par les raccourcis et les services de niri
