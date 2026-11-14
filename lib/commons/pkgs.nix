@@ -1,3 +1,4 @@
+# lib/commons/pkgs.nix
 { nixpkgs, unfree }:
 system:
 import nixpkgs {

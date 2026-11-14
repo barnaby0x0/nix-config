@@ -58,8 +58,13 @@
       ...
     }:
     let
+      unfreePackages = [
+        "vim-yaml"
+        "veracrypt"
+      ];
+
       lib = import ./lib {
-        inherit inputs;
+        inherit inputs unfreePackages;
       };
 
       inherit (lib.commons.system) systems forAllSystems;

@@ -1,9 +1,7 @@
-{ inputs, ... }:
+{ inputs, unfreePackages, ... }:
 
 let
-  commons = import ./commons {
-    inherit inputs;
-  };
+  commons = import ./commons { inherit inputs unfreePackages; };
 in
 {
   inherit commons;
