@@ -11,6 +11,7 @@
     niri = {
       enable = true;
       terminal = "terminator";
+      layout = "fr";
     };
 
     # Noctalia ne fournit ni agent polkit, ni portails, ni thème GTK/Qt
@@ -21,5 +22,16 @@
 
   # Barre, lanceur, notifications, verrouillage, presse-papiers, fond d'écran,
   # veille, lumière nocturne... Les réglages vont dans `settings` (TOML).
-  programs.noctalia.enable = true;
+
+  # programs.noctalia = {
+  #   enable = true;
+
+  #   settings = {
+  #     theme.mode = "dark";
+  #     bar.default = {
+  #       position = "bottom";
+  #       auto_hide = true;
+  #     };
+  #   };
+  # };
 }

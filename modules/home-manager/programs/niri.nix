@@ -1,8 +1,30 @@
+# modules/home-manager/programs/niri.nix
 { config, lib, ... }:
 
 let
   cfg = config.my.programs.niri;
   noctalia = cmd: "noctalia msg ${cmd}";
+
+  azertyDigits = [
+    "ampersand"
+    "eacute"
+    "quotedbl"
+    "apostrophe"
+    "parenleft"
+    "minus"
+    "egrave"
+    "underscore"
+    "ccedilla"
+  ];
+
+  azertyWorkspaceBinds = lib.listToAttrs (
+    lib.concatLists (
+      lib.imap1 (i: key: [
+        (lib.nameValuePair "Mod+${key}" { focus-workspace = i; })
+        (lib.nameValuePair "Mod+Ctrl+${key}" { move-column-to-workspace = i; })
+      ]) azertyDigits
+    )
+  );
 in
 {
   options.my.programs.niri = {
@@ -35,8 +57,17 @@ in
         # Permet aux notifications de Noctalia d'activer des fenêtres
         debug.honor-xdg-activation-with-invalid-serial = { };
 
+        cursor.xcursor-size = 16;
+
         binds = {
+          "Mod+E" = {
+            _props.hotkey-overlay-title = "Fichiers";
+            spawn = [ "nautilus" ];
+          };
           "Mod+Return".spawn = [ cfg.terminal ];
+
+          "Mod+Alt+Left".set-column-width = "-10%";
+          "Mod+Alt+Right".set-column-width = "+10%";
 
           "Mod+Space".spawn-sh = noctalia "panel-toggle launcher";
           "Mod+S".spawn-sh = noctalia "panel-toggle control-center";
@@ -66,7 +97,11 @@ in
             _props.allow-when-locked = true;
             spawn-sh = noctalia "brightness-down";
           };
-        };
+
+          "Mod+F1".show-hotkey-overlay = { };
+        }
+        # Workspaces 1 à 9 sur AZERTY : Mod+& é " ' ( - è _ ç (Mod+Ctrl pour envoyer la colonne)
+        // lib.optionalAttrs (cfg.layout == "fr") azertyWorkspaceBinds;
 
         # Nœuds répétés ou paramétrés
         _children = [

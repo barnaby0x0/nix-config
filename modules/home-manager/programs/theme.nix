@@ -27,7 +27,7 @@ in
       cursorTheme = {
         name = "Adwaita";
         package = pkgs.adwaita-icon-theme;
-        size = 24;
+        size = 16;
       };
       font = {
         name = "Ubuntu Sans";
@@ -46,7 +46,7 @@ in
       "org/gnome/desktop/interface" = {
         color-scheme = "prefer-dark";
         cursor-theme = "Adwaita";
-        cursor-size = 24;
+        # cursor-size = 16;
         font-name = "Ubuntu Sans 12";
         document-font-name = "Ubuntu Sans 12";
         monospace-font-name = "Ubuntu Sans Mono 12";
