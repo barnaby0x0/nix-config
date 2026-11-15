@@ -1,25 +1,35 @@
+# hosts/k8/users.nix
+{ self }:
 {
   user = {
     enableVirt = true;
     homeManager = false;
     home.stateVersion = "26.05";
 
-    imports = [
-      "homeModules.profiles.base"
-      "homeModules.profiles.desktop"
-    ];
+    # Même si homeManager est désactivé ici, on prépare le module
+    # pour pouvoir l'activer plus tard sans retoucher la structure.
+    homeModule =
+      {
+        config,
+        lib,
+        pkgs,
+        ...
+      }:
+      {
+        imports = [
+          self.homeModules.profiles.base
+          self.homeModules.profiles.desktop
+        ];
 
-    git = {
-      name = "Victor";
-      email = "victor@mail.net";
-    };
+        my.user.git = {
+          name = "Victor";
+          email = "victor@mail.net";
+        };
 
-    persistence = {
-      directories = [ ];
-      files = [ ];
-    };
-    # packages = [ "btop" ];
-
-    # home.file.".config/bashtop.cfg".source = ./files/bashtop;
+        home.persistence."/nix/persist" = {
+          directories = [ ];
+          files = [ ];
+        };
+      };
   };
 }

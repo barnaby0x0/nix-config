@@ -16,9 +16,8 @@ let
     }:
 
     let
-      pkgsLib = inputs.nixpkgs.lib;
-
-      userConfig = (import ../hosts/${host}/users.nix).${username} // {
+      users = import ../hosts/${host}/users.nix { inherit self; };
+      userConfig = users.${username} // {
         inherit username;
         homeDirectory = "/home/${username}";
       };
@@ -36,6 +35,7 @@ let
         "${inputs.impermanence}/home-manager.nix"
         { home._nixosModuleImported = true; }
       ]
+      ++ inputs.nixpkgs.lib.optional (userConfig ? homeModule) userConfig.homeModule
       ++ resolveHomeImports self (userConfig.imports or [ ]);
     };
 
