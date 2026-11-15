@@ -21,10 +21,5 @@
         inherit nixpkgs;
       }
       // specialArgs;
-
-      # specialArgs = {
-      #   inherit nixpkgs;
-      # }
-      # // specialArgs;
     };
 }

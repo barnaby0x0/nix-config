@@ -10,6 +10,9 @@
     ./tmux.nix
     ./brave.nix
     ./firefox.nix
-    ./niri
+    ./niri.nix
+    ./polkit.nix
+    ./portal.nix
+    ./theme.nix
   ];
 }

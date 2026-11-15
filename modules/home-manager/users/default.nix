@@ -9,10 +9,15 @@
 {
   home.username = lib.mkDefault (userConfig.username or "user");
   home.homeDirectory = lib.mkDefault (userConfig.homeDirectory or "/home/user");
-  home.stateVersion = userConfig.home.stateVersion;
+  home.stateVersion = userConfig.home.stateVersion or "26.05";
 
-  my.user.git = userConfig.git or { };
-  my.programs = userConfig.programs or { };
+  # ------------------------------------------------------------------
+  # Compatibilité avec l'ancien format « variables »
+  # (utile tant que certains hosts n'ont pas migré vers homeModule)
+  # ------------------------------------------------------------------
+  my.user.git = lib.mkDefault (userConfig.git or { });
+  my.programs = lib.mkDefault (userConfig.myprograms or { });
+  programs = lib.mkDefault (userConfig.programs or { });
 
   home.packages = map (package: pkgs.${package}) (userConfig.packages or [ ]);
 
@@ -20,7 +25,7 @@
 
   home.file = userConfig.homeFiles or { };
 
-  home.persistence."/nix/persist" = {
+  home.persistence."/nix/persist" = lib.mkIf (userConfig ? persistence) {
     directories = userConfig.persistence.directories or [ ];
     files = userConfig.persistence.files or [ ];
   };

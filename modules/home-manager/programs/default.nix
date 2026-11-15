@@ -8,5 +8,8 @@
   tmux = import ./tmux.nix;
   brave = import ./brave.nix;
   firefox = import ./firefox.nix;
-  niri = import ./niri;
+  niri = import ./niri.nix;
+  polkit = import ./polkit.nix;
+  portal = import ./portal.nix;
+  theme = import ./theme.nix;
 }
