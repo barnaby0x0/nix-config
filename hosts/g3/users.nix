@@ -1,7 +1,4 @@
 # hosts/g3/users.nix
-# Fichier de définition des utilisateurs du host.
-# - Les clés de premier niveau (user, …) deviennent les usernames home-manager.
-# - homeModule est un vrai module HM : plus besoin de mapper les options à la main.
 { self }:
 {
   user = {
@@ -69,6 +66,12 @@
           gtk.enable = true;
           x11.enable = true;
         };
+
+        # Et éventuellement
+        # dconf.settings."org/gnome/desktop/interface" = {
+        #   cursor-theme = "Adwaita";
+        #   cursor-size = 24;
+        # };
 
         home.persistence."/nix/persist" = {
           directories = [
