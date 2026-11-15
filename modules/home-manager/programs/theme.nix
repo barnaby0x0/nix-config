@@ -7,6 +7,7 @@
 
 let
   cfg = config.my.programs.theme;
+  cursorSize = 48;
 in
 {
   options.my.programs.theme = {
@@ -27,7 +28,7 @@ in
       cursorTheme = {
         name = "Adwaita";
         package = pkgs.adwaita-icon-theme;
-        size = 24;
+        size = cursorSize;
       };
       font = {
         name = "Ubuntu Sans";
@@ -46,7 +47,7 @@ in
       "org/gnome/desktop/interface" = {
         color-scheme = "prefer-dark";
         cursor-theme = "Adwaita";
-        cursor-size = 24;
+        cursor-size = cursorSize;
         font-name = "Ubuntu Sans 12";
         document-font-name = "Ubuntu Sans 12";
         monospace-font-name = "Ubuntu Sans Mono 12";
