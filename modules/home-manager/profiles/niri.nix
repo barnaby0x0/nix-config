@@ -17,7 +17,7 @@
     # Noctalia ne fournit ni agent polkit, ni portails, ni thème GTK/Qt
     polkit.enable = true;
     portal.enable = true;
-    theme.enable = true;
+    theme.enable = false;
   };
 
   # Barre, lanceur, notifications, verrouillage, presse-papiers, fond d'écran,

@@ -25,4 +25,19 @@
     directories = userConfig.persistence.directories or [ ];
     files = userConfig.persistence.files or [ ];
   };
+
+  home.pointerCursor = {
+    name = "Adwaita";
+    package = pkgs.adwaita-icon-theme;
+    size = 24;
+    gtk.enable = true;
+    x11.enable = true;
+  };
+
+  # Et éventuellement
+  # dconf.settings."org/gnome/desktop/interface" = {
+  #   cursor-theme = "Adwaita";
+  #   cursor-size = 24;
+  # };
+
 }

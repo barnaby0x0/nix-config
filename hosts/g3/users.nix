@@ -36,6 +36,7 @@
             margin_edge = 0; # collée au bord de l'écran
             radius = 0; # coins carrés
           };
+
           wallpaper = {
             directory = "/home/user/.wallpapers";
 
@@ -46,7 +47,6 @@
               pause_on_fullscreen = false;
               recursive = true;
             };
-
           };
         };
       };

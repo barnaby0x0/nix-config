@@ -57,7 +57,10 @@ in
         # Permet aux notifications de Noctalia d'activer des fenêtres
         debug.honor-xdg-activation-with-invalid-serial = { };
 
-        cursor.xcursor-size = 16;
+        # cursor = {
+        #   # xcursor-theme = "Adwaita";  # optionnel
+        #   xcursor-size = 24;
+        # };
 
         binds = {
           "Mod+E" = {
