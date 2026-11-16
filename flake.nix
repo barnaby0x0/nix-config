@@ -118,7 +118,7 @@
       # homeModules = import ./modules/home-manager;
       homeModules = (import ./modules/home-manager) // {
         noctalia = inputs.noctalia.homeModules.default;
-        plasma = inputs.plasma-manager.homeModules.default;
+        plasma = inputs.plasma-manager.homeManagerModules.plasma-manager;
       };
 
       nixosConfigurations = {
