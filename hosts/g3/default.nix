@@ -20,11 +20,12 @@ lib.nixos.mkHost {
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
     inputs.impermanence.nixosModules.impermanence
-    self.nixosModules.plasma
     self.nixosModules.garbage
-    self.nixosModules.niri
     self.nixosModules.home-manager
+    self.nixosModules.niri
+    self.nixosModules.plasma
     self.nixosModules.sops
     inputs.sops-nix.nixosModules.sops
+    { services.flatpak.enable = true; }
   ];
 }

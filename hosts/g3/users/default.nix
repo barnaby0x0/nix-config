@@ -21,6 +21,8 @@
           self.homeModules.plasma # TODO : à vérifier
           ./user/plasma.nix
           ./user/persistence.nix
+          self.homeModules.nix-flatpak
+          ./user/flatpak.nix
         ];
 
         my.user.git = {

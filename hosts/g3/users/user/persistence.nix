@@ -8,6 +8,7 @@
       ".local"
       ".config"
       ".wallpapers"
+      ".var/app"
       {
         directory = ".zsh";
         mode = "0700";
