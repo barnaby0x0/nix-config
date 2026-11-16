@@ -18,6 +18,7 @@
         imports = [
           self.homeModules.profiles.niri
           ./user/noctalia.nix
+          ./user/plasma.nix
           ./user/persistence.nix
         ];
 
