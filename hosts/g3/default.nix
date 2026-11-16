@@ -9,7 +9,7 @@ lib.nixos.mkHost {
 
   specialArgs = {
     inherit inputs self;
-    users = import ./users.nix { inherit self; };
+    users = import ./users { inherit self; };
   };
 
   modules = [
