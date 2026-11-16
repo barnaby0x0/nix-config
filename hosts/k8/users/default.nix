@@ -6,8 +6,6 @@
     homeManager = false;
     home.stateVersion = "26.05";
 
-    # Même si homeManager est désactivé ici, on prépare le module
-    # pour pouvoir l'activer plus tard sans retoucher la structure.
     homeModule =
       {
         config,

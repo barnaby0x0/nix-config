@@ -15,13 +15,13 @@
       }:
       {
         imports = [
-          self.homeModules.profiles.niri
-          ./user/noctalia.nix
-          self.homeModules.plasma # TODO : à vérifier
-          ./user/plasma.nix
-          ./user/persistence.nix
-          self.homeModules.nix-flatpak
           ./user/flatpak.nix
+          ./user/noctalia.nix
+          ./user/persistence.nix
+          ./user/plasma.nix
+          self.homeModules.nix-flatpak
+          self.homeModules.plasma
+          self.homeModules.profiles.niri
         ];
 
         my.user.git = {
@@ -52,48 +52,6 @@
         #   cursor-size = 24;
         # };
 
-        # programs.noctalia = {
-        #   enable = true;
-
-        #   settings = {
-        #     theme.mode = "dark";
-        #     bar.default = {
-        #       position = "bottom";
-        #       auto_hide = false;
-        #       margin_ends = 0; # pleine largeur
-        #       margin_edge = 0; # collée au bord
-        #       radius = 0; # coins carrés
-        #     };
-
-        #     wallpaper = {
-        #       directory = "/home/user/.wallpapers";
-        #       automation = {
-        #         enabled = false;
-        #         interval_seconds = 1800;
-        #         order = "random";
-        #         pause_on_fullscreen = false;
-        #         recursive = true;
-        #       };
-        #     };
-        #   };
-        # };
-
-        # home.persistence."/nix/persist" = {
-        #   directories = [
-        #     "Téléchargements"
-        #     "Bureau"
-        #     ".local"
-        #     ".config"
-        #     ".wallpapers"
-        #     {
-        #       directory = ".zsh";
-        #       mode = "0700";
-        #     }
-        #   ];
-        #   files = [
-        #     ".p10k.zsh"
-        #   ];
-        # };
       };
   };
 }
