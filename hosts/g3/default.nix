@@ -20,6 +20,7 @@ lib.nixos.mkHost {
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
     inputs.impermanence.nixosModules.impermanence
+    self.homeModules.profiles.base
     self.nixosModules.garbage
     self.nixosModules.home-manager
     self.nixosModules.niri

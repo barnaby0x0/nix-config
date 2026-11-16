@@ -2,7 +2,7 @@
 
 {
   imports = [
-    self.homeModules.profiles.base
+    # self.homeModules.profiles.base
     # Module Home Manager de Noctalia, exposé par le flake (homeModules.noctalia)
     self.homeModules.noctalia
   ];

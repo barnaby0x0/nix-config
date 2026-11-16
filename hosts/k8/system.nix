@@ -175,6 +175,7 @@
           "Téléchargements"
           "Videos"
           "Workspace"
+          ".wallpapers"
           {
             directory = ".gnupg";
             mode = "0700";
