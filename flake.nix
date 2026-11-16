@@ -56,6 +56,14 @@
 
     noctalia.url = "github:noctalia-dev/noctalia";
 
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+
   };
 
   outputs =
@@ -112,6 +120,8 @@
       # homeModules = import ./modules/home-manager;
       homeModules = (import ./modules/home-manager) // {
         noctalia = inputs.noctalia.homeModules.default;
+        plasma = inputs.plasma-manager.homeManagerModules.plasma-manager;
+        nix-flatpak = inputs.nix-flatpak.homeManagerModules.nix-flatpak;
       };
 
       nixosConfigurations = {

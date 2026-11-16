@@ -16,7 +16,7 @@ let
     }:
 
     let
-      users = import ../hosts/${host}/users.nix { inherit self; };
+      users = import ../hosts/${host}/users { inherit self; };
       userConfig = users.${username} // {
         inherit username;
         homeDirectory = "/home/${username}";

@@ -94,6 +94,7 @@
       "/var/lib/sops-nix"
       "/var/log"
       # "/etc/cloudflared"
+      "/var/lib/flatpak"
     ];
 
     files = [
