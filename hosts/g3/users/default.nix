@@ -1,4 +1,3 @@
-# hosts/g3/users.nix
 { self }:
 {
   user = {
