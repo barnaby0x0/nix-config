@@ -32,5 +32,6 @@ lib.nixos.mkHost {
     self.nixosModules.plasma
     self.nixosModules.services
     self.nixosModules.virt
+    self.nixosModules.niri
   ];
 }
