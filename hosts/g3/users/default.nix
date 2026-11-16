@@ -22,6 +22,7 @@
           self.homeModules.nix-flatpak
           self.homeModules.plasma
           self.homeModules.profiles.niri
+          self.homeModules.profiles.base
         ];
 
         my.user.git = {
