@@ -29,7 +29,7 @@
     ];
   };
 
-    # Attention hibernation impossible
+  # Attention hibernation impossible
   swapDevices = [
     {
       device = "/dev/disk/by-partlabel/disk-main-swap";
