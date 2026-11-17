@@ -29,6 +29,14 @@
     ];
   };
 
+    # Attention hibernation impossible
+  swapDevices = [
+    {
+      device = "/dev/disk/by-partlabel/disk-main-swap";
+      randomEncryption.enable = true;
+    }
+  ];
+
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = false;
