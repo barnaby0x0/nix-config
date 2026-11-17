@@ -73,17 +73,18 @@
     # brave
     # cloudflared
     cowsay
+    cryptsetup
     curl
     git
+    gnupg
     lolcat
     openssl
     pciutils
     tcpdump
+    tig
     usbutils
     vim
     wget
-    tig
-    gnupg
   ];
 
   programs.vscode = {
