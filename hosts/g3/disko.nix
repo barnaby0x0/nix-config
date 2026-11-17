@@ -30,6 +30,7 @@
             content = {
               type = "swap";
               resumeDevice = false;
+              randomEncryption = true;
             };
           };
 

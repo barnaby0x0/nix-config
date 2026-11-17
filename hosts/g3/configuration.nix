@@ -30,8 +30,17 @@
       "defaults"
       "size=20%"
       "mode=755"
+      "noswap"
     ];
   };
+
+  # Attention hibernation impossible
+  swapDevices = [
+    {
+      device = "/dev/disk/by-partlabel/disk-main-swap";
+      randomEncryption.enable = true;
+    }
+  ];
 
   # Identité et paramètres de base
   networking.hostName = "g3";
