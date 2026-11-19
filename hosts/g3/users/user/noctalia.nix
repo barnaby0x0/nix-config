@@ -17,7 +17,7 @@
       wallpaper = {
         directory = "/home/user/.wallpapers";
         automation = {
-          enabled = false;
+          enabled = true;
           interval_seconds = 1800;
           order = "random";
           pause_on_fullscreen = false;
