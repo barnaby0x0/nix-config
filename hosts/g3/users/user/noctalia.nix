@@ -33,6 +33,7 @@
         # ];
 
         end = [
+          "audio-vis"
           "cpu"
           "ram"
           "temperature"
@@ -73,6 +74,17 @@
           visualization = "none";
           show_value = true;
         };
+
+        audio-vis = {
+          type = "audio_visualizer";
+          width = 64;
+          bands = 20;
+          centered = true;
+          show_when_idle = false;
+          color_1 = "primary";
+          color_2 = "secondary";
+        };
+
       };
 
       # plugins = {
