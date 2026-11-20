@@ -107,6 +107,11 @@ in
           "Alt+Print".spawn-sh = noctalia "screenshot-window";
           "Shift+Print".spawn-sh = noctalia "screenshot-annotate";
 
+          "Mod+Shift+W" = {
+            _props.hotkey-overlay-title = "Wallpaper aléatoire";
+            spawn-sh = noctalia "wallpaper-random";
+          };
+
           "Mod+Alt+Left".set-column-width = "-10%";
           "Mod+Alt+Right".set-column-width = "+10%";
 
