@@ -14,6 +14,11 @@
         radius = 0; # coins carrés
       };
 
+      theme = {
+        source = "wallpaper";
+        wallpaper_scheme = "m3-content";
+      };
+
       wallpaper = {
         directory = "/home/user/.wallpapers";
         automation = {
