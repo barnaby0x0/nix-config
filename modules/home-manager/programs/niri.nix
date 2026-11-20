@@ -92,15 +92,20 @@ in
           };
           "Mod+Return".spawn = [ cfg.terminal ];
 
-          # "Mod+B" = {
-          #   hotkey-overlay.title = "Cycle power profile";
-          #   action.spawn = [ "${cyclePowerProfile}" ];
-          # };
-
           "Mod+B" = {
             _props.hotkey-overlay-title = "Cycle power profile";
             spawn = [ "${cyclePowerProfile}" ];
           };
+
+          # Verrouillage
+          "Mod+L".spawn-sh = noctalia "session lock";
+          "Super+Alt+L".spawn-sh = noctalia "session lock-and-suspend";
+
+          # Captures d'écran (remplace les actions natives de niri, pour un rendu uniforme)
+          "Print".spawn-sh = noctalia "screenshot-region";
+          "Ctrl+Print".spawn-sh = noctalia "screenshot-fullscreen";
+          "Alt+Print".spawn-sh = noctalia "screenshot-window";
+          "Shift+Print".spawn-sh = noctalia "screenshot-annotate";
 
           "Mod+Alt+Left".set-column-width = "-10%";
           "Mod+Alt+Right".set-column-width = "+10%";
@@ -110,8 +115,8 @@ in
           "Mod+Shift+S".spawn-sh = noctalia "settings-toggle";
           "Mod+Shift+P".spawn-sh = noctalia "panel-toggle session";
           "Mod+Shift+V".spawn-sh = noctalia "panel-toggle clipboard";
-          "Print".spawn-sh = noctalia "screenshot-region";
-          "Super+Alt+L".spawn-sh = noctalia "screen-lock";
+          # "Print".spawn-sh = noctalia "screenshot-region";
+          # "Super+Alt+L".spawn-sh = noctalia "screen-lock";
 
           "XF86AudioRaiseVolume" = {
             _props.allow-when-locked = true;

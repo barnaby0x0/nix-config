@@ -88,7 +88,7 @@
 
         media = {
           hide_when_no_media = true;
-          hide_when_idle = true;
+          hide_when_idle = false;
           max_length = 220;
           title_scroll = "on_hover";
         };
