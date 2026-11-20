@@ -33,6 +33,7 @@
         # ];
 
         end = [
+          "audio-vis"
           "cpu"
           "ram"
           "temperature"
@@ -73,6 +74,24 @@
           visualization = "none";
           show_value = true;
         };
+
+        audio-vis = {
+          type = "audio_visualizer";
+          width = 104;
+          # width = 64;
+          bands = 20;
+          centered = true;
+          show_when_idle = false;
+          color_1 = "primary";
+          color_2 = "secondary";
+        };
+
+        media = {
+          hide_when_no_media = true;
+          hide_when_idle = false;
+          max_length = 220;
+          title_scroll = "on_hover";
+        };
       };
 
       # plugins = {
@@ -102,12 +121,17 @@
         mode = "dark";
         source = "wallpaper";
         wallpaper_scheme = "m3-content";
+        # templates = {
+        #   enable_builtin_templates = true;
+        #   builtin_ids = [ "niri" ];
+        # };
+
       };
 
       wallpaper = {
         directory = "/home/user/.wallpapers";
         automation = {
-          enabled = true;
+          enabled = false;
           interval_seconds = 1800;
           order = "random";
           pause_on_fullscreen = false;
@@ -145,6 +169,38 @@
         memory_poll_seconds = 2.0; # RAM usage
         network_poll_seconds = 3.0; # network throughput
         disk_poll_seconds = 10.0; # disk usage and swap usage
+      };
+
+      shell.session = {
+        grid = false;
+        grid_columns = 3;
+        actions = [
+          {
+            action = "lock";
+            enabled = true;
+            shortcut = "v";
+          }
+          {
+            action = "suspend";
+            enabled = true;
+            shortcut = "s";
+          }
+          {
+            action = "logout";
+            enabled = true;
+            shortcut = "d";
+          }
+          {
+            action = "reboot";
+            enabled = true;
+            shortcut = "r";
+          }
+          {
+            action = "shutdown";
+            enabled = true;
+            shortcut = "e";
+          }
+        ];
       };
 
     };

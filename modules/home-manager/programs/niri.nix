@@ -73,6 +73,13 @@ in
         # Permet aux notifications de Noctalia d'activer des fenêtres
         debug.honor-xdg-activation-with-invalid-serial = { };
 
+        layout.focus-ring = {
+          width = 2;
+          active-color = "#cba6f7";
+          inactive-color = "#313244";
+          urgent-color = "#f38ba8";
+        };
+
         # cursor = {
         #   # xcursor-theme = "Adwaita";  # optionnel
         #   xcursor-size = 24;
@@ -85,14 +92,24 @@ in
           };
           "Mod+Return".spawn = [ cfg.terminal ];
 
-          # "Mod+B" = {
-          #   hotkey-overlay.title = "Cycle power profile";
-          #   action.spawn = [ "${cyclePowerProfile}" ];
-          # };
-
           "Mod+B" = {
             _props.hotkey-overlay-title = "Cycle power profile";
             spawn = [ "${cyclePowerProfile}" ];
+          };
+
+          # Verrouillage
+          "Mod+L".spawn-sh = noctalia "session lock";
+          "Super+Alt+L".spawn-sh = noctalia "session lock-and-suspend";
+
+          # Captures d'écran (remplace les actions natives de niri, pour un rendu uniforme)
+          "Print".spawn-sh = noctalia "screenshot-region";
+          "Ctrl+Print".spawn-sh = noctalia "screenshot-fullscreen";
+          "Alt+Print".spawn-sh = noctalia "screenshot-window";
+          "Shift+Print".spawn-sh = noctalia "screenshot-annotate";
+
+          "Mod+Shift+W" = {
+            _props.hotkey-overlay-title = "Wallpaper aléatoire";
+            spawn-sh = noctalia "wallpaper-random";
           };
 
           "Mod+Alt+Left".set-column-width = "-10%";
@@ -103,8 +120,8 @@ in
           "Mod+Shift+S".spawn-sh = noctalia "settings-toggle";
           "Mod+Shift+P".spawn-sh = noctalia "panel-toggle session";
           "Mod+Shift+V".spawn-sh = noctalia "panel-toggle clipboard";
-          "Print".spawn-sh = noctalia "screenshot-region";
-          "Super+Alt+L".spawn-sh = noctalia "screen-lock";
+          # "Print".spawn-sh = noctalia "screenshot-region";
+          # "Super+Alt+L".spawn-sh = noctalia "screen-lock";
 
           "XF86AudioRaiseVolume" = {
             _props.allow-when-locked = true;
@@ -154,6 +171,8 @@ in
               { place-within-backdrop = true; }
             ];
           }
+
+          # { include = "${config.home.homeDirectory}/.config/niri/noctalia.kdl"; }
         ]
         ++ lib.optional (cfg.layout != null) {
           input.keyboard.xkb.layout = cfg.layout;
