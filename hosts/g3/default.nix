@@ -15,7 +15,7 @@ lib.nixos.mkHost {
   modules = [
     ./apps.nix
     ./configuration.nix
-    ./disko.nix
+    # ./disko.nix # defined bellow
     ./hardware-configuration.nix
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
@@ -29,5 +29,13 @@ lib.nixos.mkHost {
     self.nixosModules.hardening
     inputs.sops-nix.nixosModules.sops
     { services.flatpak.enable = true; }
+    self.nixosModules.disk
+    {
+      custom.disk = {
+        encrypt = false;
+        # luksPasswordFile = "/tmp/luks.key";
+        device = "/dev/nvme0n1";
+      };
+    }
   ];
 }
