@@ -11,4 +11,6 @@
   storage = import ./storage.nix;
   system = import ./system.nix;
   virtualization = import ./virtualization.nix;
+  power-management = import ./power-management.nix;
+
 }
