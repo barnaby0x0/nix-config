@@ -73,6 +73,13 @@ in
         # Permet aux notifications de Noctalia d'activer des fenêtres
         debug.honor-xdg-activation-with-invalid-serial = { };
 
+        layout.focus-ring = {
+          width = 2;
+          active-color = "#cba6f7";
+          inactive-color = "#313244";
+          urgent-color = "#f38ba8";
+        };
+
         # cursor = {
         #   # xcursor-theme = "Adwaita";  # optionnel
         #   xcursor-size = 24;
@@ -154,6 +161,8 @@ in
               { place-within-backdrop = true; }
             ];
           }
+
+          # { include = "${config.home.homeDirectory}/.config/niri/noctalia.kdl"; }
         ]
         ++ lib.optional (cfg.layout != null) {
           input.keyboard.xkb.layout = cfg.layout;
