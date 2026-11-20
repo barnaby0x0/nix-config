@@ -1,5 +1,10 @@
 # modules/home-manager/programs/niri.nix
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.my.programs.niri;
@@ -25,6 +30,17 @@ let
       ]) azertyDigits
     )
   );
+
+  cyclePowerProfile = pkgs.writeShellScript "cycle-power-profile" ''
+        case "$(${pkgs.power-profiles-daemon}/bin/powerprofilesctl get)" in
+          power-saver) next=balanced ;;
+          balanced)    next=performance ;;
+          *)           next=power-saver ;;
+        esac
+    ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set "$next"    
+  '';
+  # ${pkgs.power-profiles-daemon}/bin/powerprofilesctl set "$next" \
+  #   && ${pkgs.libnotify}/bin/notify-send -t 1500 "Power profile" "$next"
 in
 {
   options.my.programs.niri = {
@@ -68,6 +84,16 @@ in
             spawn = [ "nautilus" ];
           };
           "Mod+Return".spawn = [ cfg.terminal ];
+
+          # "Mod+B" = {
+          #   hotkey-overlay.title = "Cycle power profile";
+          #   action.spawn = [ "${cyclePowerProfile}" ];
+          # };
+
+          "Mod+B" = {
+            _props.hotkey-overlay-title = "Cycle power profile";
+            spawn = [ "${cyclePowerProfile}" ];
+          };
 
           "Mod+Alt+Left".set-column-width = "-10%";
           "Mod+Alt+Right".set-column-width = "+10%";

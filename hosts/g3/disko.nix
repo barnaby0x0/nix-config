@@ -53,7 +53,7 @@
               type = "luks";
               name = "cryptnix"; # apparaîtra dans /dev/mapper/cryptnix
               settings.allowDiscards = true; # TRIM pour le NVMe (léger compromis de confidentialité)
-              # passwordFile = "/tmp/luks.key";  # optionnel, pour une install non interactive
+              passwordFile = "/tmp/luks.key"; # optionnel, pour une install non interactive
 
               content = {
                 type = "filesystem";

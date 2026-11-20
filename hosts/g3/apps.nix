@@ -10,5 +10,6 @@
     security
     storage
     system
+    power-management
   ];
 }
