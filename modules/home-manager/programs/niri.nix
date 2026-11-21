@@ -112,7 +112,9 @@ in
             spawn-sh = noctalia "wallpaper-random";
           };
           "Mod+Shift+C".spawn-sh = noctalia "panel-toggle noctalia/mpvpaper:picker";
-          "Mod+Shift+F".spawn-sh = noctalia "panel-toggle naijnus/flatpak-bg:panel";
+          "Mod+Shift+F".fullscreen-window = { };
+          "Mod+Alt+F".spawn-sh = noctalia "panel-toggle naijnus/flatpak-bg:panel";
+
           "Mod+Shift+E".spawn-sh = noctalia "desktop-widgets-toggle-edit";
           # "Mod+N".spawn = [
           #   "noctalia"

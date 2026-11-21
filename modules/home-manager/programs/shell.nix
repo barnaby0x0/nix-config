@@ -21,6 +21,15 @@ in
       };
     };
 
+    programs.fzf = {
+      enable = true;
+      enableZshIntegration = true;
+      historyWidgetOptions = [
+        "--sort" # tri par pertinence, plus récentes d'abord
+        # "--exact"   # correspondance exacte au lieu de floue
+      ];
+    };
+
     programs.zsh = {
       enable = true;
 
