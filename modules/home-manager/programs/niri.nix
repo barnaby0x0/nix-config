@@ -101,15 +101,6 @@ in
           #   spawn = [ "/home/user/.nix-profile/bin/terminator" ];
           # };
 
-          "Mod+Return".spawn = [
-            "notify-send"
-            "Mod+Return pressed"
-          ];
-          "Mod+T".spawn = [
-            "notify-send"
-            "Mod+T pressed"
-          ];
-
           "Mod+B" = {
             _props.hotkey-overlay-title = "Cycle power profile";
             spawn = [ "${cyclePowerProfile}" ];
