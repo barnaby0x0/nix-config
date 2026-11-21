@@ -211,36 +211,39 @@
         disk_poll_seconds = 10.0; # disk usage and swap usage
       };
 
-      shell.session = {
-        grid = false;
-        grid_columns = 3;
-        actions = [
-          {
-            action = "lock";
-            enabled = true;
-            shortcut = "v";
-          }
-          {
-            action = "suspend";
-            enabled = true;
-            shortcut = "s";
-          }
-          {
-            action = "logout";
-            enabled = true;
-            shortcut = "d";
-          }
-          {
-            action = "reboot";
-            enabled = true;
-            shortcut = "r";
-          }
-          {
-            action = "shutdown";
-            enabled = true;
-            shortcut = "e";
-          }
-        ];
+      shell = {
+        password_style = "random";
+        session = {
+          grid = false;
+          grid_columns = 3;
+          actions = [
+            {
+              action = "lock";
+              enabled = true;
+              shortcut = "v";
+            }
+            {
+              action = "suspend";
+              enabled = true;
+              shortcut = "s";
+            }
+            {
+              action = "logout";
+              enabled = true;
+              shortcut = "d";
+            }
+            {
+              action = "reboot";
+              enabled = true;
+              shortcut = "r";
+            }
+            {
+              action = "shutdown";
+              enabled = true;
+              shortcut = "e";
+            }
+          ];
+        };
       };
 
     };
