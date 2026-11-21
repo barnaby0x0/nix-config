@@ -19,7 +19,7 @@
         ];
         center = [
           "clock"
-          "noctalia/notes:notes"
+          # "noctalia/notes:notes"
         ];
         # end = [
         #   "media"
@@ -120,7 +120,7 @@
         enabled = [
           "noctalia/screen_recorder"
           "noctalia/wallhaven"
-          "noctalia/notes"
+          # "noctalia/notes"
         ];
         auto_update = "all"; # "all" | "official" | "none"; background git updates on startup and every 6 hours
 
@@ -151,11 +151,11 @@
       plugin_settings."noctalia/wallhaven" = {
         download_dir = "/home/user/.wallpapers/wallhaven";
       };
-      plugin_settings."noctalia/notes" = {
-        notes_dir = "/home/user/Documents/Notes";
-        extension = "md,txt,org";
-        glyph = "notes";
-      };
+      # plugin_settings."noctalia/notes" = {
+      #   notes_dir = "/home/user/Documents/Notes";
+      #   extension = "md,txt,org";
+      #   glyph = "notes";
+      # };
 
       theme = {
         mode = "dark";
