@@ -132,6 +132,10 @@
         ];
       };
 
+      plugin_settings."noctalia/wallhaven" = {
+        download_dir = "/home/user/.wallpapers/wallhaven";
+      };
+
       theme = {
         mode = "dark";
         source = "wallpaper";
