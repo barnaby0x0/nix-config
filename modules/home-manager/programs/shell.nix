@@ -24,6 +24,7 @@ in
     programs.fzf = {
       enable = true;
       enableZshIntegration = true;
+      enableNushellIntegration = false;
       historyWidgetOptions = [
         "--sort" # tri par pertinence, plus récentes d'abord
         # "--exact"   # correspondance exacte au lieu de floue
