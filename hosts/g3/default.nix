@@ -17,6 +17,7 @@ lib.nixos.mkHost {
     ./configuration.nix
     # ./disko.nix # defined bellow
     ./hardware-configuration.nix
+    ./modules.nix
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
     inputs.impermanence.nixosModules.impermanence
