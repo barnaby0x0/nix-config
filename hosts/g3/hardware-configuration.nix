@@ -41,9 +41,9 @@
   hardware.i2c.enable = true; # brightness
 
   hardware.graphics = {
-  enable = true;
-  extraPackages = with pkgs; [
-    intel-media-driver   # pilote iHD, pour les Intel récents comme Alder Lake
-  ];
-};
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver # pilote iHD, pour les Intel récents comme Alder Lake
+    ];
+  };
 }

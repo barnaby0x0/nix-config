@@ -112,6 +112,8 @@ in
             spawn-sh = noctalia "wallpaper-random";
           };
           "Mod+Shift+C".spawn-sh = noctalia "panel-toggle noctalia/mpvpaper:picker";
+          "Mod+Shift+F".spawn-sh = noctalia "panel-toggle naijnus/flatpak-bg:panel";
+          "Mod+Shift+E".spawn-sh = noctalia "desktop-widgets-toggle-edit";
           # "Mod+N".spawn = [
           #   "noctalia"
           #   "msg"
@@ -127,6 +129,7 @@ in
           "Mod+Shift+S".spawn-sh = noctalia "settings-toggle";
           "Mod+Shift+P".spawn-sh = noctalia "panel-toggle session";
           "Mod+Shift+V".spawn-sh = noctalia "panel-toggle clipboard";
+          "Mod+Shift+N".spawn-sh = noctalia "panel-toggle avivbintangaringga/nix-monitor:panel";
           # "Print".spawn-sh = noctalia "screenshot-region";
           # "Super+Alt+L".spawn-sh = noctalia "screen-lock";
 
