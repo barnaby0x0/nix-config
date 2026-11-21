@@ -85,6 +85,7 @@
     usbutils
     vim
     wget
+    ddcutil # brightness
   ];
 
   programs.vscode = {
@@ -105,6 +106,7 @@
       "/var/log"
       # "/etc/cloudflared"
       "/var/lib/flatpak"
+      "/var/lib/bluetooth"
     ];
 
     files = [
@@ -148,6 +150,7 @@
     extraGroups = [
       "wheel"
       "networkmanager"
+      "i2c" # brightness
     ];
 
     openssh.authorizedKeys.keys = [
@@ -173,7 +176,15 @@
   nix.settings.trusted-users = [
     "root"
     "colmena"
+    "user"
   ];
+
+  nix.settings = {
+    extra-substituters = [ "https://noctalia.cachix.org" ];
+    extra-trusted-public-keys = [
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+    ];
+  };
 
   security.sudo.extraRules = [
     {

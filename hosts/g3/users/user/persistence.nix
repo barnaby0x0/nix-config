@@ -5,6 +5,7 @@
     directories = [
       "Téléchargements"
       "Bureau"
+      "Documents"
       ".local"
       ".config"
       ".wallpapers"

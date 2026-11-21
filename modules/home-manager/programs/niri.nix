@@ -112,6 +112,13 @@ in
             spawn-sh = noctalia "wallpaper-random";
           };
 
+          "Mod+N".spawn = [
+            "noctalia"
+            "msg"
+            "panel-toggle"
+            "noctalia/notes:panel"
+          ];
+
           "Mod+Alt+Left".set-column-width = "-10%";
           "Mod+Alt+Right".set-column-width = "+10%";
 
@@ -125,23 +132,44 @@ in
 
           "XF86AudioRaiseVolume" = {
             _props.allow-when-locked = true;
-            spawn-sh = noctalia "volume-up";
+            spawn-sh = noctalia "volume-up 2";
           };
           "XF86AudioLowerVolume" = {
             _props.allow-when-locked = true;
-            spawn-sh = noctalia "volume-down";
+            spawn-sh = noctalia "volume-down 2";
           };
           "XF86AudioMute" = {
             _props.allow-when-locked = true;
             spawn-sh = noctalia "volume-mute";
           };
+          "XF86AudioPlay" = {
+            _props.allow-when-locked = true;
+            spawn-sh = noctalia "media toggle";
+          };
+          "XF86AudioPause" = {
+            _props.allow-when-locked = true;
+            spawn-sh = noctalia "media pause";
+          };
+          "XF86AudioStop" = {
+            _props.allow-when-locked = true;
+            spawn-sh = noctalia "media stop";
+          };
+          "XF86AudioNext" = {
+            _props.allow-when-locked = true;
+            spawn-sh = noctalia "media next";
+          };
+          "XF86AudioPrev" = {
+            _props.allow-when-locked = true;
+            spawn-sh = noctalia "media previous";
+          };
+
           "XF86MonBrightnessUp" = {
             _props.allow-when-locked = true;
-            spawn-sh = noctalia "brightness-up";
+            spawn-sh = noctalia "brightness-up 5";
           };
           "XF86MonBrightnessDown" = {
             _props.allow-when-locked = true;
-            spawn-sh = noctalia "brightness-down";
+            spawn-sh = noctalia "brightness-down 5";
           };
 
           "Mod+F1".show-hotkey-overlay = { };

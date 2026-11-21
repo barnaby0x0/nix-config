@@ -17,7 +17,10 @@
           "wallpaper"
           "workspaces"
         ];
-        center = [ "clock" ];
+        center = [
+          "clock"
+          # "noctalia/notes:notes"
+        ];
         # end = [
         #   "media"
         #   "tray"
@@ -48,9 +51,19 @@
           "power_profile"
           "battery"
           # "control-center"
+          "wallhaven"
           "session"
         ];
 
+      };
+
+      audio = {
+        enable_sounds = true;
+        enable_volume_sounds = false;
+      };
+
+      brightness = {
+        enable_ddcutil = true;
       };
 
       widget = {
@@ -59,6 +72,7 @@
           stat = "cpu_usage";
           visualization = "gauge";
           show_value = true;
+          label_min_width = 40;
         };
 
         ram = {
@@ -66,6 +80,7 @@
           stat = "ram_used";
           visualization = "gauge";
           show_value = true;
+          label_min_width = 60;
         };
 
         temperature = {
@@ -73,6 +88,7 @@
           stat = "cpu_temp";
           visualization = "none";
           show_value = true;
+          label_min_width = 45;
         };
 
         audio-vis = {
@@ -92,29 +108,53 @@
           max_length = 220;
           title_scroll = "on_hover";
         };
+
+        wallhaven = {
+          type = "noctalia/wallhaven:wallhaven";
+          glyph = "photo";
+          color = "secondary";
+        };
       };
 
-      # plugins = {
-      #   # Fully-qualified ids ("<author>/<plugin>") that are active.
-      #   enabled = [ "noctalia/screen_recorder" ];
-      #   auto_update = "all"; # "all" | "official" | "none"; background git updates on startup and every 6 hours
+      plugins = {
+        enabled = [
+          "noctalia/screen_recorder"
+          "noctalia/wallhaven"
+          # "noctalia/notes"
+        ];
+        auto_update = "all"; # "all" | "official" | "none"; background git updates on startup and every 6 hours
 
-      #   source = [
-      #     {
-      #       name = "official";
-      #       kind = "git";
-      #       location = "https://github.com/noctalia-dev/official-plugins";
-      #       enabled = true;
-      #     }
+        source = [
+          {
+            name = "official";
+            kind = "git";
+            location = "https://github.com/noctalia-dev/official-plugins";
+            enabled = true;
+          }
+          {
+            name = "community";
+            kind = "git";
+            location = "https://github.com/noctalia-dev/community-plugins";
+            enabled = true;
+          }
 
-      #     # # Source "my-dev" (Chemin local)
-      #     # {
-      #     #   name = "my-dev";
-      #     #   kind = "path";
-      #     #   location = "~/dev/my-plugins"; # Ou un chemin absolu comme "/home/votre-user/dev/my-plugins"
-      #     #   enabled = true;
-      #     # }
-      #   ];
+          # # Source "my-dev" (Chemin local)
+          # {
+          #   name = "my-dev";
+          #   kind = "path";
+          #   location = "~/dev/my-plugins"; # Ou un chemin absolu comme "/home/votre-user/dev/my-plugins"
+          #   enabled = true;
+          # }
+        ];
+      };
+
+      plugin_settings."noctalia/wallhaven" = {
+        download_dir = "/home/user/.wallpapers/wallhaven";
+      };
+      # plugin_settings."noctalia/notes" = {
+      #   notes_dir = "/home/user/Documents/Notes";
+      #   extension = "md,txt,org";
+      #   glyph = "notes";
       # };
 
       theme = {
@@ -171,36 +211,39 @@
         disk_poll_seconds = 10.0; # disk usage and swap usage
       };
 
-      shell.session = {
-        grid = false;
-        grid_columns = 3;
-        actions = [
-          {
-            action = "lock";
-            enabled = true;
-            shortcut = "v";
-          }
-          {
-            action = "suspend";
-            enabled = true;
-            shortcut = "s";
-          }
-          {
-            action = "logout";
-            enabled = true;
-            shortcut = "d";
-          }
-          {
-            action = "reboot";
-            enabled = true;
-            shortcut = "r";
-          }
-          {
-            action = "shutdown";
-            enabled = true;
-            shortcut = "e";
-          }
-        ];
+      shell = {
+        password_style = "random";
+        session = {
+          grid = false;
+          grid_columns = 3;
+          actions = [
+            {
+              action = "lock";
+              enabled = true;
+              shortcut = "v";
+            }
+            {
+              action = "suspend";
+              enabled = true;
+              shortcut = "s";
+            }
+            {
+              action = "logout";
+              enabled = true;
+              shortcut = "d";
+            }
+            {
+              action = "reboot";
+              enabled = true;
+              shortcut = "r";
+            }
+            {
+              action = "shutdown";
+              enabled = true;
+              shortcut = "e";
+            }
+          ];
+        };
       };
 
     };
