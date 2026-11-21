@@ -11,6 +11,8 @@
         margin_ends = 0; # pleine largeur
         margin_edge = 0; # collée au bord
         radius = 0; # coins carrés
+        background_opacity = 0.4;
+        capsule_opacity = 0.4;
 
         start = [
           "launcher"
@@ -72,7 +74,7 @@
         cpu = {
           type = "sysmon";
           stat = "cpu_usage";
-          visualization = "graph";
+          visualization = "gauge";
           show_value = true;
           label_min_width = 27;
         };
