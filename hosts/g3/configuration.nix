@@ -86,6 +86,7 @@
     vim
     wget
     ddcutil # brightness
+    libva-utils
   ];
 
   programs.vscode = {

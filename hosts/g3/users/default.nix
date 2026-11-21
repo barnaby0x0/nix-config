@@ -54,6 +54,12 @@
         #   cursor-size = 24;
         # };
 
+        home.packages = with pkgs; [
+          mpvpaper
+          mpv
+          socat
+        ];
+
       };
   };
 }

@@ -14,7 +14,7 @@
 
         start = [
           "launcher"
-          "wallpaper"
+          # "wallpaper"
           "workspaces"
         ];
         center = [
@@ -52,6 +52,7 @@
           "battery"
           # "control-center"
           "wallhaven"
+          "noctalia/mpvpaper:mpvpaper"
           "session"
         ];
 
@@ -70,9 +71,9 @@
         cpu = {
           type = "sysmon";
           stat = "cpu_usage";
-          visualization = "gauge";
+          visualization = "graph";
           show_value = true;
-          label_min_width = 30;
+          label_min_width = 27;
         };
 
         ram = {
@@ -121,6 +122,7 @@
           "noctalia/screen_recorder"
           "noctalia/wallhaven"
           # "noctalia/notes"
+          "noctalia/mpvpaper"
         ];
         auto_update = "all"; # "all" | "official" | "none"; background git updates on startup and every 6 hours
 
@@ -150,6 +152,14 @@
 
       plugin_settings."noctalia/wallhaven" = {
         download_dir = "/home/user/.wallpapers/wallhaven";
+      };
+
+      plugin_settings."noctalia/mpvpaper" = {
+        video_directory = "/home/user/Videos/wallpapers";
+        mute = true;
+        hardware_decode = true;
+        glyph = "movie";
+        mpv_options = "hwdec=vaapi";
       };
       # plugin_settings."noctalia/notes" = {
       #   notes_dir = "/home/user/Documents/Notes";

@@ -27,6 +27,8 @@ in
 
       [profiles]
         [[default]]
+          use_system_font = False
+          font = Hack 11
           background_color = "#300a24"
           background_darkness = 0.96
           background_type = transparent
