@@ -90,7 +90,11 @@ in
             _props.hotkey-overlay-title = "Fichiers";
             spawn = [ "nautilus" ];
           };
-          "Mod+Return".spawn = [ cfg.terminal ];
+          # "Mod+Return".spawn = [ cfg.terminal ];
+          "Mod+Return" = {
+            _props.hotkey-overlay-title = "Terminal";
+            spawn = [ "/home/user/.nix-profile/bin/terminator" ];
+          };
 
           "Mod+B" = {
             _props.hotkey-overlay-title = "Cycle power profile";

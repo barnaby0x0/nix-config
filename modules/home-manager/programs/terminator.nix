@@ -1,5 +1,9 @@
-
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.my.programs.terminator;
@@ -37,24 +41,21 @@ let
     [plugins]
   '';
 
-  installTerminatorConfig = pkgs.writeShellScript
-    "install-terminator-config" ''
-      mkdir -p "$HOME/.config/terminator"
-      cp ${terminatorConfig} "$HOME/.config/terminator/config"
-      chmod 644 "$HOME/.config/terminator/config"
-    '';
+  installTerminatorConfig = pkgs.writeShellScript "install-terminator-config" ''
+    mkdir -p "$HOME/.config/terminator"
+    cp ${terminatorConfig} "$HOME/.config/terminator/config"
+    chmod 644 "$HOME/.config/terminator/config"
+  '';
 
 in
 {
-  options.my.programs.terminator.enable =
-    lib.mkEnableOption "Terminator";
+  options.my.programs.terminator.enable = lib.mkEnableOption "Terminator";
 
   config = lib.mkIf cfg.enable {
     home.packages = [ pkgs.terminator ];
 
-    home.activation.installTerminatorConfig =
-      lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        run ${installTerminatorConfig}
-      '';
+    home.activation.installTerminatorConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      run ${installTerminatorConfig}
+    '';
   };
 }

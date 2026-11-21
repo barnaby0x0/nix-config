@@ -14,33 +14,32 @@ in
 
   config = lib.mkIf cfg.enable {
 
-programs.terminator = {
-  enable = true;
+    programs.terminator = {
+      enable = true;
 
-  config = {
-    global_config = {
-      borderless = true;
+      config = {
+        global_config = {
+          borderless = true;
+        };
+
+        keybindings = {
+          broadcast_off = "<Alt>o";
+          broadcast_group = "<Alt>g";
+          broadcast_all = "<Alt>a";
+        };
+
+        profiles.default = {
+          use_system_font = false;
+          font = "Hack 11";
+          background_color = "#300a24";
+          background_darkness = 0.96;
+          background_type = "transparent";
+          foreground_color = "#ffffff";
+          show_titlebar = false;
+          scrollbar_position = "hidden";
+        };
+      };
     };
-
-    keybindings = {
-      broadcast_off = "<Alt>o";
-      broadcast_group = "<Alt>g";
-      broadcast_all = "<Alt>a";
-    };
-
-    profiles.default = {
-      use_system_font = false;
-      font = "Hack 11";
-      background_color = "#300a24";
-      background_darkness = 0.96;
-      background_type = "transparent";
-      foreground_color = "#ffffff";
-      show_titlebar = false;
-      scrollbar_position = "hidden";
-    };
-  };
-};
-
 
     # programs.terminator = {
     #   enable = true;
