@@ -173,6 +173,7 @@
   nix.settings.trusted-users = [
     "root"
     "colmena"
+    "user"
   ];
 
   security.sudo.extraRules = [

@@ -48,6 +48,7 @@
           "power_profile"
           "battery"
           # "control-center"
+          "wallhaven"
           "session"
         ];
 
@@ -92,6 +93,12 @@
           max_length = 220;
           title_scroll = "on_hover";
         };
+
+        wallhaven = {
+  type = "noctalia/wallhaven:wallhaven";
+  glyph = "photo";
+  color = "secondary";
+};
       };
 
       plugins = {
