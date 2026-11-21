@@ -57,12 +57,22 @@
 
       };
 
+      audio = {
+        enable_sounds = true;
+        enable_volume_sounds = false;
+      };
+
+      brightness = {
+        enable_ddcutil = true;
+      };
+
       widget = {
         cpu = {
           type = "sysmon";
           stat = "cpu_usage";
           visualization = "gauge";
           show_value = true;
+          label_min_width = 40;
         };
 
         ram = {
@@ -70,6 +80,7 @@
           stat = "ram_used";
           visualization = "gauge";
           show_value = true;
+          label_min_width = 60;
         };
 
         temperature = {
@@ -77,6 +88,7 @@
           stat = "cpu_temp";
           visualization = "none";
           show_value = true;
+          label_min_width = 45;
         };
 
         audio-vis = {

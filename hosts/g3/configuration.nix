@@ -85,6 +85,7 @@
     usbutils
     vim
     wget
+    ddcutil # brightness
   ];
 
   programs.vscode = {
@@ -148,6 +149,7 @@
     extraGroups = [
       "wheel"
       "networkmanager"
+      "i2c" # brightness
     ];
 
     openssh.authorizedKeys.keys = [
