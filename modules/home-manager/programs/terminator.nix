@@ -19,6 +19,7 @@ in
 
     home.file.".config/terminator/config".text = ''
       [global_config]
+        borderless = True
 
       [keybindings]
         broadcast_off = <Alt>o
