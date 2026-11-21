@@ -5,8 +5,6 @@
     enable = true;
     # Fait de Nautilus le sélecteur de fichiers du portail (ne l'installe pas)
     useNautilus = true;
-    terminal = "terminator";
-    layout = "fr";
   };
 
   # --- Session graphique -----------------------------------------------------
