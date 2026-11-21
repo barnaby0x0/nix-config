@@ -72,7 +72,7 @@
           stat = "cpu_usage";
           visualization = "gauge";
           show_value = true;
-          label_min_width = 40;
+          label_min_width = 30;
         };
 
         ram = {
@@ -80,7 +80,7 @@
           stat = "ram_used";
           visualization = "gauge";
           show_value = true;
-          label_min_width = 60;
+          label_min_width = 45;
         };
 
         temperature = {
@@ -88,7 +88,7 @@
           stat = "cpu_temp";
           visualization = "none";
           show_value = true;
-          label_min_width = 45;
+          label_min_width = 30;
         };
 
         audio-vis = {
