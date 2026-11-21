@@ -91,7 +91,12 @@ in
             spawn = [ "nautilus" ];
           };
           # "Mod+Return".spawn = [ cfg.terminal ];
-          "Mod+Return" = {
+          # "Mod+Return" = {
+          #   _props.hotkey-overlay-title = "Terminal";
+          #   spawn = [ "/home/user/.nix-profile/bin/terminator" ];
+          # };
+
+          "Mod+T" = {
             _props.hotkey-overlay-title = "Terminal";
             spawn = [ "/home/user/.nix-profile/bin/terminator" ];
           };
