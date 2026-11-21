@@ -112,6 +112,13 @@ in
             spawn-sh = noctalia "wallpaper-random";
           };
 
+          "Mod+N".spawn = [
+            "noctalia"
+            "msg"
+            "panel-toggle"
+            "noctalia/notes:panel"
+          ];
+
           "Mod+Alt+Left".set-column-width = "-10%";
           "Mod+Alt+Right".set-column-width = "+10%";
 
