@@ -2,7 +2,7 @@
 {
   user = {
     enableVirt = true;
-    homeManager = true;
+    homeManager = false;
     home.stateVersion = "26.05";
 
     # HM Module
@@ -17,7 +17,7 @@
         imports = [
           ./user/flatpak.nix
           ./user/noctalia.nix
-          ./user/persistence.nix
+          # ./user/persistence.nix
           ./user/plasma.nix
           self.homeModules.nix-flatpak
           self.homeModules.plasma

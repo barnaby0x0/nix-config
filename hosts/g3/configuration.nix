@@ -133,10 +133,24 @@
           directory = "workspace";
           mode = "0700";
         }
+      "Téléchargements"
+      "Bureau"
+      "Documents"
+      "Videos"
+      ".local"
+      ".config"
+      ".wallpapers"
+      ".var/app"
+      {
+        directory = ".zsh";
+        mode = "0700";
+      }
+
       ];
       files = [
         ".bash_history"
         ".gitconfig"
+        ".p10k.zsh"
       ];
     };
   };
