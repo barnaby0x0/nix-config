@@ -94,28 +94,28 @@
         };
       };
 
-      # plugins = {
-      #   # Fully-qualified ids ("<author>/<plugin>") that are active.
-      #   enabled = [ "noctalia/screen_recorder" ];
-      #   auto_update = "all"; # "all" | "official" | "none"; background git updates on startup and every 6 hours
+      plugins = {
+        # Fully-qualified ids ("<author>/<plugin>") that are active.
+        enabled = [ "noctalia/screen_recorder" "noctalia/wallhaven" ];
+        auto_update = "all"; # "all" | "official" | "none"; background git updates on startup and every 6 hours
 
-      #   source = [
-      #     {
-      #       name = "official";
-      #       kind = "git";
-      #       location = "https://github.com/noctalia-dev/official-plugins";
-      #       enabled = true;
-      #     }
+        source = [
+          {
+            name = "official";
+            kind = "git";
+            location = "https://github.com/noctalia-dev/official-plugins";
+            enabled = true;
+          }
 
-      #     # # Source "my-dev" (Chemin local)
-      #     # {
-      #     #   name = "my-dev";
-      #     #   kind = "path";
-      #     #   location = "~/dev/my-plugins"; # Ou un chemin absolu comme "/home/votre-user/dev/my-plugins"
-      #     #   enabled = true;
-      #     # }
-      #   ];
-      # };
+          # # Source "my-dev" (Chemin local)
+          # {
+          #   name = "my-dev";
+          #   kind = "path";
+          #   location = "~/dev/my-plugins"; # Ou un chemin absolu comme "/home/votre-user/dev/my-plugins"
+          #   enabled = true;
+          # }
+        ];
+      };
 
       theme = {
         mode = "dark";
