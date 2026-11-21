@@ -95,15 +95,17 @@
         };
 
         wallhaven = {
-  type = "noctalia/wallhaven:wallhaven";
-  glyph = "photo";
-  color = "secondary";
-};
+          type = "noctalia/wallhaven:wallhaven";
+          glyph = "photo";
+          color = "secondary";
+        };
       };
 
       plugins = {
-        # Fully-qualified ids ("<author>/<plugin>") that are active.
-        enabled = [ "noctalia/screen_recorder" "noctalia/wallhaven" ];
+        enabled = [
+          "noctalia/screen_recorder"
+          "noctalia/wallhaven"
+        ];
         auto_update = "all"; # "all" | "official" | "none"; background git updates on startup and every 6 hours
 
         source = [
@@ -111,6 +113,12 @@
             name = "official";
             kind = "git";
             location = "https://github.com/noctalia-dev/official-plugins";
+            enabled = true;
+          }
+          {
+            name = "community";
+            kind = "git";
+            location = "https://github.com/noctalia-dev/community-plugins";
             enabled = true;
           }
 
