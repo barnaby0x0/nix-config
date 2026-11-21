@@ -30,6 +30,7 @@ lib.nixos.mkHost {
     # inputs.sops-nix.nixosModules.sops
     { services.flatpak.enable = true; }
     self.nixosModules.disk
+    self.nixosModules.services
     {
       custom.disk = {
         encrypt = false;
