@@ -19,6 +19,7 @@ lib.nixos.mkHost {
     ./overlays.nix
     ./system.nix
     ./modules.nix
+    { services.flatpak.enable = true; }
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
     inputs.impermanence.nixosModules.impermanence
