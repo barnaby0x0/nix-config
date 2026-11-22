@@ -17,19 +17,20 @@ lib.nixos.mkHost {
     ./configuration.nix
     # ./disko.nix # defined bellow
     ./hardware-configuration.nix
+    ./modules.nix
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
     inputs.impermanence.nixosModules.impermanence
-    # self.homeModules.profiles.base
     self.nixosModules.garbage
     self.nixosModules.home-manager
-    self.nixosModules.niri
+    # self.nixosModules.niri
     self.nixosModules.plasma
     self.nixosModules.hardening
     # self.nixosModules.sops
     # inputs.sops-nix.nixosModules.sops
     { services.flatpak.enable = true; }
     self.nixosModules.disk
+    self.nixosModules.services
     {
       custom.disk = {
         encrypt = false;

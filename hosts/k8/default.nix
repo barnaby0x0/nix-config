@@ -19,6 +19,9 @@ lib.nixos.mkHost {
     ./overlays.nix
     ./system.nix
     ./modules.nix
+    {
+      services.flatpak.enable = true;
+    }
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
     inputs.impermanence.nixosModules.impermanence
@@ -29,9 +32,9 @@ lib.nixos.mkHost {
     self.nixosModules.garbage
     self.nixosModules.home-manager
     self.nixosModules.performance
-    self.nixosModules.plasma
+    # self.nixosModules.plasma
     self.nixosModules.services
     self.nixosModules.virt
-    # self.nixosModules.niri
+    self.nixosModules.niri
   ];
 }

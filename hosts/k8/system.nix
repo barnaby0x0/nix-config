@@ -146,7 +146,6 @@
       pciutils
       self.packages.${system}.bootstrap
       usbutils
-      vscodium
       wget
       zsh
       sops
@@ -282,6 +281,11 @@
       "root"
       "user"
       "colmena"
+    ];
+
+    extra-substituters = [ "https://noctalia.cachix.org" ];
+    extra-trusted-public-keys = [
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
     ];
 
     # substituters = [

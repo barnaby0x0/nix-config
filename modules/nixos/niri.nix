@@ -1,6 +1,10 @@
 { lib, pkgs, ... }:
 
 {
+
+  imports = [ ./brightness.nix ];
+  my.hardware.brightness.enable = lib.mkDefault true;
+
   programs.niri = {
     enable = true;
     # Fait de Nautilus le sélecteur de fichiers du portail (ne l'installe pas)

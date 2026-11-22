@@ -90,7 +90,16 @@ in
             _props.hotkey-overlay-title = "Fichiers";
             spawn = [ "nautilus" ];
           };
-          "Mod+Return".spawn = [ cfg.terminal ];
+          # "Mod+Return".spawn = [ cfg.terminal ];
+          # "Mod+Return" = {
+          #   _props.hotkey-overlay-title = "Terminal";
+          #   spawn = [ "/home/user/.nix-profile/bin/terminator" ];
+          # };
+
+          # "Mod+T" = {
+          #   _props.hotkey-overlay-title = "Terminal";
+          #   spawn = [ "/home/user/.nix-profile/bin/terminator" ];
+          # };
 
           "Mod+B" = {
             _props.hotkey-overlay-title = "Cycle power profile";
@@ -111,13 +120,17 @@ in
             _props.hotkey-overlay-title = "Wallpaper aléatoire";
             spawn-sh = noctalia "wallpaper-random";
           };
+          "Mod+Shift+C".spawn-sh = noctalia "panel-toggle noctalia/mpvpaper:picker";
+          "Mod+Shift+F".fullscreen-window = { };
+          "Mod+Alt+F".spawn-sh = noctalia "panel-toggle naijnus/flatpak-bg:panel";
 
-          "Mod+N".spawn = [
-            "noctalia"
-            "msg"
-            "panel-toggle"
-            "noctalia/notes:panel"
-          ];
+          "Mod+Shift+E".spawn-sh = noctalia "desktop-widgets-toggle-edit";
+          # "Mod+N".spawn = [
+          #   "noctalia"
+          #   "msg"
+          #   "panel-toggle"
+          #   "noctalia/notes:panel"
+          # ];
 
           "Mod+Alt+Left".set-column-width = "-10%";
           "Mod+Alt+Right".set-column-width = "+10%";
@@ -127,6 +140,7 @@ in
           "Mod+Shift+S".spawn-sh = noctalia "settings-toggle";
           "Mod+Shift+P".spawn-sh = noctalia "panel-toggle session";
           "Mod+Shift+V".spawn-sh = noctalia "panel-toggle clipboard";
+          "Mod+Shift+N".spawn-sh = noctalia "panel-toggle avivbintangaringga/nix-monitor:panel";
           # "Print".spawn-sh = noctalia "screenshot-region";
           # "Super+Alt+L".spawn-sh = noctalia "screen-lock";
 

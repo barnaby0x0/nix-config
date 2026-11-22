@@ -11,10 +11,12 @@
         margin_ends = 0; # pleine largeur
         margin_edge = 0; # collée au bord
         radius = 0; # coins carrés
+        background_opacity = 0.4;
+        capsule_opacity = 0.4;
 
         start = [
           "launcher"
-          "wallpaper"
+          # "wallpaper"
           "workspaces"
         ];
         center = [
@@ -52,6 +54,8 @@
           "battery"
           # "control-center"
           "wallhaven"
+          "noctalia/mpvpaper:mpvpaper"
+          "flatpak-bg"
           "session"
         ];
 
@@ -72,7 +76,7 @@
           stat = "cpu_usage";
           visualization = "gauge";
           show_value = true;
-          label_min_width = 40;
+          label_min_width = 27;
         };
 
         ram = {
@@ -80,7 +84,7 @@
           stat = "ram_used";
           visualization = "gauge";
           show_value = true;
-          label_min_width = 60;
+          label_min_width = 45;
         };
 
         temperature = {
@@ -88,7 +92,7 @@
           stat = "cpu_temp";
           visualization = "none";
           show_value = true;
-          label_min_width = 45;
+          label_min_width = 30;
         };
 
         audio-vis = {
@@ -114,6 +118,12 @@
           glyph = "photo";
           color = "secondary";
         };
+
+        flatpak-bg = {
+          type = "naijnus/flatpak-bg:bar";
+          always_show = false; # n'apparaît que s'il y a des apps en arrière-plan
+          show_count = true;
+        };
       };
 
       plugins = {
@@ -121,6 +131,10 @@
           "noctalia/screen_recorder"
           "noctalia/wallhaven"
           # "noctalia/notes"
+          "noctalia/mpvpaper"
+          "naijnus/flatpak-bg"
+          "styrish/modernclock"
+          "avivbintangaringga/nix-monitor"
         ];
         auto_update = "all"; # "all" | "official" | "none"; background git updates on startup and every 6 hours
 
@@ -151,6 +165,25 @@
       plugin_settings."noctalia/wallhaven" = {
         download_dir = "/home/user/.wallpapers/wallhaven";
       };
+
+      plugin_settings."noctalia/mpvpaper" = {
+        video_directory = "/home/user/Videos/wallpapers";
+        mute = true;
+        hardware_decode = true;
+        glyph = "movie";
+        mpv_options = "hwdec=vaapi";
+      };
+
+      plugin_settings."naijnus/flatpak-bg" = {
+        interval = 5;
+        stop_timeout = 5;
+        ignored_apps = [ ]; # ids Flatpak à ne jamais lister, ex. "com.example.App"
+      };
+
+      plugin_settings."avivbintangaringga/nix-monitor" = {
+        branch = "nixos-26.05";
+      };
+
       # plugin_settings."noctalia/notes" = {
       #   notes_dir = "/home/user/Documents/Notes";
       #   extension = "md,txt,org";

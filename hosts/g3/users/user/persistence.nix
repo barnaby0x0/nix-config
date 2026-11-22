@@ -6,6 +6,7 @@
       "Téléchargements"
       "Bureau"
       "Documents"
+      "Videos"
       ".local"
       ".config"
       ".wallpapers"

@@ -85,17 +85,17 @@
     usbutils
     vim
     wget
-    ddcutil # brightness
+    libva-utils
   ];
 
-  programs.vscode = {
-    enable = true;
-    package = pkgs.vscodium;
-    extensions =
-      with inputs.nix-vscode-extensions.extensions.${pkgs.stdenv.hostPlatform.system}.vscode-marketplace; [
-        jnoortheen.nix-ide
-      ];
-  };
+  # programs.vscode = {
+  #   enable = true;
+  #   package = pkgs.vscodium;
+  #   extensions =
+  #     with inputs.nix-vscode-extensions.extensions.${pkgs.stdenv.hostPlatform.system}.vscode-marketplace; [
+  #       jnoortheen.nix-ide
+  #     ];
+  # };
 
   environment.persistence."/nix/persist" = {
     hideMounts = true;
@@ -132,10 +132,24 @@
           directory = "workspace";
           mode = "0700";
         }
+        "Téléchargements"
+        "Bureau"
+        "Documents"
+        "Videos"
+        ".local"
+        ".config"
+        ".wallpapers"
+        ".var/app"
+        {
+          directory = ".zsh";
+          mode = "0700";
+        }
+
       ];
       files = [
         ".bash_history"
         ".gitconfig"
+        ".p10k.zsh"
       ];
     };
   };
@@ -150,7 +164,6 @@
     extraGroups = [
       "wheel"
       "networkmanager"
-      "i2c" # brightness
     ];
 
     openssh.authorizedKeys.keys = [
