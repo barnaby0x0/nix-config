@@ -18,7 +18,7 @@ in
     programs.vscode = {
       enable = true;
       package = pkgs.vscodium;
-      extensions = [
+      profiles.default.extensions = [
         marketplace.jnoortheen.nix-ide
       ];
     };
