@@ -23,14 +23,4 @@ in
       ];
     };
   };
-
-  # config = lib.mkIf cfg.enable {
-  #   programs.vscode = {
-  #     enable = true;
-  #     package = pkgs.vscodium;
-  #     profiles.default.extensions = [
-  #       marketplace.jnoortheen.nix-ide
-  #     ];
-  #   };
-  # };
 }
