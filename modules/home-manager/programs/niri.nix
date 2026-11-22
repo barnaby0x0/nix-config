@@ -58,6 +58,13 @@ in
       example = "fr";
       description = "Disposition xkb du clavier. Si null, niri utilise la configuration système.";
     };
+
+    extraBinds = lib.mkOption {
+      type = lib.types.attrs;
+      default = { };
+      description = "Binds propres à la machine, qui remplacent ceux du profil de la même touche.";
+    };
+
   };
 
   config = lib.mkIf cfg.enable {
@@ -189,7 +196,8 @@ in
           "Mod+F1".show-hotkey-overlay = { };
         }
         # Workspaces 1 à 9 sur AZERTY : Mod+& é " ' ( - è _ ç (Mod+Ctrl pour envoyer la colonne)
-        // lib.optionalAttrs (cfg.layout == "fr") azertyWorkspaceBinds;
+        // lib.optionalAttrs (cfg.layout == "fr") azertyWorkspaceBinds
+        // cfg.extraBinds;
 
         # Nœuds répétés ou paramétrés
         _children = [
