@@ -14,13 +14,23 @@ let
 in
 {
   options.my.programs.codium.enable = lib.mkEnableOption "Codium";
+
   config = lib.mkIf cfg.enable {
-    programs.vscode = {
+    programs.vscodium = {
       enable = true;
-      package = pkgs.vscodium;
       profiles.default.extensions = [
         marketplace.jnoortheen.nix-ide
       ];
     };
   };
+
+  # config = lib.mkIf cfg.enable {
+  #   programs.vscode = {
+  #     enable = true;
+  #     package = pkgs.vscodium;
+  #     profiles.default.extensions = [
+  #       marketplace.jnoortheen.nix-ide
+  #     ];
+  #   };
+  # };
 }
