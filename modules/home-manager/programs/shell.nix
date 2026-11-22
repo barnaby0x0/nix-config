@@ -25,7 +25,7 @@ in
       enable = true;
       enableZshIntegration = true;
       enableNushellIntegration = false;
-      historyWidgetOptions = [
+      historyWidget.options = [
         "--sort" # tri par pertinence, plus récentes d'abord
         # "--exact"   # correspondance exacte au lieu de floue
       ];
