@@ -38,7 +38,6 @@
       };
     };
   };
-  hardware.i2c.enable = true; # brightness
 
   hardware.graphics = {
     enable = true;

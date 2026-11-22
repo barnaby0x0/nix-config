@@ -85,7 +85,6 @@
     usbutils
     vim
     wget
-    ddcutil # brightness
     libva-utils
   ];
 
@@ -165,7 +164,6 @@
     extraGroups = [
       "wheel"
       "networkmanager"
-      "i2c" # brightness
     ];
 
     openssh.authorizedKeys.keys = [

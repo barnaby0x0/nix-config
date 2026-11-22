@@ -13,4 +13,5 @@
   sops = import ./sops.nix;
   virt = import ./virt.nix;
   disk = import ./disk.nix;
+  brightness = import ./brightness.nix;
 }
