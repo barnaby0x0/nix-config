@@ -146,7 +146,6 @@
       pciutils
       self.packages.${system}.bootstrap
       usbutils
-      vscodium
       wget
       zsh
       sops
