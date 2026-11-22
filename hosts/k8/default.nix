@@ -29,9 +29,9 @@ lib.nixos.mkHost {
     self.nixosModules.garbage
     self.nixosModules.home-manager
     self.nixosModules.performance
-    self.nixosModules.plasma
+    # self.nixosModules.plasma
     self.nixosModules.services
     self.nixosModules.virt
-    # self.nixosModules.niri
+    self.nixosModules.niri
   ];
 }
