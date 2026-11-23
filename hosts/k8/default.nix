@@ -19,9 +19,6 @@ lib.nixos.mkHost {
     ./overlays.nix
     ./system.nix
     ./modules.nix
-    {
-      services.flatpak.enable = true;
-    }
     inputs.disko.nixosModules.disko
     inputs.home-manager.nixosModules.home-manager
     inputs.impermanence.nixosModules.impermanence
@@ -36,5 +33,14 @@ lib.nixos.mkHost {
     self.nixosModules.services
     self.nixosModules.virt
     self.nixosModules.niri
+    # self.nixosModules.disk
+    # {
+    #   services.flatpak.enable = true;
+    #   custom.disk = {
+    #     encrypt = false;
+    #     # luksPasswordFile = "/tmp/luks.key";
+    #     device = "/dev/nvme0n1";
+    #   };
+    # }
   ];
 }
