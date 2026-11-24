@@ -9,8 +9,9 @@
       system,
       modules,
       specialArgs ? { },
+      nixpkgsInput ? nixpkgs,
     }:
-    nixpkgs.lib.nixosSystem {
+    nixpkgsInput.lib.nixosSystem {
       inherit system;
 
       modules = modules ++ [
@@ -18,7 +19,7 @@
       ];
 
       specialArgs = {
-        inherit nixpkgs;
+        nixpkgs = nixpkgsInput;
       }
       // specialArgs;
     };

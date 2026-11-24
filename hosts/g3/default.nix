@@ -2,9 +2,11 @@
   inputs,
   lib,
   self,
+  nixpkgsInput ? inputs.nixpkgs,
 }:
 
 lib.nixos.mkHost {
+  inherit nixpkgsInput;
   system = "x86_64-linux";
 
   specialArgs = {

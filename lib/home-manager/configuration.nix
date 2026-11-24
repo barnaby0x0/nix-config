@@ -8,12 +8,12 @@
   modules,
   specialArgs ? { },
   userConfig ? { },
+  pkgs ? mkPkgs system,
+  homeManagerInput ? home-manager,
 }:
 
-home-manager.lib.homeManagerConfiguration {
-  pkgs = mkPkgs system;
-  inherit modules;
-
+homeManagerInput.lib.homeManagerConfiguration {
+  inherit pkgs modules;
   extraSpecialArgs = specialArgs // {
     inherit userConfig;
   };

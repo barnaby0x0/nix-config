@@ -13,6 +13,8 @@ let
       host,
       system ? "x86_64-linux",
       username ? "user",
+      nixpkgsInput ? inputs.nixpkgs,
+      homeManagerInput ? inputs.home-manager,
     }:
 
     let
@@ -75,8 +77,14 @@ in
     host = "k8";
   };
 
+  # "user@g3" = mkUserHomeConfiguration {
+  #   host = "g3";
+  # };
+
   "user@g3" = mkUserHomeConfiguration {
     host = "g3";
+    nixpkgsInput = inputs.nixpkgs-next;
+    homeManagerInput = inputs.home-manager;
   };
 
 }

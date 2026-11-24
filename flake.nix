@@ -64,6 +64,15 @@
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
 
+    # canari : g3 uniquement, unstable en attendant la sortie de 26.11
+    nixpkgs-next.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    plasma-manager-next = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs-next";
+      inputs.home-manager.follows = "home-manager";
+    };
+
   };
 
   outputs =
@@ -73,6 +82,8 @@
       home-manager,
       nixos-lima,
       colmena,
+      nixpkgs-next,
+      plasma-manager-next,
       ...
     }:
     let
@@ -129,8 +140,17 @@
           inherit inputs lib self;
         };
 
+        # g3 = import ./hosts/g3 {
+        #   inherit inputs lib self;
+        # };
+
         g3 = import ./hosts/g3 {
-          inherit inputs lib self;
+          inherit lib self;
+          nixpkgsInput = nixpkgs-next;
+          inputs = inputs // {
+            nixpkgs = nixpkgs-next;
+            plasma-manager = plasma-manager-next;
+          };
         };
 
         lima = import ./hosts/lima {
@@ -264,6 +284,7 @@
       colmenaHive = colmena.lib.makeHive {
         meta = {
           nixpkgs = import nixpkgs { system = "x86_64-linux"; };
+          nodeNixpkgs.g3 = import nixpkgs-next { system = "x86_64-linux"; };
           nodeSpecialArgs.g3 = self.nixosConfigurations.g3._module.specialArgs;
           nodeSpecialArgs.k8 = self.nixosConfigurations.k8._module.specialArgs;
         };
