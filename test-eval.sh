@@ -10,6 +10,7 @@ targets=(
   '.#nixosConfigurations.k8.config.system.build.toplevel.drvPath'
   '.#homeConfigurations."user@k8".activationPackage.drvPath'
   '.#packages.x86_64-linux.brave.drvPath'
+  '.#nixosConfigurations.g3.pkgs.lib.version' # Connaitre la version de nixpkgs
 )
 
 fail=0

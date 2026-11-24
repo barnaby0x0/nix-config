@@ -243,7 +243,8 @@
         "github.com/daaku/caddy-ssh@v0.10.0"
       ];
 
-      hash = "sha256-MhzeZOj4qOIKDwGg0Poz6IAsh+OvSWxIBeSrBwU4NXo=";
+      # hash = "sha256-MhzeZOj4qOIKDwGg0Poz6IAsh+OvSWxIBeSrBwU4NXo=";
+      hash = "sha256-L/Ao1Fi+Lu0cWRupL6CnV9HvQ6ZBqzA4BYT5EbJTyq8=";
     };
 
     virtualHosts."g3.proxlab.cc:8443" = {

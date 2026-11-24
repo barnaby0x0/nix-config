@@ -10,7 +10,10 @@ lib.nixos.mkHost {
   system = "x86_64-linux";
 
   specialArgs = {
-    inherit inputs self;
+    inherit self;
+    inputs = inputs // {
+      nixpkgs = nixpkgsInput;
+    };
     users = import ./users { inherit self; };
   };
 
@@ -25,8 +28,8 @@ lib.nixos.mkHost {
     inputs.impermanence.nixosModules.impermanence
     self.nixosModules.garbage
     self.nixosModules.home-manager
-    # self.nixosModules.niri
-    self.nixosModules.plasma
+    self.nixosModules.niri
+    # self.nixosModules.plasma
     self.nixosModules.hardening
     # self.nixosModules.sops
     # inputs.sops-nix.nixosModules.sops
