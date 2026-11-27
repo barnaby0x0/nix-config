@@ -31,8 +31,8 @@ lib.nixos.mkHost {
     self.nixosModules.niri
     # self.nixosModules.plasma
     self.nixosModules.hardening
-    # self.nixosModules.sops
-    # inputs.sops-nix.nixosModules.sops
+    self.nixosModules.sops
+    inputs.sops-nix.nixosModules.sops
     { services.flatpak.enable = true; }
     self.nixosModules.disk
     self.nixosModules.services
